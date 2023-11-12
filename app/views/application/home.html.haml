@@ -2,5 +2,7 @@
 
 - if @session.present?
     = button_to "Continue", continue_session_path(id: @session&.id)
+    = render partial: "elements/session_uuid"
 - else 
     = button_to "Begin", start_session_path
+

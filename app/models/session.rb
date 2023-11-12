@@ -8,7 +8,13 @@ class Session < ApplicationRecord
     enum status: {initializing:0, seeking: 1, finishing: 2}
 
     def setup_session
-        self.uuid = SecureRandom.uuid
+        self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
+        hide_rabbits
+    end
 
+    def hide_rabbits
+        Rabbit.all.each do |rabbit|
+            self.session_rabbits.new(rabbit: rabbit)
+        end
     end
 end

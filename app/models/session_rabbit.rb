@@ -7,7 +7,7 @@ class SessionRabbit < ApplicationRecord
     before_create :setup_credentials
 
     def setup_credentials
-        self.uuid = SecureRandom.uuid
-        self.key = SecureRandom.hex(32)
+        self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
+        self.key = SecureRandom.hex(16)
     end
 end

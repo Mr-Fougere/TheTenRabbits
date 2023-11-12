@@ -6,11 +6,13 @@ class ApplicationController < ActionController::Base
     end
 
     def start_session
-        session = Session.create!
-        session[:uuid] = session.uuid
+        session = Session.create
+        cookies[:uuid] = session.uuid
+        redirect_to root_path
     end
 
     def continue_session
+        
     end
 
     def seek_rabbit
@@ -18,6 +20,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_session
-        @session = Session.find(session[:uuid]) if session[:uuid]
+        @session = Session.find_by(uuid: cookies[:uuid])
     end
 end

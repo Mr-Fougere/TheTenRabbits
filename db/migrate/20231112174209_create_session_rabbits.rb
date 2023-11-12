@@ -4,7 +4,7 @@ class CreateSessionRabbits < ActiveRecord::Migration[7.1]
       t.references :rabbit, null: false, foreign_key: true
       t.references :session, null: false, foreign_key: true
       t.integer :status, default: 0
-      t.string :uuid, null: false
+      t.string :uuid, null: false 
       t.string :key, null: false
 
       t.timestamps
