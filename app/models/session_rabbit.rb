@@ -1,0 +1,2 @@
+class SessionRabbit < ApplicationRecord
+end
