@@ -6,7 +6,6 @@ class CreateSessionRabbits < ActiveRecord::Migration[7.1]
       t.integer :status, default: 0
       t.string :uuid, null: false
       t.string :key, null: false
-      t.boolean :found_animation_played, default: false
 
       t.timestamps
     end

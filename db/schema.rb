@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_174209) do
     t.integer "status", default: 0
     t.string "uuid", null: false
     t.string "key", null: false
-    t.boolean "found_animation_played", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rabbit_id"], name: "index_session_rabbits_on_rabbit_id"
