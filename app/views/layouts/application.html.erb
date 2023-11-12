@@ -8,9 +8,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
   </head>
 
-  <body>
+  <body data-controller="seek" data-key="<%= @debbie_key%>" data-uuid="<%= @debbie_uuid%>" data-session="<%= @session.uuid %>">
     <%= yield %>
   </body>
 </html>

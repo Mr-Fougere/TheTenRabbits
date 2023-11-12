@@ -17,4 +17,15 @@ class Session < ApplicationRecord
             self.session_rabbits.new(rabbit: rabbit)
         end
     end
+
+    def rabbit_credentials(name)
+        rabbit =  Rabbit.find_by(name: name)
+        session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
+        return { } unless session_rabbit
+
+        rabbit_key = session_rabbit.key
+        rabbit_uuid = session_rabbit.uuid
+
+        {rabbit_key: rabbit_key, rabbit_uuid: rabbit_uuid}
+    end
 end

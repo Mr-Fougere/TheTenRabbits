@@ -2,7 +2,7 @@ class SessionRabbit < ApplicationRecord
     belongs_to :session
     belongs_to :rabbit
 
-    enum status: { hidden: 0, hinted: 1, found_animation: 2,found: 3 }
+    enum status: { hidden: 0, hinted: 1, waiting_found_animation: 2,found: 3 }
 
     before_create :setup_credentials
 
