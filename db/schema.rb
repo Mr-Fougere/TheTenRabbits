@@ -14,21 +14,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_174209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "rabbit_speeches", force: :cascade do |t|
-    t.string "text", null: false
-    t.json "colored_words", default: [], null: false
-    t.bigint "rabbit_id", null: false
-    t.bigint "next_speech_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["next_speech_id"], name: "index_rabbit_speeches_on_next_speech_id"
-    t.index ["rabbit_id"], name: "index_rabbit_speeches_on_rabbit_id"
-  end
-
   create_table "rabbits", force: :cascade do |t|
     t.string "name", null: false
     t.integer "color", null: false
-    t.integer "difficulty", default: 0, null: false
+    t.string "hint_text", null: false
+    t.json "colored_hint_words", default: []
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,15 +39,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_174209) do
   create_table "sessions", force: :cascade do |t|
     t.string "uuid", null: false
     t.integer "status", default: 0
-    t.bigint "current_advice_id", null: false
+    t.boolean "with_colored_hint", default: false
+    t.bigint "hinted_rabbit_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["current_advice_id"], name: "index_sessions_on_current_advice_id"
+    t.index ["hinted_rabbit_id"], name: "index_sessions_on_hinted_rabbit_id"
   end
 
-  add_foreign_key "rabbit_speeches", "rabbit_speeches", column: "next_speech_id"
-  add_foreign_key "rabbit_speeches", "rabbits"
   add_foreign_key "session_rabbits", "rabbits"
   add_foreign_key "session_rabbits", "sessions"
-  add_foreign_key "sessions", "rabbit_speeches", column: "current_advice_id"
+  add_foreign_key "sessions", "rabbits", column: "hinted_rabbit_id"
 end
