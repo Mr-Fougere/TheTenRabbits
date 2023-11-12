@@ -1,6 +1,6 @@
 %h1 The Ten Rabbits
 
 - if @session.present?
-    = button_to "Begin", start_session_path
+    = button_to "Continue", continue_session_path(id: @session&.id)
 - else 
-    = button_to "Continue", continue_session_path(@session)
+    = button_to "Begin", start_session_path

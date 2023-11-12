@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
 
-    before_action :set_session, only: [:seek_rabbit]
+    before_action :set_session, only: [:seek_rabbit,:home, :continue_session]
 
     def home
     end
 
     def start_session
-        session = Session.create
+        session = Session.create!
         session[:uuid] = session.uuid
     end
 

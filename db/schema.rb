@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_174209) do
     t.string "uuid", null: false
     t.integer "status", default: 0
     t.boolean "with_colored_hint", default: false
-    t.bigint "hinted_rabbit_id", null: false
+    t.bigint "hinted_rabbit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hinted_rabbit_id"], name: "index_sessions_on_hinted_rabbit_id"
