@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :set_session, only: [:home, :continue_session]
 
     def home
-        debbie_credentials = @session.rabbit_credentials("Debbie")
-        @debbie_key = debbie_credentials[:rabbit_key]
-        @debbie_uuid = debbie_credentials[:rabbit_uuid]
+        setup_rabbit_credentials
         @bushes = bush_generator(7)
     end
 
@@ -25,12 +23,21 @@ class ApplicationController < ActionController::Base
 
     private 
 
+    def setup_rabbit_credentials
+        debbie_credentials = @session.rabbit_credentials("Debbie")
+        @debbie_key = debbie_credentials[:rabbit_key]
+        @debbie_uuid = debbie_credentials[:rabbit_uuid]
+        steevie_credentials = @session.rabbit_credentials("Steevie")
+        @steevie_key = steevie_credentials[:rabbit_key]
+        @steevie_uuid = steevie_credentials[:rabbit_uuid]
+    end
+
     def bush_generator(number)
         positions = number.times.map do |i|
             {top: rand(10..90), left: rand(10..90), key: SecureRandom.hex(16), uuid: SecureRandom.hex(16), is_rabbit_hide: false}
         end
         steevie_hide = rand(0...number)
-        steevie_credentials = @session.rabbit_credentials("Steevie")
+        steevie_credentials = @session.rabbit_credentials("Scotty")
         steevie_key = steevie_credentials[:rabbit_key]
         steevie_uuid = steevie_credentials[:rabbit_uuid]
         positions[steevie_hide][:is_rabbit_hide] = true
