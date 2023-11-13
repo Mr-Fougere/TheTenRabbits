@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
-    before_action :set_session, only: [:home, :continue_session]
+    before_action :set_session, only: [:home, :continue_session, :api_request]
+    APPIE_FAVORITE_PIE = "bourdaloue"
 
     def home
         return unless @session
@@ -20,10 +21,6 @@ class ApplicationController < ActionController::Base
 
     end
 
-    def set_session
-        @session = Session.find_by(uuid: cookies[:uuid])
-    end
-
     def safe_route
         redirect_to root_path
 
@@ -35,9 +32,24 @@ class ApplicationController < ActionController::Base
 
     def check_github_visit
         return unless request.referer.present?
-        return if request.referer === "https://github.com/Mr-Fougere/TheTenRabbits/blob/ginny/ginny.md"
+        return unless request.referer === "https://github.com/Mr-Fougere/TheTenRabbits/blob/ginny/ginny.md"
         
         @session.found_rabbit("Ginny")
+    end
+
+    def api_request
+        return render json: "I can't identify you with your Session ID" unless params[:session_id]
+
+        @session = Session.find_by(uuid: params[:session_id] )
+        return render json: "I dont know you" unless @session.present?
+        
+        desert =  params[:pie]
+        return render json: "Don't interrup me if you don't have a pie !" unless desert
+
+        return render json: "Burk I don't like this type of pie" unless desert == APPIE_FAVORITE_PIE
+
+        @session.found_rabbit("Appie")
+        render json: "\{\\__/\} \n( •.•)\n / >< \\ \nOh! My favorite pie! Thank you so much I come with you" 
     end
 
     private 
@@ -60,4 +72,10 @@ class ApplicationController < ActionController::Base
         positions[scotty_hide][:uuid] = scotty_uuid
         positions
     end
+
+    
+    def set_session
+        @session = Session.find_by(uuid: cookies[:uuid] )
+    end
+
 end
