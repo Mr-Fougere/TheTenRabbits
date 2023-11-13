@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
     def home
         setup_rabbit_credentials
-        p @credentials
         @bushes = bush_generator(7)
     end
 
@@ -23,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
 
     private 
-
+    
     def setup_rabbit_credentials
         rabbits = ["Scotty","Steevie","Remmy","Debbie"]
         rabbits.push("Sergie") if request.url.exclude?("https")

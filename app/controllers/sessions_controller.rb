@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-    before_action :set_session, only: [:seek_rabbit]
-    skip_before_action :verify_authenticity_token, only: [:seek_rabbit]
+    before_action :set_session, only: [:seek_rabbit,:safe_route]
+    skip_before_action :verify_authenticity_token
 
 
     def seek_rabbit
@@ -13,6 +13,19 @@ class SessionsController < ApplicationController
 
         session_rabbit.waiting_found_animation!
     end
+    
+    def safe_route
+        redirect_to root_path
+
+        return unless request.referer.present?
+        return if request.referer.include?("https")
+        
+        @session.found_rabbit("Sergie")
+    end
+    
+
+
+    private
 
     def set_session
         @session = Session.find_by(uuid: params[:session_uuid]) || Session.find_by(uuid: cookies[:uuid])

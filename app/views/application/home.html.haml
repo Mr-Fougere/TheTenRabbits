@@ -8,3 +8,5 @@
 
 = render partial: "field"
 = render partial: "elements/remy"
+- if @credentials[:sergie][:key].present? && @credentials[:sergie][:uuid].present?
+    = render partial: "elements/sergie"

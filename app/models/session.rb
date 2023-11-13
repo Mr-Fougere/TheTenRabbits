@@ -5,11 +5,21 @@ class Session < ApplicationRecord
     belongs_to :hinted_rabbit, class_name: "Rabbit", optional: true
     has_many :session_rabbits
 
-    enum status: {initializing:0, seeking: 1, finishing: 2}
+    enum status: {disconnected: -1, initializing:0, connected: 1, finishing: 2}
 
     def setup_session
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
         hide_rabbits
+    end
+
+    def found_rabbit(name)
+        rabbit = Rabbit.find_by(name: name)
+        return unless rabbit
+
+        session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
+        return unless session_rabbit
+
+        session_rabbit.waiting_found_animation!
     end
 
     def hide_rabbits
