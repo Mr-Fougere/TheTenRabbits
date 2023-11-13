@@ -36,6 +36,6 @@ test:
 #
 production:
   <<: *default
-  database: the_ten_rabbits_production
-  username: the_ten_rabbits
-  password: <%= ENV["THE_TEN_RABBITS_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
