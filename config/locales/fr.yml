@@ -1,3 +1,10 @@
 fr:
   hello: "Bonjour le monde"
   the_ten_rabbits: "Les Dix Lapins"
+  application:
+    home: 
+      continue: Continuer
+  elements:
+    sergie:
+      wrong_path_warning: Qu'est ce que vous faites ici ? Ce n'est pas sécurisé ! Retourner sur le bon chemin je reste avec vous pour vous surveiller
+      sorry: Désolé Sergie

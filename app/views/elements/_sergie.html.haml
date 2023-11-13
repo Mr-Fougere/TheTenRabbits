@@ -1,4 +1,4 @@
 #security-modal
     = image_tag "rabbit.png"
-    %p You not supposed to be here comme back to safest website
-    = link_to "I'm Sorry Sergie", safe_route_path
+    %p= t('.wrong_path_warning')
+    = link_to t('.sorry'), safe_route_path

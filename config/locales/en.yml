@@ -1,3 +1,10 @@
 en:
   hello: "Hello world"
   the_ten_rabbits: The Ten Rabbits
+  application:
+    home: 
+      continue: Continue
+  elements:
+    sergie:
+      wrong_path_warning: What are you doing here ? It's not safe! Go back to the right way, I stay with you to watch you
+      sorry: Sorry Sergie

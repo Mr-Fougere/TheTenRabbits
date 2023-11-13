@@ -1,9 +1,9 @@
     class SessionsController < ApplicationController
         include ActionCable::Channel::Broadcasting
+        include RabbitGenerator
 
-        before_action :set_session, only: [:seek_rabbit,:safe_route, :switch_mode]
+        before_action :set_session, only: [:seek_rabbit,:safe_route, :switch_mode, :switch_language]
         skip_before_action :verify_authenticity_token
-
 
         def seek_rabbit
             return unless @session
@@ -30,9 +30,17 @@
             return unless @session.present? && params[:language].present?
 
             @session.update(language: params[:language])
+            update_session_ui
         end
 
         private
+
+        def update_session_ui
+            I18n.locale = @session.language
+            setup_rabbit_credentials
+            @bushes = bush_generator(7)
+            Turbo::StreamsChannel.broadcast_replace_to "session-#{@session.uuid}", target: "home-#{@session.uuid}", partial: "application/home", locals: { credentials: @credentials, bushes: @bushes, session: @session }
+        end
 
         def set_session
             @session = Session.find_by(uuid: params[:session_uuid] || cookies[:uuid])

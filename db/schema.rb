@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_200442) do
     t.bigint "hinted_rabbit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "language", default: 0
     t.index ["hinted_rabbit_id"], name: "index_sessions_on_hinted_rabbit_id"
   end
 

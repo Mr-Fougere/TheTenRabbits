@@ -1,0 +1,39 @@
+#language-select {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  right: 10px;
+  background-color: lightgray;
+  border-radius: 0 0 5px 5px;
+
+  &:hover :not(.selected) {
+    display: block;
+  }
+
+  .language-option {
+    cursor: pointer;
+    order: 1;
+    display: none;
+
+    &.selected {
+      background-color: lightblue;
+      border-radius: 5px;
+      order: 0;
+      display: flex;
+      &:hover {
+        background-color: rgb(124, 183, 202);
+      }
+    }
+
+    &:not(.selected):hover {
+      background-color: grey;
+      border-radius: 5px;
+    }
+
+    img {
+      width: 70px;
+      height: 60px;
+    }
+  }
+}
