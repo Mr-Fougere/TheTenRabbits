@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
     def home
         return unless @session
+
+        check_github_visit
         setup_rabbit_credentials
         @bushes = bush_generator(7)
     end
@@ -20,6 +22,22 @@ class ApplicationController < ActionController::Base
 
     def set_session
         @session = Session.find_by(uuid: cookies[:uuid])
+    end
+
+    def safe_route
+        redirect_to root_path
+
+        return unless request.referer.present?
+        return if request.referer.include?("https")
+        
+        @session.found_rabbit("Sergie")
+    end
+
+    def check_github_visit
+        return unless request.referer.present?
+        return if request.referer === "https://github.com/Mr-Fougere/TheTenRabbits/blob/ginny/ginny.md"
+        
+        @session.found_rabbit("Ginny")
     end
 
     private 

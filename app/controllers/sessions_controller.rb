@@ -13,18 +13,8 @@ class SessionsController < ApplicationController
 
         session_rabbit.waiting_found_animation!
     end
+
     
-    def safe_route
-        redirect_to root_path
-
-        return unless request.referer.present?
-        return if request.referer.include?("https")
-        
-        @session.found_rabbit("Sergie")
-    end
-    
-
-
     private
 
     def set_session
