@@ -1,0 +1,2 @@
+= turbo_frame_tag "timmy-#{session.uuid}" do
+    = image_tag "rabbit.png", class: "dark-mode", data: {action: "click->dark-mode#toggle", uuid: credentials[:timmy][:uuid] ,key: credentials[:timmy][:key]}, id: "timmy"

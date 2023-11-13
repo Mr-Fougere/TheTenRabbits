@@ -1,7 +1,7 @@
-$primary-color-light: #3498db;
+$primary-color-light: #2c3e50;
 $background-color-light: #ffffff;
 
-$primary-color-dark: #2980b9;
+$primary-color-dark: #ffffff;
 $background-color-dark: #2c3e50;
 
 @mixin light-mode {
@@ -18,4 +18,8 @@ body {
   @media (prefers-color-scheme: dark) {
     @include dark-mode;
   }
+}
+
+img.dark-mode {
+  filter: invert(100%);
 }

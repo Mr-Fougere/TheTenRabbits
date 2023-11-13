@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { seekRabbit } from "./application";
 
 export default class extends Controller {
   connect() {
@@ -24,4 +25,10 @@ export default class extends Controller {
       body: JSON.stringify(requestData),
     });
   }
+
+    
+  toggle(event){
+    seekRabbit(event.currentTarget);
+  }
+
 }

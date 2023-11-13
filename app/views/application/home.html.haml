@@ -1,5 +1,5 @@
-= turbo_stream_from(@session.uuid)
-.home{data: {controller:"responsive dark-mode", sessionUuid: "#{@session&.uuid}"}}
+= turbo_stream_from("session-#{@session.uuid}")
+= turbo_frame_tag "home-#{@session.uuid}", class:"home", data: {controller:"responsive dark-mode", sessionUuid: "#{@session&.uuid}"} do
     %h1 The Ten Rabbits
 
     - if @session.present?
