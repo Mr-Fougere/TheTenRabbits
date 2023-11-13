@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post "/continue_session/:id", to: "application#continue_session", as: "continue_session"
     post '/seek_rabbit', to: "sessions#seek_rabbit", as: "seek_rabbit"
     get '/safe_route', to: "sessions#safe_route", as: "safe_route"
+    post '/switch_language', to: "sessions#switch_language", as: "switch_language"
 
     post '/switch_mode', to: "sessions#switch_mode", as: "switch_mode"
     post '/api', to: "sessions#api_request"

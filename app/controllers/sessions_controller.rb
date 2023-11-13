@@ -26,6 +26,12 @@
             end
         end
 
+        def switch_language
+            return unless @session.present? && params[:language].present?
+
+            @session.update(language: params[:language])
+        end
+
         private
 
         def set_session
