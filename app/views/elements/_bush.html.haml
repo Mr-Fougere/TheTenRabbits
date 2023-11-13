@@ -1,0 +1,6 @@
+.bush-container{style:"--top-position:#{bush[:top]}%;--left-position:#{bush[:left]}%"}
+    = image_tag "bush.png", class: "bush"
+    - if bush[:rabbit_key].present? && bush[:rabbit_uuid].present?
+        = image_tag "rabbit.png", class: "behind-bush"
+    - else
+        = image_tag "unknown.png", class: "behind-bush"

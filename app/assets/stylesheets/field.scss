@@ -1,3 +1,24 @@
-#field{
-    position: relative;
+#field {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+
+.bush-container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: var(--top-position);
+  left: var(--left-position);
+  overflow: hidden;
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:has(.bush) .behind-bush{
+      display: none;
+  }
 }
