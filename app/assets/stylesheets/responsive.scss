@@ -1,5 +1,8 @@
 .mobile {
   display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 @media screen and (max-width: 251px) {

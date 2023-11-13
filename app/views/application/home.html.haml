@@ -7,6 +7,7 @@
     = button_to "Begin", start_session_path
 
 = render partial: "field"
+= render partial: "elements/flag", locals: {url: "https://github.com/Mr-Fougere/TheTenRabbits", image: "github"}
 = render partial: "elements/remy"
 - if @credentials[:sergie][:key].present? && @credentials[:sergie][:uuid].present?
     = render partial: "elements/sergie"
