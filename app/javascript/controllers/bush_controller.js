@@ -30,11 +30,7 @@ export default class extends Controller {
   }
 
   toggleBehindBush(event) {
-    const target = event.currentTarget;
-    const uuid = target.dataset.uuid;
-    const key = target.dataset.key;
-    if ( !uuid || !key ) return;
-    seekRabbit(key, uuid);
+    seekRabbit(event.currentTarget);
   }
 
   moveSelectedBush(event) {

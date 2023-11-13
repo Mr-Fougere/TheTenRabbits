@@ -8,7 +8,7 @@ export default class extends Controller {
     window.debbie = () => {
       console.log("{\\__/}\n( •.•)\n/ >< \\");
       console.log("You found me !");
-      seekRabbit(this.element.dataset.key, this.element.dataset.uuid);
+      seekRabbit(this.element);
     };
   }
   

@@ -6,8 +6,6 @@
 
 .bush,
 .behind-bush {
-  width: 100px;
-  height: 100px;
   position: absolute;
   object-fit: contain;
 }
@@ -22,8 +20,8 @@
 
 .bush-container {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: max-content;
+  height: max-content;
   top: var(--top-position);
   left: var(--left-position);
 
