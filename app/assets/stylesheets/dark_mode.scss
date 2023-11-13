@@ -1,0 +1,21 @@
+$primary-color-light: #3498db;
+$background-color-light: #ffffff;
+
+$primary-color-dark: #2980b9;
+$background-color-dark: #2c3e50;
+
+@mixin light-mode {
+  background-color: $background-color-light;
+  color: $primary-color-light;
+}
+
+@mixin dark-mode {
+  background-color: $background-color-dark;
+  color: $primary-color-dark;
+}
+
+body {
+  @media (prefers-color-scheme: dark) {
+    @include dark-mode;
+  }
+}

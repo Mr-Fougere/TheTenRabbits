@@ -14,6 +14,10 @@ class SessionsController < ApplicationController
         session_rabbit.waiting_found_animation!
     end
 
+    def switch_mode
+    
+    end
+
     
     private
 

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
  post '/seek_rabbit', to: "sessions#seek_rabbit", as: "seek_rabbit"
  get '/safe_route', to: "sessions#safe_route", as: "safe_route"
 
+ post '/switch_mode', to: "sessions#switch_mode", as: "switch_mode"
  post '/api', to: "sessions#api_request"
 end
