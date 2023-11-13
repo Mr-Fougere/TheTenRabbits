@@ -4,21 +4,30 @@
   height: 80%;
 }
 
+.bush,
+.behind-bush {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  object-fit: contain;
+}
+
+.bush{
+  z-index: 2;
+}
+
+.behind-bush {
+  z-index: 1;
+}
+
 .bush-container {
   position: absolute;
   width: 100px;
   height: 100px;
   top: var(--top-position);
   left: var(--left-position);
-  overflow: hidden;
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
 
-  &:has(.bush) .behind-bush{
-      display: none;
+  &:has(.bush) .behind-bush {
+    display: none;
   }
 }

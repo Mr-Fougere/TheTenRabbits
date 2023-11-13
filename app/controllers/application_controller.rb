@@ -27,14 +27,15 @@ class ApplicationController < ActionController::Base
 
     def bush_generator(number)
         positions = number.times.map do |i|
-            {top: rand(10..90), left: rand(10..90)}
+            {top: rand(10..90), left: rand(10..90), key: SecureRandom.hex(16), uuid: SecureRandom.hex(16), is_rabbit_hide: false}
         end
         steevie_hide = rand(0...number)
         steevie_credentials = @session.rabbit_credentials("Steevie")
         steevie_key = steevie_credentials[:rabbit_key]
         steevie_uuid = steevie_credentials[:rabbit_uuid]
-        positions[steevie_hide][:rabbit_key] = steevie_key
-        positions[steevie_hide][:rabbit_uuid] = steevie_uuid
+        positions[steevie_hide][:is_rabbit_hide] = true
+        positions[steevie_hide][:key] = steevie_key
+        positions[steevie_hide][:uuid] = steevie_uuid
         positions
     end
 end
