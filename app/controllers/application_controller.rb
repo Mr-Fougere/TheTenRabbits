@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :set_session, only: [:home, :continue_session]
 
     def home
+        return unless @session
         setup_rabbit_credentials
         @bushes = bush_generator(7)
     end
