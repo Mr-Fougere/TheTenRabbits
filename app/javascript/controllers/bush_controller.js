@@ -34,7 +34,7 @@ export default class extends Controller {
     const uuid = target.dataset.uuid;
     const key = target.dataset.key;
     if ( !uuid || !key ) return;
-    seekRabbit(uuid, key);
+    seekRabbit(key, uuid);
   }
 
   moveSelectedBush(event) {
