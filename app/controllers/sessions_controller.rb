@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     def seek_rabbit
         return unless @session
         return unless params[:rabbit_key].present? && params[:rabbit_uuid].present?
-        puts "Params - rabbit_key: #{params[:rabbit_key]}, rabbit_uuid: #{params[:rabbit_uuid]}"
         
         session_rabbit = @session.session_rabbits.hidden.find_by(key: params[:rabbit_key], uuid: params[:rabbit_uuid])
         return unless session_rabbit

@@ -18,14 +18,17 @@ class Session < ApplicationRecord
         end
     end
 
-    def rabbit_credentials(name)
-        rabbit =  Rabbit.find_by(name: name)
-        session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
-        return { } unless session_rabbit
-
-        rabbit_key = session_rabbit.key
-        rabbit_uuid = session_rabbit.uuid
-
-        {rabbit_key: rabbit_key, rabbit_uuid: rabbit_uuid}
+    def rabbits_credentials(names)
+        rabbits = Rabbit.where(name: names)
+        credentials = {}
+        rabbits.each do |rabbit|
+            session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
+            credentials[rabbit.name.downcase.to_sym] = {key: nil, uuid: nil}
+            next unless session_rabbit
+            
+            credentials[rabbit.name.downcase.to_sym][:key] = session_rabbit.key
+            credentials[rabbit.name.downcase.to_sym][:uuid] = session_rabbit.uuid
+        end
+        credentials
     end
 end

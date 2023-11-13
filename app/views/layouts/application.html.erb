@@ -12,8 +12,8 @@
   </head>
 
   <body data-controller="responsive">
-    <div data-controller="scream" data-key="<%= @steevie_key%>" data-uuid="<%= @steevie_uuid%>"></div>
-    <div  data-controller="seek" data-key="<%= @debbie_key%>" data-uuid="<%= @debbie_uuid%>"> </div>
+    <div data-controller="scream" data-key="<%= @credentials[:steevie][:key]%>" data-uuid="<%= @credentials[:steevie][:uuid]%>"></div>
+    <div  data-controller="seek" data-key="<%= @credentials[:debbie][:key]%>" data-uuid="<%= @credentials[:debbie][:uuid]%>"> </div>
     <%= yield %>
   </body>
 </html>

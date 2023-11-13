@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
     def home
         setup_rabbit_credentials
+        p @credentials
         @bushes = bush_generator(7)
     end
 
@@ -24,15 +25,9 @@ class ApplicationController < ActionController::Base
     private 
 
     def setup_rabbit_credentials
-        debbie_credentials = @session.rabbit_credentials("Debbie")
-        remy_credentials = @session.rabbit_credentials("Remmy")
-        steevie_credentials = @session.rabbit_credentials("Steevie")    
-        @debbie_key = debbie_credentials[:rabbit_key]
-        @debbie_uuid = debbie_credentials[:rabbit_uuid]
-        @steevie_key = steevie_credentials[:rabbit_key]
-        @steevie_uuid = steevie_credentials[:rabbit_uuid]
-        @remy_key = remy_credentials[:rabbit_key]
-        @remy_uuid = remy_credentials[:rabbit_uuid]
+        rabbits = ["Scotty","Steevie","Remmy","Debbie"]
+        rabbits.push("Sergie") if request.url.exclude?("https")
+        @credentials = @session.rabbits_credentials(rabbits)
     end
 
     def bush_generator(number)
@@ -40,9 +35,8 @@ class ApplicationController < ActionController::Base
             {top: rand(10..90), left: rand(10..90), key: SecureRandom.hex(16), uuid: SecureRandom.hex(16), is_rabbit_hide: false}
         end
         scotty_hide = rand(0...number)
-        scotty_credentials = @session.rabbit_credentials("Scotty")
-        scotty_key = scotty_credentials[:rabbit_key]
-        scotty_uuid = scotty_credentials[:rabbit_uuid]
+        scotty_key = @credentials[:scotty][:key]
+        scotty_uuid = @credentials[:scotty][:uuid]
         positions[scotty_hide][:is_rabbit_hide] = true
         positions[scotty_hide][:key] = scotty_key
         positions[scotty_hide][:uuid] = scotty_uuid
