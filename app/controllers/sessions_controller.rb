@@ -62,6 +62,7 @@
         end
 
         def update_session_status
+            return
             return unless @session.present? && params[:new_status].present?
 
             @session.update(status: params[:new_status])

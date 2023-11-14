@@ -1,2 +1,3 @@
 = turbo_frame_tag "home-#{@session.uuid}", class:"home", data: {controller:"responsive dark-mode", sessionUuid: "#{@session&.uuid}"} do
     = render partial: "elements/title_screen", locals: {session: @session}
+    = render partial: "field", locals: {bushes: @bushes}

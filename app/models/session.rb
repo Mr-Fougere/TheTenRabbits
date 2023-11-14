@@ -5,7 +5,7 @@ class Session < ApplicationRecord
     belongs_to :hinted_rabbit, class_name: "Rabbit", optional: true
     has_many :session_rabbits
 
-    enum status: {disconnected: -1, initialized:0, connected: 1, finished: 2}
+    enum status: { initialized:0, in_progress: 1 ,finished: 2}
     enum language: {en: 0, fr: 1, rbt: 2}
 
     def setup_session

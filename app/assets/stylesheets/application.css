@@ -14,7 +14,7 @@
  *= require_self
  */
 
- *{
+*{
     margin :0;
     user-select: none;
 }
@@ -22,12 +22,25 @@
 body, html{
     height: 100%;
     width: 100%;
+    overflow: hidden;
+}
+
+body{
+    background-color: rgba(23, 17, 100, 0.163);
 }
  
 img{
     width: 100px;
     height: 100px;
     object-fit: contain;
+}
+
+.home{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
   
