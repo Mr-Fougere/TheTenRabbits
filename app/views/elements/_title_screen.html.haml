@@ -1,0 +1,8 @@
+#title-screen
+    #title-container
+        .title= t("the_ten_rabbits")
+        .author= t("author")
+    - if session.initialized?
+        = button_to t('.begin'), introduction_path(session.uuid), id: "title-button"
+    - else
+        = button_to t('.continue'), continue_path(session.uuid), id: "title-button"

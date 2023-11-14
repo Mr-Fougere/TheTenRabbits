@@ -4,19 +4,15 @@ class ApplicationController < ActionController::Base
 
     APPIE_FAVORITE_PIE = "bourdaloue"
 
-    before_action :set_session, only: [:home, :continue_session, :api_request]
-    before_action :set_locale,  only: [:home, :continue_session, :api_request]
+    before_action :set_session, only: [:home, :api_request]
+    before_action :set_locale,  only: [:home,:api_request]
 
     def home
-        return unless @session
+        return unless @session.present?
 
         check_github_visit
         setup_rabbit_credentials
         @bushes = bush_generator(7)
-    end
-
-    def continue_session
-
     end
 
     def safe_route

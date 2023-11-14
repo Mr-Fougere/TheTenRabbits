@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     get '/safe_route', to: "sessions#safe_route", as: "safe_route"
 
     post '/api', to: "sessions#api_request", as: "api_request"
-    post "/start_session", to: "application#start_session", as: "start_session"
-    post "/continue_session/:id", to: "application#continue_session", as: "continue_session"
+    post "/introduction", to: "sessions#introduction", as: "introduction"
+    post "/continue", to: "sessions#continue", as: "continue"
     post '/seek_rabbit', to: "sessions#seek_rabbit", as: "seek_rabbit"
     post '/switch_language', to: "sessions#switch_language", as: "switch_language"
     post '/talk_larry', to: "sessions#talk_larry", as: "talk_larry"

@@ -1,6 +1,7 @@
 fr:
   hello: "Bonjour le monde"
   the_ten_rabbits: "Les Dix Lapins"
+  author: Par Mr-Fougere
   application:
     home: 
       continue: Continuer

@@ -1,11 +1,11 @@
 Rabbit.create(
-    [{name: "Sparky", color: "brown",hint_text:''},
-    {name: "Scotty", color: "pink",hint_text:''},
-    {name: "Remmy", color: "grey",hint_text:''},
-    {name: "Steevie", color: "purple",hint_text:''},
-    {name: "Timmy", color: "black",hint_text:''},
-    {name: "Debbie", color: "red",hint_text:''},
-    {name: "Sergie", color: "blue",hint_text:''},
-    {name: "Appie", color: "orange",hint_text:''},
-    {name: "Ginny", color: "white",hint_text:''},
-    {name: "Larry", color: "green",hint_text:''}])
+    [{name: "Sparky", color: "brown"},
+    {name: "Scotty", color: "pink"},
+    {name: "Remmy", color: "grey"},
+    {name: "Steevie", color: "purple"},
+    {name: "Timmy", color: "black"},
+    {name: "Debbie", color: "red"},
+    {name: "Sergie", color: "blue"},
+    {name: "Appie", color: "orange"},
+    {name: "Ginny", color: "white"},
+    {name: "Larry", color: "green"}])

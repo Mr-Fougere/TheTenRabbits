@@ -1,6 +1,7 @@
 en:
   hello: "Hello world"
   the_ten_rabbits: The Ten Rabbits
+  author: By Mr-Fougere
   application:
     home: 
       continue: Continue

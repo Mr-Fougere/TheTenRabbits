@@ -7,6 +7,12 @@
 
         VALID_ANSWER_LARRY = ["044104010430","441401430","042104320410","421432410"]
 
+        def introduction 
+        end
+
+        def continue
+        end
+
         def found_rabbit
             return unless @session.present? && params[:key]
             

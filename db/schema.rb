@@ -17,8 +17,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_200442) do
   create_table "rabbits", force: :cascade do |t|
     t.string "name", null: false
     t.integer "color", null: false
-    t.string "hint_text", null: false
-    t.json "colored_hint_words", default: []
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
