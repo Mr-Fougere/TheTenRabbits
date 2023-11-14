@@ -1,5 +1,5 @@
-#language-select{data: {controller: "language-select", session_uuid: @session.uuid}}
+#language-select{data: {controller: "language-select", session_uuid: session.uuid}}
     - Session.languages.keys.each do |language|
-        .language-option{data: {action:"click->language-select#switchLanguage", language: language}, class:"#{@session.language == language ? 'selected' : ''}"}
+        .language-option{data: {action:"click->language-select#switchLanguage", language: language}, class:"#{session.language == language ? 'selected' : ''}"}
             = image_tag "flags/#{language}.png", alt: "flag-#{language}", class: "language-flag"
 

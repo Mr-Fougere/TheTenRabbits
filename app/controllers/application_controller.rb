@@ -8,17 +8,12 @@ class ApplicationController < ActionController::Base
     before_action :set_locale,  only: [:home, :continue_session, :api_request]
 
     def home
+        p @session
         return unless @session
 
         check_github_visit
         setup_rabbit_credentials
         @bushes = bush_generator(7)
-    end
-
-    def start_session
-        session = Session.create
-        cookies[:uuid] = session.uuid
-        redirect_to root_path
     end
 
     def continue_session
@@ -60,6 +55,10 @@ class ApplicationController < ActionController::Base
     
     def set_session
         @session = Session.find_by(uuid: cookies[:uuid] )
+        return if @session.present?
+
+        @session = Session.create
+        cookies[:uuid] = @session.uuid
     end
 
     def set_locale

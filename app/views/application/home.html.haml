@@ -1,13 +1,8 @@
 = turbo_frame_tag "home-#{@session.uuid}", class:"home", data: {controller:"responsive dark-mode", sessionUuid: "#{@session&.uuid}"} do
     %h1= t("the_ten_rabbits")
 
-    = render partial: "elements/language_select"
-    
-    - if @session.present?
-        = button_to t('.continue'), continue_session_path(id: @session&.id)
-        = render partial: "elements/session_uuid", locals: {uuid: @session&.uuid}
-    - else 
-        = button_to t(".begin"), start_session_path
+    = render partial: "elements/session_uuid", locals: {uuid: @session&.uuid}
+    = button_to t('.continue'), continue_session_path(id: @session&.id)
 
     - if @bushes.present?
         = render partial: "field", locals: {bushes: @bushes}

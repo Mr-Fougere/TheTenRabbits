@@ -13,7 +13,7 @@
 
   <body>
     <%= turbo_stream_from("session-#{@session.uuid}") %>
-    <%= render partial: "elements/language_select" %>
+    <%= render partial: "elements/language_select", locals: {session: @session} %>
 
     <%= yield %>
   </body>

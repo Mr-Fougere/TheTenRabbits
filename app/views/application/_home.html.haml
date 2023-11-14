@@ -12,8 +12,8 @@
     = render partial: "elements/flag", locals: {url: "https://github.com/Mr-Fougere/TheTenRabbits", image: "github"}
     - if credentials
         = render partial: "elements/remmy", locals: {credentials: credentials[:remmy]}
-        - if session.language == "bin"
-            = render partial: "elements/larry"
+        - if session.language == "rbt"
+            = render partial: "elements/larry", locals: { session: session}
         - if credentials[:sergie].present?
             = render partial: "elements/sergie"
         %div{data: {controller:"scream", key:credentials[:steevie][:key], uuid:credentials[:steevie][:uuid]}}    
