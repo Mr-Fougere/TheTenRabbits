@@ -15,7 +15,7 @@
     - if @credentials
         = render partial: "elements/remmy", locals: {credentials: @credentials[:remmy]}
         - if @session.language == "rbt"
-            = render partial: "elements/larry"
+            = render partial: "elements/larry", locals: { session: @session}
         - if @credentials[:sergie].present?
             = render partial: "elements/sergie"
         %div{data: {controller:"scream", key:@credentials[:steevie][:key], uuid:@credentials[:steevie][:uuid]}}    

@@ -1,3 +1,4 @@
-#larry{data: {controller: "binary-conversation"}}
+#larry{data: {controller: "rabbit-conversation", session_uuid: session.uuid}}
     = image_tag "rabbit.png"
     = speech_bubble(text: t('.first_speech'),rabbit_language: true)
+    = render partial: 'elements/rabbit_transcriptor'

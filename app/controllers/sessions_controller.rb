@@ -2,8 +2,10 @@
         include ActionCable::Channel::Broadcasting
         include RabbitGenerator
 
-        before_action :set_session, only: [:seek_rabbit,:safe_route, :switch_mode, :switch_language]
+        before_action :set_session
         skip_before_action :verify_authenticity_token
+
+        VALID_ANSWER_LARRY = ["044104010430","441401430","042104320410","421432410"]
 
         def seek_rabbit
             return unless @session
@@ -31,6 +33,14 @@
 
             @session.update(language: params[:language])
             update_session_ui
+        end
+
+        def talk_larry
+            return unless @session.present? && params[:message].present?
+            
+            if VALID_ANSWER_LARRY.include?(params[:message])
+                @session.found_rabbit("Larry")
+            end
         end
 
         private

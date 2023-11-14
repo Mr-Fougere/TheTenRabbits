@@ -1,0 +1,12 @@
+#rabbit-transcriptor
+    #message{data:{target: "rabbit-conversation.message"}}
+    #paws-board
+        #left-board
+        #paw-keys
+            = image_tag "paws/paw_0.png", class: "paw", data: {action: "click->rabbit-conversation#addPawToMessage", paw: "0"}
+            = image_tag "paws/paw_1.png", class: "paw",data: {action: "click->rabbit-conversation#addPawToMessage", paw: "1"}
+            = image_tag "paws/paw_2.png", class: "paw",data: {action: "click->rabbit-conversation#addPawToMessage", paw: "2"}
+            = image_tag "paws/paw_3.png", class: "paw",data: {action: "click->rabbit-conversation#addPawToMessage", paw: "3"}
+            = image_tag "paws/paw_4.png", class: "paw",data: {action: "click->rabbit-conversation#addPawToMessage", paw: "4"}
+        #right-board
+            = image_tag "talk.png", class: "talk", data: {action: "click->rabbit-conversation#sendMessage"}
