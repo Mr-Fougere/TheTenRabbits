@@ -2,6 +2,9 @@
   position: relative;
   width: 80%;
   height: 80%;
+  &.locked *{
+    pointer-events: none !important;
+  }
 }
 
 .bush,
@@ -11,6 +14,7 @@
 }
 
 .bush{
+  cursor: pointer;
   z-index: 2;
 }
 

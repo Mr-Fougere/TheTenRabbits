@@ -18,7 +18,7 @@ export default class extends Controller {
   toggleBush(event) {
     if (this.selectedBush == event.currentTarget) {
       this.selectedBush = null;
-    } else if (!this.selectedBush){
+    } else if (!this.selectedBush) {
       this.selectedBush = event.currentTarget;
     }
 
@@ -26,7 +26,7 @@ export default class extends Controller {
       this.selectedBush,
       this.fieldTarget.firstChild
     );
-    this.moveSelectedBush(event)
+    this.moveSelectedBush(event);
   }
 
   toggleBehindBush(event) {
@@ -38,12 +38,15 @@ export default class extends Controller {
 
     const elementWidth = this.selectedBush.offsetWidth;
     const elementHeight = this.selectedBush.offsetHeight;
+
+    const fieldLeft = this.fieldTarget.offsetLeft;
+    const fieldTop = this.fieldTarget.offsetTop;
+
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    const left = mouseX - elementWidth / 2;
-    const top = mouseY - elementHeight;
-
+    const left = mouseX - elementWidth / 2 - fieldLeft;
+    const top = mouseY - elementHeight / 2 - fieldTop;
     this.selectedBush.style.left = left + "px";
     this.selectedBush.style.top = top + "px";
   }
