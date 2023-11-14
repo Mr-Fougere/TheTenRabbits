@@ -3,7 +3,7 @@
 
     = render partial: "elements/session_uuid", locals: {uuid: @session&.uuid}
     = button_to t('.continue'), continue_session_path(id: @session&.id)
-
+    = render partial: "elements/rabbit_modal", locals: {session: @session, session_rabbit: nil}
     - if @bushes.present?
         = render partial: "field", locals: {bushes: @bushes}
     = render partial: "elements/flag", locals: {url: "https://github.com/Mr-Fougere/TheTenRabbits", image: "github"}

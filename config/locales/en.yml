@@ -8,3 +8,5 @@ en:
     sergie:
       wrong_path_warning: What are you doing here ? It's not safe! Go back to the right way, I stay with you to watch you
       sorry: Sorry Sergie
+    rabbit_modal:
+      found_rabbit: You found 
