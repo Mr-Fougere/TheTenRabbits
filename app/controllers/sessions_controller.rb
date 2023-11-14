@@ -26,6 +26,7 @@
             return unless session_rabbit
 
             session_rabbit.waiting_found_animation!
+            broadcast_rabbit_found
         end
 
         def switch_mode
@@ -50,7 +51,7 @@
             return unless @session.present? && params[:message].present?
             
             if VALID_ANSWER_LARRY.include?(params[:message])
-                @session.found_rabbit("Larry")
+                @session.seek_rabbit("Larry")
             end
         end
 
