@@ -1,0 +1,71 @@
+.speech-bubble {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  position: absolute;
+  background-color: white;
+  z-index: 8;
+
+  &.up {
+    top: -150px;
+    right: 10px;
+  }
+
+  &.normal {
+    --speed: 1s;
+  }
+
+  &.fast {
+    --speed: 0.5s;
+  }
+
+  &.faster {
+    --speed: 0.25s;
+  }
+  .speech-chunk {
+    display: flex;
+    position: relative;
+    margin-bottom: 0.2rem;
+    .chunk-hidder {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      z-index: 10;
+      width: 100%;
+      background-color: white;
+      animation: fadeIn var(--speed) linear forwards;
+      animation-delay: calc(var(--speed) * var(--nth));
+    }
+    span {
+      z-index: 9;
+    }
+
+    .paws {
+      z-index: 9;
+      margin-left: 1rem;
+      .paw {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  &.rabbit-language {
+    font-size: 10px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

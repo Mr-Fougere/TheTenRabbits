@@ -1,0 +1,11 @@
+.speech-bubble{class: classes}
+    - chunks.each_with_index do |chunk,index|
+        .speech-chunk
+            - if chunk.is_a?(String)
+                %span= chunk
+            - elsif chunk.is_a?(Array)
+                - chunk.each do |paws|
+                    .paws
+                        - paws.each_char do |paw|
+                            = image_tag "paws/paw_#{paw}.png", class: "paw"
+            .chunk-hidder{class: "chunk-#{index}",style: "--nth:#{index}"}

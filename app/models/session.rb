@@ -6,7 +6,7 @@ class Session < ApplicationRecord
     has_many :session_rabbits
 
     enum status: {disconnected: -1, initializing:0, connected: 1, finishing: 2}
-    enum language: {en: 0, fr: 1, bin: 2}
+    enum language: {en: 0, fr: 1, rbt: 2}
 
     def setup_session
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)

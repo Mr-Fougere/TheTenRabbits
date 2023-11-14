@@ -1,0 +1,5 @@
+rbt:
+  the_ten_rabbits: "The Ten Rabbits"
+  elements:
+    larry:
+      first_speech: "Do you understand me ?"
