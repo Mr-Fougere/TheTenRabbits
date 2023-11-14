@@ -9,4 +9,8 @@ class Rabbit < ApplicationRecord
     def hex_color
         COLORS[color.to_sym]
     end
+
+    def underscore_name
+        name.underscore
+    end
 end

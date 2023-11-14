@@ -1,29 +1,65 @@
-.screen-out-up{
-    animation: screen-out-up 3s ease-in-out forwards;
+.screen-out-up {
+  animation: screen-out-up 3s ease-in-out forwards;
 }
 
-.screen-out-down{
-    animation: screen-out-down 3s ease-in-out forwards;
+.screen-out-down {
+  animation: screen-out-down 3s ease-in-out forwards;
 }
 
-.fade-out{
-    animation: fade-out 2s ease-in-out forwards;
+.fade-out {
+  animation: fade-out 2s ease-in-out forwards;
 }
 
-@keyframes screen-out-up{
-    100%{
-        transform: translateY(-100vh);
-    }
+.hopped {
+  .rabbit-image {
+    animation: hop 1s ease-in-out infinite;
+  }
+  .rabbit-shadow {
+    animation: shadow-out 1s ease-in-out infinite;
+  }
 }
 
-@keyframes screen-out-down{
-    100%{
-        transform: translateY(200vh);
-    }
+@keyframes screen-out-up {
+  100% {
+    transform: translateY(-100vh);
+  }
 }
 
-@keyframes fade-out{
-    100%{
-        background-color: rgba(211, 211, 211, 0);
-    }
+@keyframes screen-out-down {
+  100% {
+    transform: translateY(200vh);
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    background-color: rgba(211, 211, 211, 0);
+  }
+}
+
+@keyframes hop {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes shadow-out {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 0.5rem 0.5rem black;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 0.5rem 0.3rem black;
+  }
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 0.5rem 0.5rem black;
+  }
 }
