@@ -12,10 +12,10 @@
 
 .hopped {
   .rabbit-image {
-    animation: hop 1s ease-in-out infinite;
+    animation: hop 0.8s cubic-bezier(1,0,0,1) infinite;
   }
   .rabbit-shadow {
-    animation: shadow-out 1s ease-in-out infinite;
+    animation: shadow-out 0.8s cubic-bezier(1,0,0,1) infinite;
   }
 }
 
