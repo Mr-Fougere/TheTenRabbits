@@ -33,9 +33,13 @@
     object-fit: contain;
     bottom: 0;
     left: 50%;
+    opacity: 0;
     cursor: pointer;
     &.talked{
       opacity: 0.5;
+    }
+    &.waiting_answer{
+      opacity: 1;
     }
   }
 }

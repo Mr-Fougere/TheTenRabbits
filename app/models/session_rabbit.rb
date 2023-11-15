@@ -62,12 +62,22 @@ class SessionRabbit < ApplicationRecord
         remove_rabbit_from_hide 
         display_rabbit
         unlock_speeches
-        hide_remaining_rabbits if rabbit.name == "Scotty"
+        return unless rabbit.name == "Scotty"
+
+        hide_remaining_rabbits
+        end_sparky_introduction
+    end
+
+    def end_sparky_introduction
+        sparky = Rabbit.find_by(name: "Sparky")
+        session_sparky =  session.session_rabbits.find_by(rabbit: sparky )
+        session_sparky.update(speech_status: "waiting_answer", current_speech: sparky.speeches.find(session_sparky.current_speech.id + 1))
+        session_sparky.broadcast_current_speech
     end
 
     def unlock_speeches
-        self.speech_status = 'waiting_answer'
         self.current_speech = self.rabbit.speeches.order(:created_at).find_by(speech_type: "introduction")
+        self.speech_status = 'waiting_answer' if self.current_speech.present?
         self.save
     end
 
