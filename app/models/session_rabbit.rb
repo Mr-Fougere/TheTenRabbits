@@ -1,4 +1,7 @@
 class SessionRabbit < ApplicationRecord
+
+    include SessionRabbitSpeech
+    
     belongs_to :session
     belongs_to :rabbit
     belongs_to :current_speech, class_name: "Speech", optional: true
@@ -11,22 +14,14 @@ class SessionRabbit < ApplicationRecord
     after_update :found_key_gen, if: -> {saved_change_to_status?(to: "waiting_found_animation")}
     after_update :unlock_speeches, if: -> {saved_change_to_status?(to: "found")}
 
-    def next_speech(answer)
-        return unless current_speech.present?
-        return unless speech_status == "waiting_answer"
 
-        speech_branches = current_speech.speech_branches
-        
-        unless speech_branches.present?
-            update(speech_status: "talked")
-            return
-        end 
+    def broadcast_current_speech
+        broadcast_current_speech_bubble
+    end
 
-        branch_followed = speech_branches.find_by(answer: answer)
-        return unless branch_followed.present?
-
-        new_speech = branch_followed.follow_speech
-        update(current_speech: new_speech)
+    def broadcast_next_speech(answer)
+        next_speech(answer)
+        broadcast_current_speech_bubble
     end
 
     private
@@ -45,5 +40,24 @@ class SessionRabbit < ApplicationRecord
         self.speech_status = 'waiting_answer'
         self.current_speech = self.rabbit.speeches.order(:created_at).find_by(speech_type: "introduction")
         self.save
+    end
+
+        
+    def next_speech(answer)
+        return unless current_speech.present?
+        return unless speech_status == "waiting_answer"
+
+        speech_branches = current_speech.speech_branches
+        
+        unless speech_branches.present?
+            update(speech_status: "talked")
+            return
+        end 
+
+        branch_followed = speech_branches.find_by(answer: answer)
+        return unless branch_followed.present?
+
+        new_speech = branch_followed.follow_speech
+        update(current_speech: new_speech)
     end
 end

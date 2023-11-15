@@ -8,9 +8,9 @@
         VALID_ANSWER_LARRY = ["044104010430","441401430","042104320410","421432410"]
 
         def introduction 
-            sparky = Rabbit.find_by(name: "Sparky")
-            @session.found_rabbit(sparky)
-            Turbo::StreamsChannel.broadcast_append_to "session-#{@session.uuid}", target:"home-#{@session.uuid}" , partial: "elements/rabbit_found", locals: { session: @session , rabbit: sparky }
+            session_sparky =  @session.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
+            session_sparky.found!
+            Turbo::StreamsChannel.broadcast_append_to "session-#{@session.uuid}", target:"home-#{@session.uuid}" , partial: "elements/rabbit_found", locals: { session: @session , session_rabbit: session_sparky }
         end
 
         def continue

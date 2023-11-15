@@ -1,11 +1,20 @@
 .speech-bubble{class: classes}
-    - chunks.each_with_index do |chunk,index|
-        .speech-chunk
-            - if chunk.is_a?(String)
-                %span= chunk
-            - elsif chunk.is_a?(Array)
-                - chunk.each do |paws|
-                    .paws
-                        - paws.each_char do |paw|
-                            = image_tag "paws/paw_#{paw}.png", class: "paw"
-            .chunk-hidder{class: "chunk-#{index}",style: "--nth:#{index}"}
+    .speech-chunks
+        - chunks.each_with_index do |chunk,index|
+            .speech-chunk
+                - if chunk.is_a?(String)
+                    %span= chunk
+                - elsif chunk.is_a?(Array)
+                    - chunk.each do |paws|
+                        .paws
+                            - paws.each_char do |paw|
+                                = image_tag "paws/paw_#{paw}.png", class: "paw"
+                .chunk-hidder{class: "chunk-#{index}",style: "--nth:#{index}"}
+    .speech-answers
+        - if answers
+            - answers.each do |answer|
+                .speech-answer
+                    %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t(".#{answer}")
+        - else 
+            .speech-answer
+                %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("ok")

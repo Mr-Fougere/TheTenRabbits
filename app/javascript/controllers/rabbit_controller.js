@@ -2,17 +2,17 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    this.requestNextInteraction();
+    this.requestCurrentSpeech();
   }
 
  
-  requestNextInteraction() {
+  requestCurrentSpeech() {
     const requestData = {
-      rabbit: this.element.dataset.rabbit,
+      rabbit_uuid: this.element.dataset.rabbitUuid,
       session_uuid: this.element.dataset.sessionUuid,
     };
 
-    fetch("/next_interaction", {
+    fetch("/current_speech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,14 +21,14 @@ export default class extends Controller {
     });
   }
 
-  answerQuestion(answer) {
+  answerSpeech(event) {
     const requestData = {
-      anwser: answer,
-      rabbit: this.element.dataset.rabbit,
+      answer: event.currentTarget.dataset.answer,
+      rabbit_uuid: this.element.dataset.rabbitUuid,
       session_uuid: this.element.dataset.sessionUuid,
     };
 
-    fetch("/answer_question", {
+    fetch("/answer_speech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

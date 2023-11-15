@@ -1,5 +1,5 @@
-= turbo_frame_tag "#{rabbit.underscore_name}-#{session.uuid}", class: "#{rabbit.underscore_name} rabbit-found", data:{controller: "rabbit", session_uuid: session.uuid,rabbit: rabbit.underscore_name} do
+= turbo_frame_tag "#{session_rabbit.rabbit.underscore_name}-#{session.uuid}", class: "#{session_rabbit.rabbit.underscore_name} rabbit-found", data:{controller: "rabbit", session_uuid: session.uuid,rabbit_uuid: session_rabbit.uuid} do
     .rabbit-shadow
-    = image_tag "rabbits/#{rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{rabbit.underscore_name}", data:{action: "click->#rabbit#interact"}
-    = turbo_frame_tag "#{rabbit.underscore_name}-#{session.uuid}-speech", class: "rabbit-speech"
+    = image_tag "rabbits/#{session_rabbit.rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{session_rabbit.rabbit.underscore_name}", data:{action: "click->#rabbit#interact"}
+    = turbo_frame_tag "#{session_rabbit.uuid}-#{session.uuid}-speech", class: "rabbit-speech"
 // hopped status
