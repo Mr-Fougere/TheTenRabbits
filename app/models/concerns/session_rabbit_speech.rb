@@ -6,7 +6,7 @@ module SessionRabbitSpeech
     DEFAULT_CHUNK_SIZE_RABBIT = 4
 
     def broadcast_speech_status
-        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers}
+        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_status', locals: {session_rabbit: self}
     end
 
     def broadcast_current_speech_bubble(rabbit_language: false, position: 'up')

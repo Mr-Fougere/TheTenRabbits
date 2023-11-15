@@ -20,9 +20,11 @@ class SessionRabbit < ApplicationRecord
     end
 
     def broadcast_next_speech(answer)
+        exited = current_speech.exit_speech?
         next_speech(answer)
-        return broadcast_current_speech_bubble if speech_status == "waiting_answer"
-        broadcast_speech_status
+        return broadcast_speech_status if speech_status == "talked" || exited
+        
+        broadcast_current_speech_bubble 
     end
 
     private
@@ -46,7 +48,7 @@ class SessionRabbit < ApplicationRecord
         
     def next_speech(answer)
         return unless current_speech.present?
-        return unless speech_status == "waiting_answer"
+        return unless speech_status != "no_speech"
 
         speech_branches = current_speech.speech_branches
         

@@ -7,4 +7,10 @@ class Speech < ApplicationRecord
     belongs_to :rabbit
     
 
+    def exit_speech?
+        return unless speech_branches.size == 1
+        
+        speech_branches.first.speech_exited
+    end
+
 end

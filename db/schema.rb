@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_15_120112) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_15_140424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_120112) do
     t.string "answer", default: "next"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "speech_exited", default: false
     t.index ["current_speech_id"], name: "index_speech_branches_on_current_speech_id"
     t.index ["follow_speech_id"], name: "index_speech_branches_on_follow_speech_id"
   end
