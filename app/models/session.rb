@@ -8,6 +8,8 @@ class Session < ApplicationRecord
     enum status: { initialized:0, in_progress: 1 ,finished: 2}
     enum language: {en: 0, fr: 1, rbt: 2}
 
+    after_update :end_sparky_introduction, if: ->{saved_change_to_status?(to: "in_progress")}
+
     BASIC_RABBITS = ["Sparky","Scotty"]
 
     def setup_session
@@ -58,5 +60,22 @@ class Session < ApplicationRecord
         return false unless sparky.current_speech.text == "introduction-5"
 
         true
+    end
+
+    def hide_remaining_rabbits
+        remaining_rabbits = Rabbit.where.not(name: BASIC_RABBITS)
+        remaining_rabbits.each do |rabbit|
+            session_rabbit = session_rabbits.create(rabbit: rabbit)
+            session_rabbit.hide!
+        end
+    end
+
+
+    def end_sparky_introduction
+        sparky = Rabbit.find_by(name: "Sparky")
+        session_sparky =  session_rabbits.find_by(rabbit: sparky )
+        session_sparky.update(speech_status: "waiting_answer", current_speech: sparky.speeches.find(session_sparky.current_speech.id + 1))
+        session_sparky.broadcast_current_speech
+        hide_remaining_rabbits
     end
 end

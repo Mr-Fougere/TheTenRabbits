@@ -16,6 +16,10 @@ class SessionRabbit < ApplicationRecord
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
     after_update :unlock_scotty, if: -> {current_speech&.text == "introduction-5" && saved_change_to_speech_status?(to: "talked") && rabbit.name == "Sparky"}
 
+    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie"]
+
+    scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
+
     def broadcast_current_speech
         broadcast_current_speech_bubble
     end
@@ -26,6 +30,13 @@ class SessionRabbit < ApplicationRecord
         return broadcast_speech_status if speech_status == "talked" || exited
         
         broadcast_current_speech_bubble 
+    end
+
+    def hide!
+        return unless rabbit.name.in?(RABBIT_WITH_HIDE)
+
+        credentials = {uuid: uuid, key: key}
+        broadcast_update_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbits/#{rabbit.underscore_name}", locals: { session_rabbit: self }
     end
 
     private
@@ -60,29 +71,17 @@ class SessionRabbit < ApplicationRecord
 
     def found_actions
         remove_rabbit_from_hide 
-        display_rabbit
         unlock_speeches
+        display_rabbit
         return unless rabbit.name == "Scotty"
 
-        hide_remaining_rabbits
-        end_sparky_introduction
-    end
-
-    def end_sparky_introduction
-        sparky = Rabbit.find_by(name: "Sparky")
-        session_sparky =  session.session_rabbits.find_by(rabbit: sparky )
-        session_sparky.update(speech_status: "waiting_answer", current_speech: sparky.speeches.find(session_sparky.current_speech.id + 1))
-        session_sparky.broadcast_current_speech
+        session.in_progress!
     end
 
     def unlock_speeches
         self.current_speech = self.rabbit.speeches.order(:created_at).find_by(speech_type: "introduction")
         self.speech_status = 'waiting_answer' if self.current_speech.present?
         self.save
-    end
-
-    def hide_remaining_rabbits
-        
     end
 
     def remove_rabbit_from_hide

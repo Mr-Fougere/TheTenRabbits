@@ -4,3 +4,5 @@
     = render partial: "elements/rabbit_modal", locals: {session: @session, session_rabbit: nil}
     - @session.session_rabbits.found.each do |session_rabbit|
         = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit}
+    - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
+        = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}

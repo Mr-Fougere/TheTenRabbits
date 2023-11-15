@@ -1,4 +1,4 @@
-.mobile {
+#reponsive {
   display: none;
   position: absolute;
   right: 0;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 251px) {
-  .mobile {
+  #reponsive {
     display: flex;
   }
 }
