@@ -10,7 +10,7 @@ module SessionRabbitSpeech
     end
 
     def broadcast_current_speech_bubble(rabbit_language: false, position: 'up')
-        text = I18n.t(self.current_speech.text)
+        text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
         answers = self.current_speech.speech_branches&.map(&:answer)
         speech_classes = classify_speech_bubble(rabbit_language, text.size, position)
         text = converting_rabbit_language(text) if rabbit_language

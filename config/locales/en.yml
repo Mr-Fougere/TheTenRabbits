@@ -2,6 +2,10 @@ en:
   hello: "Hello world"
   the_ten_rabbits: The Ten Rabbits
   author: By Mr-Fougere
+  no: "No"
+  yes: "Yes"
+  ok: "Ok"
+  next: Next
   application:
     home: 
       continue: Continue
@@ -11,3 +15,22 @@ en:
       sorry: Sorry Sergie
     rabbit_modal:
       found_rabbit: You found 
+  sparky_introduction-1: Oh ! You scared me 
+  sparky_introduction-2: I am searching my siblings, they were gone during my nap.
+  sparky_introduction-3A: Can you help me to find them ?
+  sparky_introduction-3B: Oh! Do you change your mind ? 
+  sparky_introduction-4B-N: Oh that's too bad
+  sparky_introduction-4A-N: Oh i understand you busy sure ... 
+  sparky_introduction-4-Y: Oh really ! thank you so much 
+  sparky_introduction-5: So ... to begin you can search in these bushes i know Scotty always love to hide in bush to paint alone. 
+  sparky_introduction-6: Oh you found scotty thank you. Continue to look at everywhere to find my others siblings 
+  sparky_introduction-7: If you need informations on my siblings you can ask me maybe he will help you to find them
+  sparky_hint-1: Which one do you want to know more about ?
+  sparky_hint-ginny: Ginny is a little bit shy, she loves to hide in the flowers.
+  sparky_hint-steevie: Steevie is the youngest, he run when we shut this name
+  sparky_hint-larry: Nobody understand what saying Larry
+  sparky_hint-sergie: This is the elder of the group he love to make safe the youngers
+  sparky_hint-debbie: I'm sur Debbie playing again with this game console somewhere
+  sparky_hint-appie: Appie 
+  sparky_hint-remmy: Remy doesnt like small spaces 
+  sparky_hint-timmy: It's too lighter space for Timmy

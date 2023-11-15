@@ -13,6 +13,7 @@ class SessionRabbit < ApplicationRecord
     before_create :setup_credentials
     after_update :found_key_gen, if: -> {saved_change_to_status?(to: "waiting_found_animation")}
     after_update :unlock_speeches, if: -> {saved_change_to_status?(to: "found")}
+    after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
 
 
     def broadcast_current_speech
@@ -28,6 +29,14 @@ class SessionRabbit < ApplicationRecord
     end
 
     private
+
+    def speeches_after_intro
+        return unless speech_type == "introduction"
+
+        new_type = rabbit.name == "Sparky" ? "hint" : "random"
+        new_speech = rabbit.speeches.where(speech_type: new_type).first
+        update(speech_type: new_type, current_speech: new_speech , speech_status: "waiting_answer")
+    end
 
     def setup_credentials
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || SessionRabbit.exists?(uuid: self.uuid)

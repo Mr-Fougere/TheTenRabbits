@@ -34,5 +34,40 @@ SpeechBranch.create([
     {current_speech_id: 7, follow_speech_id: 4, speech_exited: true},
     {current_speech_id: 6, follow_speech_id: 8},
     {current_speech_id: 8, follow_speech_id: 9},
-    {current_speech_id: 9, follow_speech_id: 10},
+    {current_speech_id: 9, follow_speech_id: 10}
 ])
+
+Speech.create([
+    {id:11,text:"hint-1", rabbit_id: 1, speech_type: "hint"},
+    {id:12,text:"hint-ginny", rabbit_id: 1, speech_type: "hint"},
+    {id:13,text:"hint-remmy", rabbit_id: 1, speech_type: "hint"},
+    {id:14,text:"hint-debbie", rabbit_id: 1, speech_type: "hint"},
+    {id:15,text:"hint-larry", rabbit_id: 1, speech_type: "hint"},
+    {id:16,text:"hint-steevie", rabbit_id: 1, speech_type: "hint"},
+    {id:17,text:"hint-sergie", rabbit_id: 1, speech_type: "hint"},
+    {id:18,text:"hint-appie", rabbit_id: 1, speech_type: "hint"},
+    {id:19,text:"hint-timmy", rabbit_id: 1, speech_type: "hint"}
+])
+
+SpeechBranch.create([
+    {current_speech_id: 11, follow_speech_id: 12, answer: "ginny"},
+    {current_speech_id: 12, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 13, answer: "remmy"},
+    {current_speech_id: 13, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 14, answer: "debbie"},
+    {current_speech_id: 14, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 15, answer: "larry"},
+    {current_speech_id: 15, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 16, answer: "steevie"},
+    {current_speech_id: 16, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 17, answer: "sergie"},
+    {current_speech_id: 17, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 18, answer: "appie"},
+    {current_speech_id: 18, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 19, answer: "timmy"},
+    {current_speech_id: 19, follow_speech_id: 11, speech_exited: true},
+])
+
+
+
+
