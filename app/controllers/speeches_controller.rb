@@ -12,11 +12,9 @@ class SpeechesController < ActionController::Base
     end
 
     def answer_speech
-        p  @session.present? && @session_rabbit.present? && params[:answer].present?
-        p params[:answer]
         return unless @session_rabbit.speech_status == "waiting_answer"
         return unless @session.present? && @session_rabbit.present? && params[:answer].present?
-        p "ici"
+
         @session_rabbit.broadcast_next_speech(params[:answer])
     end
 

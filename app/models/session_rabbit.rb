@@ -21,7 +21,8 @@ class SessionRabbit < ApplicationRecord
 
     def broadcast_next_speech(answer)
         next_speech(answer)
-        broadcast_current_speech_bubble
+        return broadcast_current_speech_bubble if speech_status == "waiting_answer"
+        broadcast_speech_status
     end
 
     private

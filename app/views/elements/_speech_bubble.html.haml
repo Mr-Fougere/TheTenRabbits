@@ -11,10 +11,10 @@
                                 = image_tag "paws/paw_#{paw}.png", class: "paw"
                 .chunk-hidder{class: "chunk-#{index}",style: "--nth:#{index}"}
     .speech-answers
-        - if answers
+        - if answers.present?
             - answers.each do |answer|
                 .speech-answer
                     %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t(".#{answer}")
         - else 
             .speech-answer
-                %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("ok")
+                %button{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("ok")
