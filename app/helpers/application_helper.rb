@@ -10,16 +10,16 @@ module ApplicationHelper
         render partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes}
     end
 
+    private
+
     def converting_rabbit_language(text)
         ascii_codes = text.chars.map { |char| char.ord }
         base5_representations = ascii_codes.map { |code| "0"+ code.to_s(5) }
     end
 
-    private
-
     def cut_text_into_chunks(text)
         return text.each_slice(DEFAULT_CHUNK_SIZE_RABBIT).to_a if text.is_a?(Array)
-        text.scan(/.{1,#{DEFAULT_CHUNK_SIZE_NORMAL}\b/)
+        text.scan(/.{1,#{DEFAULT_CHUNK_SIZE_NORMAL}}\b/)
     end
 
     def classify_speech_bubble(rabbit_language, text_size, position)
