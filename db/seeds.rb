@@ -33,7 +33,6 @@ SpeechBranch.create([
     {current_speech_id: 5, follow_speech_id: 4, speech_exited: true},
     {current_speech_id: 7, follow_speech_id: 4, speech_exited: true},
     {current_speech_id: 6, follow_speech_id: 8},
-    {current_speech_id: 8, follow_speech_id: 9},
     {current_speech_id: 9, follow_speech_id: 10}
 ])
 
@@ -46,7 +45,8 @@ Speech.create([
     {id:16,text:"hint-steevie", rabbit_id: 1, speech_type: "hint"},
     {id:17,text:"hint-sergie", rabbit_id: 1, speech_type: "hint"},
     {id:18,text:"hint-appie", rabbit_id: 1, speech_type: "hint"},
-    {id:19,text:"hint-timmy", rabbit_id: 1, speech_type: "hint"}
+    {id:19,text:"hint-timmy", rabbit_id: 1, speech_type: "hint"},
+    {id:20, text:"hint-no", rabbit_id: 1, speech_type: "hint"},
 ])
 
 SpeechBranch.create([
@@ -66,6 +66,8 @@ SpeechBranch.create([
     {current_speech_id: 18, follow_speech_id: 11, speech_exited: true},
     {current_speech_id: 11, follow_speech_id: 19, answer: "timmy"},
     {current_speech_id: 19, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 11, follow_speech_id: 20, answer: "no"},
+    {current_speech_id: 20, follow_speech_id: 11, speech_exited: true},
 ])
 
 

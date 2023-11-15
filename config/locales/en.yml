@@ -2,10 +2,20 @@ en:
   hello: "Hello world"
   the_ten_rabbits: The Ten Rabbits
   author: By Mr-Fougere
-  no: "No"
-  yes: "Yes"
-  ok: "Ok"
+  no: No
+  yes: Yes
+  ok: Ok
   next: Next
+  ginny: Ginny
+  remmy: Remmy
+  sergie: Sergie
+  steevie: Steevie
+  scotty: Scotty
+  appie: Appie
+  sparky: Sparky
+  larry: Larry
+  debbie: Debbie
+  timmy: Timmy
   application:
     home: 
       continue: Continue
@@ -34,3 +44,4 @@ en:
   sparky_hint-appie: Appie 
   sparky_hint-remmy: Remy doesnt like small spaces 
   sparky_hint-timmy: It's too lighter space for Timmy
+  sparky_hint-no: Ok good luck
