@@ -36,7 +36,7 @@ class SessionRabbit < ApplicationRecord
         return unless rabbit.name.in?(RABBIT_WITH_HIDE)
 
         credentials = {uuid: uuid, key: key}
-        broadcast_update_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbits/#{rabbit.underscore_name}", locals: { session_rabbit: self }
+        broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbits/#{rabbit.underscore_name}", locals: { session_rabbit: self }
     end
 
     private
@@ -75,6 +75,7 @@ class SessionRabbit < ApplicationRecord
         display_rabbit
         return unless rabbit.name == "Scotty"
 
+        p "ici"
         session.in_progress!
     end
 

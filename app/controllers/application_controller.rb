@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     before_action :set_locale,  only: [:home,:api_request]
 
     def home
-        @session.initialized!
         return unless @session.present?
 
         check_github_visit
