@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_13_200443) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_15_120112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_200443) do
     t.string "key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "current_speech_id"
+    t.integer "speech_status", default: 0
+    t.integer "speech_type", default: 0
+    t.index ["current_speech_id"], name: "index_session_rabbits_on_current_speech_id"
     t.index ["rabbit_id"], name: "index_session_rabbits_on_rabbit_id"
     t.index ["session_id"], name: "index_session_rabbits_on_session_id"
   end
@@ -45,7 +49,31 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_200443) do
     t.index ["hinted_rabbit_id"], name: "index_sessions_on_hinted_rabbit_id"
   end
 
+  create_table "speech_branches", force: :cascade do |t|
+    t.bigint "current_speech_id", null: false
+    t.bigint "follow_speech_id", null: false
+    t.string "answer", default: "next"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["current_speech_id"], name: "index_speech_branches_on_current_speech_id"
+    t.index ["follow_speech_id"], name: "index_speech_branches_on_follow_speech_id"
+  end
+
+  create_table "speeches", force: :cascade do |t|
+    t.string "text", null: false
+    t.integer "speech_type", default: 0
+    t.json "colored_words", default: {}
+    t.bigint "rabbit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rabbit_id"], name: "index_speeches_on_rabbit_id"
+  end
+
   add_foreign_key "session_rabbits", "rabbits"
   add_foreign_key "session_rabbits", "sessions"
+  add_foreign_key "session_rabbits", "speeches", column: "current_speech_id"
   add_foreign_key "sessions", "rabbits", column: "hinted_rabbit_id"
+  add_foreign_key "speech_branches", "speeches", column: "current_speech_id"
+  add_foreign_key "speech_branches", "speeches", column: "follow_speech_id"
+  add_foreign_key "speeches", "rabbits"
 end

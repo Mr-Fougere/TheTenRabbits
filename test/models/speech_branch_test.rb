@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RabbitSpeechTest < ActiveSupport::TestCase
+class SpeechBranchTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

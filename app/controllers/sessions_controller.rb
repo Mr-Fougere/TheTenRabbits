@@ -1,4 +1,4 @@
-    class SessionsController < ApplicationController
+    class SessionsController < ActionController::Base
         include ActionCable::Channel::Broadcasting
         include RabbitGenerator
 
@@ -9,14 +9,11 @@
 
         def introduction 
             sparky = Rabbit.find_by(name: "Sparky")
+            @session.found_rabbit(sparky)
             Turbo::StreamsChannel.broadcast_append_to "session-#{@session.uuid}", target:"home-#{@session.uuid}" , partial: "elements/rabbit_found", locals: { session: @session , rabbit: sparky }
         end
 
         def continue
-        end
-
-        def rabbit_talking
-        
         end
 
         def found_rabbit
@@ -78,7 +75,7 @@
         private
 
         def broadcast_rabbit_found
-            waiting_rabbit = @session.session_rabbits.waiting_found_animation.last    
+            waiting_rabbit = @session.session_rabbits.waiting_found_animation.last   
             Turbo::StreamsChannel.broadcast_replace_to "session-#{@session.uuid}", target: "rabbit-modal-#{@session.uuid}", partial: "elements/rabbit_modal", locals: { session_rabbit: waiting_rabbit, session: @session }
         end
 

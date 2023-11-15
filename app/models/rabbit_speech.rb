@@ -1,2 +1,0 @@
-class RabbitSpeech < ApplicationRecord
-end
