@@ -10,7 +10,6 @@
         def introduction 
             session_sparky =  @session.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
             session_sparky.found!
-            Turbo::StreamsChannel.broadcast_append_to "session-#{@session.uuid}", target:"home-#{@session.uuid}" , partial: "elements/rabbit_found", locals: { session: @session , session_rabbit: session_sparky }
         end
 
         def continue

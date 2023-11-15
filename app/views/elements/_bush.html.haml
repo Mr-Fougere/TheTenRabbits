@@ -1,4 +1,4 @@
-.bush-container{style:"--top-position:#{bush[:top]}%;--left-position:#{bush[:left]}%"}
+= turbo_frame_tag "bush-#{index}-#{session.uuid}",class:"bush-container #{bush[:is_rabbit_hide]? "hide":'' }", style:"--top-position:#{bush[:top]}%;--left-position:#{bush[:left]}%" do
     - source = (bush[:is_rabbit_hide]) ? "rabbit" : "unknown"
     = image_tag "#{source}.png", class: "behind-bush", data: { target: "bush.behindBush", action: "click->bush#toggleBehindBush", uuid: bush[:uuid], key: bush[:key] }
     = image_tag "bush.png", class: "bush", data: { target: "bush.bush", action: "mousedown->bush#toggleBush"}

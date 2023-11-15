@@ -2,7 +2,7 @@
   position: relative;
   width: 80%;
   height: 80%;
-  &.locked *{
+  &:not(:has(.behind-bush.hide)) *{
     pointer-events: none !important;
   }
 }

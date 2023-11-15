@@ -32,7 +32,7 @@ SpeechBranch.create([
     {current_speech_id: 4, follow_speech_id: 7, answer: "no"},
     {current_speech_id: 5, follow_speech_id: 4, speech_exited: true},
     {current_speech_id: 7, follow_speech_id: 4, speech_exited: true},
-    {current_speech_id: 6, follow_speech_id: 8},
+    {current_speech_id: 6, follow_speech_id: 8,},
     {current_speech_id: 9, follow_speech_id: 10}
 ])
 

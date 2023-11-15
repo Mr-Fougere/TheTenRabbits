@@ -11,7 +11,7 @@
     
   </head>
 
-  <body data-controller="session" data-session-uuid=<%= @session.uuid%>>
+  <body >
     <%= turbo_stream_from("session-#{@session.uuid}") %>
     <%= render partial: "elements/language_select", locals: {session: @session} %>
 

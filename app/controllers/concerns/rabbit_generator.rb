@@ -2,9 +2,10 @@ module RabbitGenerator
     extend ActiveSupport::Concern
     
     def setup_rabbit_credentials
-        rabbits = ["Scotty","Steevie","Remmy","Debbie"]
-        rabbits.push("Sparky") if @session.initialized?
-        rabbits.push("Sergie") if request.url.exclude?("https") &&  Rails.env.production?
+        rabbits = ["Scotty"]
+        rabbits.push(["Steevie","Remmy","Debbie"]) if @session.in_progress? 
+        rabbits.push("Sergie") if request.url.exclude?("https") &&  Rails.env.production? && @session.in_progress?
+        rabbits.flatten!
         @credentials = @session.rabbits_credentials(rabbits)
     end
 
@@ -12,6 +13,9 @@ module RabbitGenerator
         positions = number.times.map do |i|
             {top: rand(10..90), left: rand(10..90), key: SecureRandom.hex(16), uuid: SecureRandom.hex(16), is_rabbit_hide: false}
         end
+
+        return positions unless @session.scotty_introduction?
+
         scotty_hide = rand(0...number)
         scotty_key = @credentials[:scotty][:key]
         scotty_uuid = @credentials[:scotty][:uuid]

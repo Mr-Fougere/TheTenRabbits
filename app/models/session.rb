@@ -8,9 +8,11 @@ class Session < ApplicationRecord
     enum status: { initialized:0, in_progress: 1 ,finished: 2}
     enum language: {en: 0, fr: 1, rbt: 2}
 
+    BASIC_RABBITS = ["Sparky","Scotty"]
+
     def setup_session
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
-        hide_rabbits
+        hide_basic_rabbits
     end
 
     def found_rabbit(name)
@@ -23,9 +25,9 @@ class Session < ApplicationRecord
         session_rabbit.waiting_found_animation!
     end
 
-    def hide_rabbits
-        Rabbit.all.each do |rabbit|
-            self.session_rabbits.new(rabbit: rabbit)
+    def hide_basic_rabbits
+        BASIC_RABBITS.each do |rabbit|
+            self.session_rabbits.new(rabbit: Rabbit.find_by(name: rabbit))
         end
     end
 
@@ -41,5 +43,20 @@ class Session < ApplicationRecord
             credentials[rabbit.name.downcase.to_sym][:uuid] = session_rabbit.uuid
         end
         credentials
+    end
+
+    def scotty_introduction?
+        return false unless self.initialized?
+
+        scotty = self.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Scotty"))
+        return false unless scotty.present?
+        return false unless scotty.hidden?
+
+        sparky = self.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
+        return false unless sparky.present?
+        return false if sparky.no_speech?
+        return false unless sparky.current_speech.text == "introduction-5"
+
+        true
     end
 end
