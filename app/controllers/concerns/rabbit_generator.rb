@@ -4,7 +4,7 @@ module RabbitGenerator
     def setup_rabbit_credentials
         rabbits = ["Scotty"]
         rabbits.push(["Steevie","Remmy","Debbie"]) if @session.in_progress? 
-        rabbits.push("Sergie") if request.url.exclude?("https") &&  Rails.env.production? && @session.in_progress?
+        rabbits.push("Sergie") 
         rabbits.flatten!
         @credentials = @session.rabbits_credentials(rabbits)
     end

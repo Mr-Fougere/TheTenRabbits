@@ -1,4 +1,7 @@
-#security-modal
-    = image_tag "rabbit.png"
-    %p= t('.wrong_path_warning')
-    = link_to t('.sorry'), safe_route_path
+#security-modal{data: {controller: "security"}}
+    - if session_rabbit.hidden?
+        = image_tag "rabbits/sergie.png"
+        %p= t('.wrong_path_warning')
+    - else
+        = image_tag "panel.png"
+        %p= t('.panel_warning')
