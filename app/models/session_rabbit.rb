@@ -15,19 +15,22 @@ class SessionRabbit < ApplicationRecord
     after_update :found_key_gen, if: -> {saved_change_to_status?(to: "waiting_found_animation")}
     after_update :found_actions, if: -> {saved_change_to_status?(to: "found")}
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
-    after_update :unlock_scotty, if: -> {current_speech&.text == "introduction-5" && saved_change_to_speech_status?(to: "talked") && rabbit.name == "Sparky"}
 
     RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry"]
 
     scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
 
     def broadcast_current_speech
+        return unless current_speech.present? && speech_status != "no_speech"
+        
         broadcast_current_speech_bubble
     end
 
     def broadcast_next_speech(answer)
         exited = current_speech.exit_speech?
-        next_speech(answer)
+        answer = translate_rabbit_language(answer) if is_larry_enigma?
+    
+        next_speech(answer.underscore)
         return broadcast_speech_status if speech_status == "talked" || exited
         
         broadcast_current_speech_bubble 
@@ -43,12 +46,39 @@ class SessionRabbit < ApplicationRecord
     def set_larry
         return unless rabbit.name == "Larry"
 
-        self.current_speech = rabbit.speeches.introduction.first
+        self.speech_type = "enigma"
+        self.current_speech = rabbit.speeches.enigma.first
         self.speech_status= "waiting_answer"
-        p "iic"
     end
 
+    def remove_rabbit_from_hide!
+        return unless status == "hidden"
+        
+        case rabbit.name
+        when "Timmy"
+        when "Remmy"
+        when "Steevie"
+        when "Debbie"
+        when "Larry"
+            return broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
+        when "Ginny"
+        when "Appie"
+        when "Scotty"
+        when "Sergie"
+            return
+        end
+    end
+
+
     private
+
+    def is_larry?
+       self.rabbit.name == 'Larry'
+    end
+
+    def is_larry_enigma?
+        is_larry? && self.current_speech.text.in?(['enigma-1A','enigma-1B'])
+    end
 
     def unlock_scotty
         random_bush = (0..6).to_a.sample
@@ -56,7 +86,13 @@ class SessionRabbit < ApplicationRecord
         broadcast_update_to "session-#{session.uuid}", target:"bush-#{random_bush}-#{session.uuid}" , partial: 'elements/scotty_hide', locals: {scotty: scotty}
     end
 
+    def larry_friend
+        session.found_rabbit("Larry")
+    end
+
     def speeches_after_intro
+        unlock_scotty if current_speech&.text == "introduction-5" && rabbit.name == "Sparky"
+        larry_friend if current_speech&.text == "enigma-3" && rabbit.name == "Larry"
         return unless speech_type == "introduction" && last_introduction_speech?
 
         new_type = rabbit.name == "Sparky" ? "hint" : "random"
@@ -79,7 +115,7 @@ class SessionRabbit < ApplicationRecord
     end
 
     def found_actions
-        remove_rabbit_from_hide 
+        remove_rabbit_from_hide!
         unlock_speeches
         display_rabbit
         return unless rabbit.name == "Scotty"
@@ -91,22 +127,6 @@ class SessionRabbit < ApplicationRecord
         self.current_speech = self.rabbit.speeches.order(:created_at).find_by(speech_type: "introduction")
         self.speech_status = 'waiting_answer' if self.current_speech.present?
         self.save
-    end
-
-    def remove_rabbit_from_hide
-        case rabbit.name
-        when "Ginny"
-        when "Appie"
-        when "Sparky"
-        when "Timmy"
-        when "Larry"
-        when "Scotty"
-        when "Sergie"
-        when "Remmy"
-        when "Steevie"
-        when "Debbie"
-            return
-        end
     end
 
     def display_rabbit

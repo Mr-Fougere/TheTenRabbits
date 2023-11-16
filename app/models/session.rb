@@ -12,7 +12,7 @@ class Session < ApplicationRecord
 
     BASIC_RABBITS = ["Sparky","Scotty"]
 
-    def session_rabbit_name(name)
+    def session_rabbit_named(name)
         session_rabbits.joins(:rabbit).find_by(rabbits: {name: name})
     end
 

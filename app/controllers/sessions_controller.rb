@@ -5,8 +5,6 @@
         before_action :set_session
         skip_before_action :verify_authenticity_token
 
-        VALID_ANSWER_LARRY = ["044104010430","441401430","042104320410","421432410"]
-
         def introduction 
             session_sparky =  @session.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
             session_sparky.found!
@@ -39,30 +37,10 @@
             broadcast_rabbit_found
         end
 
-        def switch_mode
-            return unless @session.present? && params[:mode].present?
-
-            if params[:mode] == "dark"
-                credentials = @session.rabbits_credentials(["Timmy"])
-                Turbo::StreamsChannel.broadcast_prepend_to "session-#{@session.uuid}", target:"home-#{@session.uuid}" , partial: "elements/timmy", locals: { session: @session , credentials: credentials }
-            else
-                Turbo::StreamsChannel.broadcast_remove_to "session-#{@session.uuid}", target: "timmy-#{@session.uuid}"
-            end
-        end
-
         def switch_language
             return unless @session.present? && params[:language].present?
 
-            @session.update(language: params[:language])
-            update_session_ui
-        end
-
-        def talk_larry
-            return unless @session.present? && params[:message].present?
-            
-            if VALID_ANSWER_LARRY.include?(params[:message])
-                @session.seek_rabbit("Larry")
-            end
+            update_session_ui if @session.update(language: params[:language])
         end
 
         def update_session_status
@@ -82,7 +60,12 @@
 
         def update_session_ui
             I18n.locale = @session.language
-            Turbo::StreamsChannel.broadcast_replace_to "session-#{@session.uuid}", target: "home-#{@session.uuid}", partial: "application/home", locals: { credentials: @credentials, bushes: @bushes, session: @session }
+            larry = @session.session_rabbit_named("Larry")
+            return unless larry
+            return unless larry.hidden?
+            return larry.hide! if @session.language == "rbt"
+
+            larry.remove_rabbit_from_hide! 
         end
 
         def set_session

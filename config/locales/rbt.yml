@@ -1,5 +1,54 @@
 rbt:
-  the_ten_rabbits: "The Ten Rabbits"
+  the_ten_rabbits: The Ten Rabbits
+  author: By Mr-Fougere
+  answer-no: No
+  answer-yes: Yes
+  answer-ok: Ok
+  answer-next: Next
+  next: Next
+  ginny: Ginny
+  remmy: Remmy
+  sergie: Sergie
+  steevie: Steevie
+  scotty: Scotty
+  appie: Appie
+  sparky: Sparky
+  larry: Larry
+  debbie: Debbie
+  timmy: Timmy
+  application:
+    home: 
+      continue: Continue
   elements:
-    larry:
-      first_speech: "Do you understand me ?"
+    sergie:
+      wrong_path_warning: What are you doing here ? It's not safe! Go back to the right way, I stay with you to watch you
+      sorry: Sorry Sergie
+    rabbit_modal:
+      found_rabbit: You found 
+  sparky_introduction-1: Oh ! You scared me 
+  sparky_introduction-2: I am searching my siblings, they were gone during my nap.
+  sparky_introduction-3A: Can you help me to find them ?
+  sparky_introduction-3B: Oh! Do you change your mind ? 
+  sparky_introduction-4B-N: Oh that's too bad
+  sparky_introduction-4A-N: Oh i understand you busy sure ... 
+  sparky_introduction-4-Y: Oh really ! thank you so much 
+  sparky_introduction-5: So ... to begin you can search in these bushes i know Scotty always love to hide in bush to paint alone. 
+  sparky_introduction-6: Oh you found scotty thank you. Continue to look at everywhere to find my others siblings 
+  sparky_introduction-7: If you need informations on my siblings you can ask me maybe he will help you to find them
+  sparky_hint-1: Which one do you want to know more about ?
+  sparky_hint-ginny: Ginny is a little bit shy, she loves to hide in the flowers.
+  sparky_hint-steevie: Steevie is the youngest, he run when we shut this name
+  sparky_hint-larry: Nobody understand what saying Larry
+  sparky_hint-sergie: This is the elder of the group he love to make safe the youngers
+  sparky_hint-debbie: I'm sur Debbie playing again with this game console somewhere
+  sparky_hint-appie: Appie 
+  sparky_hint-remmy: Remy doesnt like small spaces 
+  sparky_hint-timmy: It's too lighter space for Timmy
+  sparky_hint-no: Ok good luck
+  larry_introduction-1A: hi do you understand me ? 
+  larry_introduction-1B: oh you again ? You can understand me rn ? 
+  larry_introduction-2-Y: Oh.. really .. i can't believe it finally !  
+  larry_introduction-2-N: huh.. buuut you say "no" in my language or it's pur coincidence
+  larry_introduction-2B-O: Why do you try to talk to me if you can't speak my language
+  larry_introduction-2A-O: One more person that dont understand me
+  larry_introduction-3: We gonna be the best bros !

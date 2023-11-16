@@ -1,6 +1,6 @@
 = turbo_frame_tag "#{session_rabbit.rabbit.underscore_name}-#{session_rabbit.session.uuid}", class: "#{session_rabbit.rabbit.underscore_name} rabbit-found", data:{controller: "rabbit", session_uuid: session_rabbit.session.uuid,rabbit_uuid: session_rabbit.uuid} do
-    .rabbit-shadow
-    = image_tag "rabbits/#{session_rabbit.rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{session_rabbit.rabbit.underscore_name}"
     = turbo_frame_tag "#{session_rabbit.uuid}-#{session_rabbit.session.uuid}-speech", class: "rabbit-speech" do
         = render partial: "elements/speech_status", locals: {session_rabbit: session_rabbit}
-// hopped status
+    .rabbit-container
+        .rabbit-shadow
+        = image_tag "rabbits/#{session_rabbit.rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{session_rabbit.rabbit.underscore_name}"

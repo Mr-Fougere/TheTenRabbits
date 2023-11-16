@@ -1,9 +1,10 @@
 en:
   the_ten_rabbits: The Ten Rabbits
   author: By Mr-Fougere
-  answer-no: No
-  answer-yes: Yes
-  answer-ok: Ok
+  answer-no: "No"
+  answer-yes: "Yes"
+  answer-ok: "Ok"
+  answer-next: "Next"
   next: Next
   ginny: Ginny
   remmy: Remmy
@@ -44,20 +45,10 @@ en:
   sparky_hint-remmy: Remy doesnt like small spaces 
   sparky_hint-timmy: It's too lighter space for Timmy
   sparky_hint-no: Ok good luck
-  larry-introduction-1A: hi do you understand me ? 
-  larry-introduction-1B: oh you again ? You can understand me rn ? 
-  larry-introduction-2-Y: huh.. relly .. i can't believe i was juste luck
-  larry-introduction-2-N: huh.. buuut you know my language or it's pur coincidence
-  larry-introduction-2B-O: Why do you try to talk to me if you can't speak my language
-  larry-introduction-2A-O: One more person that dont understand me
-  larry-introduction-3A: so if you understand me can you give how many siblings we are ? 
-  larry-introduction-3B: Oh you again so how many siblings we are ? 
-  larry-introduction-4Y: ok  ok you right but two luck in a row it's possible ! 
-  larry-introduction-4N: oh damn you understand me you will give me the right number
-  larry-introduction-5: right now the last question !  What my link with Sparky ? 
-  larry-introduction-6-Y: yeah you right we are bros ! 
-  larry-introduction-6-N: oh that not thaht sorry
-  larry-introduction-6-O: i dont understand what you try to say 
-  larry-introduction-7: I'm happy to finally found someoen that understand me we are bros too now !
-
-
+  larry_enigma-1A: hi do you understand me ? 
+  larry_enigma-1B: oh you again ? You can understand me rn ? 
+  larry_enigma-2-Y: Oh.. really .. i can't believe it finally !  
+  larry_enigma-2-N: huh.. buuut you say "no" in my language or it's pur coincidence
+  larry_enigma-2B-O: Why do you try to talk to me if you can't speak my language
+  larry_enigma-2A-O: One more person that dont understand me
+  larry_enigma-3: We gonna be the best bros !

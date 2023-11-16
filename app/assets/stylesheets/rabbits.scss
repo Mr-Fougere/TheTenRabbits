@@ -1,13 +1,10 @@
 .rabbit-found {
   position: absolute;
-  height: 100px;
-  width: 100px;
   display: flex;
+  flex-direction: column;
   z-index: 25;
   justify-content: center;
-  img{
-    position: absolute;
-  }
+  align-items: end;
 }
 
 .rabbit-shadow {
@@ -20,19 +17,16 @@
   transform: rotateX(60deg);
   border-radius: 20rem;
   box-shadow: 0 0 0.5rem 0.5rem black;
+  right: 20%;
+  bottom: 10%;
+  z-index: -1;
 }
 
 .rabbit-speech {
-  position: absolute;
-  top: -100px;
-  width: 100%;
-  height: 100%;
   .speech-status {
     width: 50px;
     height: 50px;
     object-fit: contain;
-    bottom: 0;
-    left: 50%;
     opacity: 0;
     cursor: pointer;
     &.talked{
@@ -43,24 +37,28 @@
     }
   }
 }
+.sparky{
+  right: 50%;
+  bottom: 50%;
+}
 
 .scotty{
-  top: 50%;
-  left: 70%;
+  bottom: 20%;
+  right: 30%;
 }
 
 .debbie{
-  top: 80%;
-  left: 20%;
+  bottom: 20%;
+  right: 80%;
 }
 
 .timmy{
-  top: 50%;
-  left: 20%;
+  bottom: 50%;
+  right: 80%;
 }
 
 .remmy{
-  top: 80%;
+  bottom: 20%;
   right: 10%;
 }
 
@@ -69,3 +67,10 @@
   right: 50%;
 }
 
+.larry-container{
+  display: flex;
+  flex-direction: row;
+}
+.rabbit-container{
+  position: relative;
+}
