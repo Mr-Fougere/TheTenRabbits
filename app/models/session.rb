@@ -12,6 +12,10 @@ class Session < ApplicationRecord
 
     BASIC_RABBITS = ["Sparky","Scotty"]
 
+    def session_rabbit_name(name)
+        session_rabbits.joins(:rabbit).find_by(rabbits: {name: name})
+    end
+
     def setup_session
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
         hide_basic_rabbits

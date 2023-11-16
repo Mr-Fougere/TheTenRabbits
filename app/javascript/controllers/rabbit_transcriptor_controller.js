@@ -8,13 +8,14 @@ export default class extends Controller {
     this.message = "";
   }
 
-  talkToLarry() {
+  answerSpeech() {
     const requestData = {
+      answer: this.message,
+      rabbit_uuid: this.element.dataset.rabbitUuid,
       session_uuid: this.element.dataset.sessionUuid,
-      message: this.message,
     };
 
-    fetch("/talk_larry", {
+    fetch("/answer_speech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +33,7 @@ export default class extends Controller {
   }
 
   sendMessage() {
-    this.talkToLarry();
+    this.answerSpeech();
     this.message = "";
     while (this.messageTarget.firstChild) {
         this.messageTarget.removeChild(this.messageTarget.firstChild);

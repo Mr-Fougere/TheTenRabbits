@@ -70,6 +70,63 @@ SpeechBranch.create([
     {current_speech_id: 20, follow_speech_id: 11, speech_exited: true},
 ])
 
+Speech.create([
+    {id:21,text:"introduction-1A", rabbit_id: 10, speech_type: "introduction"},
+    {id:22,text:"introduction-1B", rabbit_id: 10, speech_type: "introduction"},
+    {id:23,text:"introduction-2-Y", rabbit_id: 10, speech_type: "introduction"},
+    {id:24,text:"introduction-2-N", rabbit_id: 10, speech_type: "introduction"},
+    {id:25,text:"introduction-2B-O", rabbit_id: 10, speech_type: "introduction"},
+    {id:26,text:"introduction-2A-O", rabbit_id: 10, speech_type: "introduction"},
+    {id:27,text:"introduction-3A", rabbit_id: 10, speech_type: "introduction"},
+    {id:28,text:"introduction-3B", rabbit_id: 10, speech_type: "introduction"},
+    {id:29,text:"introduction-4-Y", rabbit_id: 10, speech_type: "introduction"},
+    {id:30,text:"introduction-4-N", rabbit_id: 10, speech_type: "introduction"},
+    {id:31,text:"introduction-5", rabbit_id: 10, speech_type: "introduction"},
+    {id:32,text:"introduction-6-Y", rabbit_id: 10, speech_type: "introduction"},
+    {id:33,text:"introduction-6-N", rabbit_id: 10, speech_type: "introduction"},
+    {id:34,text:"introduction-6-O", rabbit_id: 10, speech_type: "introduction"},
+    {id:35,text:"introduction-7", rabbit_id: 10, speech_type: "introduction"}
+])
+
+SpeechBranch.create([
+    {current_speech_id: 21, follow_speech_id: 23, answer: "yes"},
+    {current_speech_id: 21, follow_speech_id: 24, answer: "no"},
+    {current_speech_id: 21, follow_speech_id: 26},
+
+    {current_speech_id: 22, follow_speech_id: 23, answer: "yes"},
+    {current_speech_id: 22, follow_speech_id: 25, answer: "no"},
+    {current_speech_id: 22, follow_speech_id: 26},
+    
+    {current_speech_id: 24, follow_speech_id: 21, speech_exited: true},
+    {current_speech_id: 25, follow_speech_id: 22, speech_exited: true},
+    {current_speech_id: 26, follow_speech_id: 22, speech_exited: true},
+
+    {current_speech_id: 23, follow_speech_id: 27},
+
+    {current_speech_id: 27, follow_speech_id: 29, answer: "ten"},
+    {current_speech_id: 27, follow_speech_id: 29, answer: "10"},
+    {current_speech_id: 27, follow_speech_id: 30},
+
+    {current_speech_id: 28, follow_speech_id: 29, answer: "ten"},
+    {current_speech_id: 28, follow_speech_id: 29, answer: "10"},
+    {current_speech_id: 28, follow_speech_id: 30},
+
+    
+    {current_speech_id: 30, follow_speech_id: 28, speech_exited: true},   
+     
+    {current_speech_id: 29, follow_speech_id: 31},
+    
+    {current_speech_id: 31, follow_speech_id: 32, answer: "bros"},
+    {current_speech_id: 31, follow_speech_id: 32, answer: "bro"},
+    {current_speech_id: 31, follow_speech_id: 33, answer: "sis"},
+    {current_speech_id: 31, follow_speech_id: 34},
+
+    {current_speech_id: 34, follow_speech_id: 31, speech_exited: true},   
+    {current_speech_id: 33, follow_speech_id: 31, speech_exited: true},   
+
+    {current_speech_id: 32, follow_speech_id: 35}
+
+])
 
 
 

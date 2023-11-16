@@ -24,7 +24,7 @@ class SpeechesController < ActionController::Base
     end
 
     def set_session_rabbit
-        @session_rabbit = @session.session_rabbits.found.find_by(uuid: params[:rabbit_uuid])
+        @session_rabbit = @session.session_rabbits.waiting_answer.find_by(uuid: params[:rabbit_uuid])
     end
 
 end

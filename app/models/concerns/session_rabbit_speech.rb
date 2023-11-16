@@ -9,13 +9,14 @@ module SessionRabbitSpeech
         broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_status', locals: {session_rabbit: self}
     end
 
-    def broadcast_current_speech_bubble(rabbit_language: false, position: 'up')
+    def broadcast_current_speech_bubble(position: 'up')
+        is_larry = self.rabbit.name == 'Larry'
         text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
-        answers = self.current_speech.speech_branches&.map(&:answer).uniq
-        speech_classes = classify_speech_bubble(rabbit_language, text.size, position)
-        text = converting_rabbit_language(text) if rabbit_language
+        answers = self.current_speech.speech_branches&.map(&:answer).uniq unless is_larry
+        speech_classes = classify_speech_bubble(is_larry, text.size, position)
+        text = converting_rabbit_language(text) if is_larry
         chunks = cut_text_into_chunks(text)
-        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers}
+        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, is_larry: is_larry}
     end
 
     private
@@ -30,9 +31,9 @@ module SessionRabbitSpeech
         text.scan(/.{1,#{DEFAULT_CHUNK_SIZE_NORMAL}}\b/)
     end
 
-    def classify_speech_bubble(rabbit_language, text_size, position)
+    def classify_speech_bubble(is_larry, text_size, position)
         speech_classes = ''
-        speech_classes += 'rabbit_language ' if rabbit_language
+        speech_classes += 'rabbit_language ' if is_larry
         speech_classes += case text_size
         when 0..30
             'normal'

@@ -14,7 +14,7 @@
         - if answers.present?
             - answers.each do |answer|
                 .speech-answer
-                    %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t(".#{answer}")
-        - else 
+                    %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t(".answer-#{answer}")
+        - elsif !is_larry
             .speech-answer
-                %button{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("ok")
+                %button{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("answer-ok")

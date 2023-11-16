@@ -8,15 +8,16 @@ class SessionRabbit < ApplicationRecord
 
     enum status: { hidden: 0, hinted: 1, waiting_found_animation: 2,found: 3 }
     enum speech_status: { no_speech: 0, waiting_answer: 1, talked: 2 }
-    enum speech_type: { introduction: 0, random: 1, hint: 2, father: 3 }
+    enum speech_type: { introduction: 0, random: 1, hint: 2, enigma: 3, father: 4}
 
     before_create :setup_credentials
+    before_create :set_larry
     after_update :found_key_gen, if: -> {saved_change_to_status?(to: "waiting_found_animation")}
     after_update :found_actions, if: -> {saved_change_to_status?(to: "found")}
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
     after_update :unlock_scotty, if: -> {current_speech&.text == "introduction-5" && saved_change_to_speech_status?(to: "talked") && rabbit.name == "Sparky"}
 
-    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie"]
+    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry"]
 
     scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
 
@@ -37,6 +38,14 @@ class SessionRabbit < ApplicationRecord
 
         credentials = {uuid: uuid, key: key}
         broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbits/#{rabbit.underscore_name}", locals: { session_rabbit: self }
+    end
+
+    def set_larry
+        return unless rabbit.name == "Larry"
+
+        self.current_speech = rabbit.speeches.introduction.first
+        self.speech_status= "waiting_answer"
+        p "iic"
     end
 
     private
@@ -75,7 +84,6 @@ class SessionRabbit < ApplicationRecord
         display_rabbit
         return unless rabbit.name == "Scotty"
 
-        p "ici"
         session.in_progress!
     end
 
