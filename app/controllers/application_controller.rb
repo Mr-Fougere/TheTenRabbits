@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
     before_action :set_locale,  only: [:home]
 
     def home
-        return render "wrong_path", locals: {session_rabbit: @session.session_rabbit_named("Sergie")} if request.url.exclude?("https") && Rails.env.production?
+
+        return render "wrong_path", locals: {session_rabbit: @session.session_rabbit_named("Sergie")} if wrong_path?
         return unless @session.present?
 
         check_github_visit
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
 
         setup_rabbit_credentials
         @bushes = bush_generator(7)
+    end
+
+    def wrong_path?
+        Rails.env.production? && request.url.exclude?("https") && @session.session_rabbit_named("Sergie")&.hidden?
     end
 
     def check_security_visit
