@@ -10,9 +10,11 @@
         def introduction 
             session_sparky =  @session.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
             session_sparky.found!
+            broadcast_rabbit_found
         end
 
         def continue
+            broadcast_rabbit_found
         end
 
         def found_rabbit
@@ -80,8 +82,6 @@
 
         def update_session_ui
             I18n.locale = @session.language
-            setup_rabbit_credentials
-            @bushes = bush_generator(7)
             Turbo::StreamsChannel.broadcast_replace_to "session-#{@session.uuid}", target: "home-#{@session.uuid}", partial: "application/home", locals: { credentials: @credentials, bushes: @bushes, session: @session }
         end
 
