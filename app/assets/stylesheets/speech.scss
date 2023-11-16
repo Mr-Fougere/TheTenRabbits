@@ -50,6 +50,12 @@
     }
   }
 
+  .speech-answers{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+  }
+
   &.rabbit-language {
     font-size: 10px;
   }

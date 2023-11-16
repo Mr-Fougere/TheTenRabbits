@@ -5,17 +5,16 @@ en:
   answer-yes: "Yes"
   answer-ok: "Ok"
   answer-next: "Next"
-  next: Next
-  ginny: Ginny
-  remmy: Remmy
-  sergie: Sergie
-  steevie: Steevie
-  scotty: Scotty
-  appie: Appie
-  sparky: Sparky
-  larry: Larry
-  debbie: Debbie
-  timmy: Timmy
+  answer-ginny: Ginny
+  answer-remmy: Remmy
+  answer-sergie: Sergie
+  answer-steevie: Steevie
+  answer-scotty: Scotty
+  answer-appie: Appie
+  answer-sparky: Sparky
+  answer-larry: Larry
+  answer-debbie: Debbie
+  answer-timmy: Timmy
   application:
     home: 
       continue: Continue
