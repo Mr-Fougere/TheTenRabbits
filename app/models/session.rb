@@ -18,6 +18,7 @@ class Session < ApplicationRecord
 
     def setup_session
         self.uuid = SecureRandom.hex(16) while self.uuid.nil? || Session.exists?(uuid: self.uuid)
+        self.api_key = SecureRandom.hex(16) while self.api_key.nil? || Session.exists?(api_key: self.api_key)
         hide_basic_rabbits
     end
 
