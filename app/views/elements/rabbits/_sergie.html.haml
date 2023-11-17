@@ -1,5 +1,5 @@
 #security-modal{data: {controller: "security"}}
-    - if session_rabbit.hidden?
+    - if session_rabbit&.hidden?
         = image_tag "rabbits/sergie.png"
         %p= t('.wrong_path_warning')
     - else

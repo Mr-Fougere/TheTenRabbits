@@ -16,4 +16,7 @@ Rails.application.routes.draw do
     post '/answer_speech', to: "speeches#answer_speech", as: "answer_rabbit_speech"
 
     mount ActionCable.server => '/cable'
+
+    get '*path', to: 'application#wrong_path', via: :all
+
 end

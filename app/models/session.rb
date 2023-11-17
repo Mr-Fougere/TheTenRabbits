@@ -26,7 +26,7 @@ class Session < ApplicationRecord
         rabbit = Rabbit.find_by(name: name)
         return unless rabbit
 
-        session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
+        session_rabbit = self.session_rabbits.hidden.find_by(rabbit: rabbit)
         return unless session_rabbit
 
         session_rabbit.waiting_found_animation!

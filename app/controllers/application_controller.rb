@@ -2,12 +2,10 @@ class ApplicationController < ActionController::Base
 
     include RabbitGenerator
 
-    before_action :set_session, only: [:home]
-    before_action :set_locale,  only: [:home]
+    before_action :set_session, only: [:home,:wrong_path]
+    before_action :set_locale,  only: [:home,:wrong_path]
 
     def home
-
-        return render "wrong_path", locals: {session_rabbit: @session.session_rabbit_named("Sergie")} if wrong_path?
         return unless @session.present?
 
         check_github_visit
@@ -17,14 +15,14 @@ class ApplicationController < ActionController::Base
         @bushes = bush_generator(7)
     end
 
-    def wrong_path?
-        Rails.env.production? && request.url.exclude?("https") && @session.session_rabbit_named("Sergie")&.hidden?
+    def wrong_path
+        render "wrong_path", locals: {session_rabbit: @session.session_rabbit_named("Sergie")}
     end
 
     def check_security_visit
         return unless request.referer.present?
-        return if request.referer.include?("https")
-        
+        return unless URI.parse(request.referer).path
+
         @session.found_rabbit("Sergie")
     end
 
