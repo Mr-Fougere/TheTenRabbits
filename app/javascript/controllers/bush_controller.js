@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { seekRabbit } from "../seek";
 
 export default class extends Controller {
   static targets = ["bush", "field"];
@@ -30,7 +29,7 @@ export default class extends Controller {
   }
 
   toggleBehindBush(event) {
-    seekRabbit(event.currentTarget);
+    this.seekRabbit(event.currentTarget);
   }
 
   moveSelectedBush(event) {
@@ -50,4 +49,21 @@ export default class extends Controller {
     this.selectedBush.style.left = left + "px";
     this.selectedBush.style.top = top + "px";
   }
+
+  seekRabbit(element) {
+    if (!element.dataset.key && !element.dataset.uuid) return;
+    const requestData = {
+      rabbit_key: element.dataset.key,
+      rabbit_uuid: element.dataset.uuid,
+    };
+  
+    return fetch("/seek_rabbit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+  }
+  
 }
