@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { seekRabbit } from "./seek";
+import { seekRabbit } from "../seek";
 
 export default class extends Controller {
     
