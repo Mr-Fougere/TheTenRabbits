@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { seekRabbit } from "./seek_controller";
+import { seekRabbit } from "./seek";
 
 export default class extends Controller {
   static targets = ["bush", "field"];
