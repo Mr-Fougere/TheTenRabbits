@@ -1,0 +1,4 @@
+#turbo-stream-cache.reconnecting{data:{controller:'turbo-stream'}}
+    = turbo_stream_from("session-#{session.uuid}")
+    %p= t(".reconnecting")
+    = image_tag "gifs/reconnecting.gif"
