@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     
     post '/current_speech', to: "speeches#current_speech", as: "current_rabbit_speech"
     post '/answer_speech', to: "speeches#answer_speech", as: "answer_rabbit_speech"
+    post '/carrot_recognizer', to: "application#carrot_recognizer", as: "carrot_recognizer"
 
     mount ActionCable.server => '/cable'
 

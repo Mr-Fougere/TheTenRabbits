@@ -1,0 +1,5 @@
+#carrot-recognizer{ data: {controller: "carrot-recognizer", session_uuid: session[:uuid] }}
+  .file-drop
+    %p= t(".drop_carrot")
+    .file-preview{ data: {target: "carrot-recognizer.filePreview",action: "dragover->carrot-recognizer#handleDragOver drop->carrot-recognizer#handleDrop" }}
+      %img{ data: {target: "carrot-recognizer.previewImage" }}

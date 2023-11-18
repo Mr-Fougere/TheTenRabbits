@@ -2,13 +2,14 @@ class ApplicationController < ActionController::Base
 
     include RabbitGenerator
 
-    before_action :set_session, only: [:home,:wrong_path]
-    before_action :set_locale,  only: [:home,:wrong_path]
+    before_action :set_session, only: [:home,:wrong_path, :carrot_recognizer]
+    before_action :set_locale,  only: [:home,:wrong_path, :carrot_recognizer]
+
+    skip_before_action :verify_authenticity_token, only: [:carrot_recognizer]
 
     def home
         return unless @session.present?
 
-        check_github_visit
         check_security_visit
 
         setup_rabbit_credentials
@@ -26,17 +27,21 @@ class ApplicationController < ActionController::Base
         @session.found_rabbit("Sergie")
     end
 
-    def check_github_visit
-        return unless request.referer.present?
-        return unless request.referer.include?("https://github.com/Mr-Fougere/TheTenRabbits/blob/ginny/ginny.md")
+    def carrot_recognizer
+        return unless params[:file].present? && @session.present?
+
+        image_path = params[:file].tempfile.path
+        return unless image_path.present?
         
-        @session.found_rabbit("Ginny")
+        recognizer = ImageRecognizer::CarrotRecognizer.new(image_path)
+        recognizer.perform
+        @session.found_rabbit("Ginny") if recognizer.verdict
     end
 
     private 
     
     def set_session
-        @session = Session.find_by(uuid: cookies[:uuid] )
+        @session = Session.find_by(uuid: cookies[:uuid] || params[:session_uuid] )
         return if @session.present?
 
         @session = Session.create
