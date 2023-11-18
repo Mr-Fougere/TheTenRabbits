@@ -96,7 +96,7 @@ class SessionRabbit < ApplicationRecord
         return unless speech_type == "introduction" && last_introduction_speech?
 
         new_type = rabbit.name == "Sparky" ? "hint" : "random"
-        new_speech = rabbit.speeches.where(speech_type: new_type).first
+        new_speech = rabbit.speeches.where(speech_type: new_type).sample
         update(speech_type: new_type, current_speech: new_speech , speech_status: "waiting_answer")
     end
 
@@ -124,6 +124,7 @@ class SessionRabbit < ApplicationRecord
     end
 
     def unlock_speeches
+        self.speech_type = "introduction"
         self.current_speech = self.rabbit.speeches.order(:created_at).find_by(speech_type: "introduction")
         self.speech_status = 'waiting_answer' if self.current_speech.present?
         self.save

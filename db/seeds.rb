@@ -78,7 +78,7 @@ Speech.create([
     {id:25,text:"enigma-2B-O", rabbit_id: 10, speech_type: "enigma"},
     {id:26,text:"enigma-2A-O", rabbit_id: 10, speech_type: "enigma"},
     {id:27,text:"enigma-3", rabbit_id: 10, speech_type: "enigma"},
-    {id:28,text:"introduction-1", rabbit_id: 10, speech_type: "introduction"},
+    {id:28,text:"introduction-1", rabbit_id: 10},
 ])
 
 
@@ -96,6 +96,29 @@ SpeechBranch.create([
     {current_speech_id: 26, follow_speech_id: 22, speech_exited: true},
 
     {current_speech_id: 23, follow_speech_id: 27},
+])
+
+Speech.create([
+    {id:29,text:"introduction-1", rabbit_id: 2},
+    {id:30,text:"introduction-1", rabbit_id: 3},
+    {id:31,text:"introduction-1", rabbit_id: 4},
+    {id:32,text:"introduction-1", rabbit_id: 5},
+    {id:33,text:"introduction-1", rabbit_id: 6},
+    {id:34,text:"introduction-1", rabbit_id: 7},
+    {id:35,text:"introduction-1", rabbit_id: 8},
+    {id:36,text:"introduction-1", rabbit_id: 9}
+])
+
+Speech.create([
+    {id:37,text:"random-1", rabbit_id: 2, speech_type: "random"},
+    {id:38,text:"random-1", rabbit_id: 3, speech_type: "random"},
+    {id:39,text:"random-1", rabbit_id: 4, speech_type: "random"},
+    {id:40,text:"random-1", rabbit_id: 5, speech_type: "random"},
+    {id:41,text:"random-1", rabbit_id: 6, speech_type: "random"},
+    {id:42,text:"random-1", rabbit_id: 7, speech_type: "random"},
+    {id:43,text:"random-1", rabbit_id: 8, speech_type: "random"},
+    {id:44,text:"random-1", rabbit_id: 9, speech_type: "random"},
+    {id:45,text:"random-1", rabbit_id: 10, speech_type: "random"},
 ])
 
 #Speech.create([
