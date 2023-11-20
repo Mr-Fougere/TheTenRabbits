@@ -1,2 +1,2 @@
-#dark-mode{data: {controller: "dark-mode",action: "click->dark-mode#toggle", uuid: session_rabbit.uuid, key: session_rabbit.key}}
-    = image_tag "rabbits/timmy.png", class: "dark-mode"
+= turbo_frame_tag "timmy-#{session_rabbit.session.uuid}",data: {controller: "dark-mode",action: "click->dark-mode#toggle", uuid: session_rabbit.uuid, key: session_rabbit.key}, class: "dark-only" do
+    = image_tag "rabbits/timmy.png"

@@ -8,4 +8,3 @@
         = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit}
     - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
         = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}
-    = render partial: "elements/carrot_recognizer", locals: {session: @session}

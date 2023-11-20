@@ -31,18 +31,22 @@ body {
   }
 }
 
-img.dark-mode {
-  filter: invert(100%);
-}
-
 .speech-bubble {
   @media (prefers-color-scheme: dark) {
     @include speech-buble-dark-mode;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .dark-only  {
+    display: none;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .chunk-hidder {
     @include chunk-hidder-dark-mode;
+  }
+  .dark-only {
+    display: flex;
   }
 }

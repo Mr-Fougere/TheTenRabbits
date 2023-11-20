@@ -1,2 +1,2 @@
-#reponsive{data: { controller: "responsive", action: "click->responsive#toggle", uuid: session_rabbit.uuid, key: session_rabbit.key}}
-    = image_tag "rabbits/remmy.png"  
+= turbo_frame_tag "remmy-#{session_rabbit.session.uuid}",data: { controller: "responsive", action: "click->responsive#toggle", uuid: session_rabbit.uuid, key: session_rabbit.key}, class: "responsive" do
+    = image_tag "rabbits/remmy.png"

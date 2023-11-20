@@ -16,7 +16,7 @@ class SessionRabbit < ApplicationRecord
     after_update :found_actions, if: -> {saved_change_to_status?(to: "found")}
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
 
-    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry"]
+    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry","Ginny"]
 
     scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
 
@@ -60,8 +60,8 @@ class SessionRabbit < ApplicationRecord
         when "Steevie"
         when "Debbie"
         when "Larry"
-            return broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
         when "Ginny"
+            return broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
         when "Appie"
         when "Scotty"
         when "Sergie"
@@ -96,7 +96,7 @@ class SessionRabbit < ApplicationRecord
         return unless speech_type == "introduction" && last_introduction_speech?
 
         new_type = rabbit.name == "Sparky" ? "hint" : "random"
-        new_speech = rabbit.speeches.where(speech_type: new_type).sample
+        new_speech = rabbit.speeches.where(speech_type: new_type).sample 
         update(speech_type: new_type, current_speech: new_speech , speech_status: "waiting_answer")
     end
 
