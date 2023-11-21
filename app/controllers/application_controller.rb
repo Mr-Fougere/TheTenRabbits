@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
         check_security_visit
         @bushes = bush_generator(7)
+        @api_key = @session.api_key
     end
 
     def wrong_path

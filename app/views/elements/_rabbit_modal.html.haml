@@ -1,7 +1,0 @@
-= turbo_frame_tag "rabbit-modal-#{session.uuid}", class: "modal-container" do 
-    - if session_rabbit
-        #background-hidder
-        #rabbit-modal{style: "background-color:#{session_rabbit.rabbit.hex_color}"}
-            = image_tag "modal_rabbit.png", class: "rabbit-image"
-            %p= t('.found_rabbit') + session_rabbit.rabbit.name
-            = button_to t('.next'), found_rabbit_path(session_uuid: session.uuid, key: session_rabbit.key), class: "found-rabbit-button"

@@ -11,6 +11,9 @@
 
         def continue
             @session.next_waiting_rabbit.broadcast_found_speech if @session.next_waiting_rabbit
+            return unless @session.finished?
+
+            @session.end_session
         end
 
         def seek_rabbit

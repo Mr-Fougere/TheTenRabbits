@@ -34,8 +34,10 @@ class SessionRabbit < ApplicationRecord
         if current_speech.speech_type == "found" && rabbit.name == "Sparky"
 
             current_waiting_rabbit = session.next_waiting_rabbit
-            current_waiting_rabbit.found! 
+            current_waiting_rabbit.found! if current_waiting_rabbit
             next_waiting_rabbit = session.next_waiting_rabbit
+            rabbits_found = session.session_rabbits.found
+            return session.finished! if rabbits_found.count == 10
             return next_waiting_rabbit.broadcast_found_speech if next_waiting_rabbit && next_waiting_rabbit != self
         end
 
@@ -75,6 +77,10 @@ class SessionRabbit < ApplicationRecord
         return unless rabbit.name.in?(RABBIT_WITH_HIDE)
         
         broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
+    end
+
+    def display_rabbit
+        broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbit_found", locals: { session_rabbit: self }
     end
 
     private
@@ -134,9 +140,6 @@ class SessionRabbit < ApplicationRecord
         self.save
     end
 
-    def display_rabbit
-        broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbit_found", locals: { session_rabbit: self }
-    end
  
     def next_speech(answer)
         return unless current_speech.present?

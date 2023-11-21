@@ -1,5 +1,5 @@
 = render partial: "turbo_stream", locals: {session: @session}
-= turbo_frame_tag "home-#{@session.uuid}", class:"home" do
+= turbo_frame_tag "home-#{@session.uuid}", class:"home", data: {controller: "end"} do
     = render partial: "elements/language_select", locals: {session: @session}
     = render partial: "elements/title_screen", locals: {session: @session}
     = render partial: "field", locals: {bushes: @bushes}

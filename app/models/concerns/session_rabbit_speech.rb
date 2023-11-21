@@ -11,11 +11,12 @@ module SessionRabbitSpeech
 
     def broadcast_current_speech_bubble()
         text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
-        answers = possible_answers unless is_larry_enigma?
+        no_answer = is_larry_enigma? || session.finished?
+        answers = possible_answers unless no_answer 
         speech_classes = classify_speech_bubble(is_larry?, text.size)
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
-        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, is_larry_enigma: is_larry_enigma?}
+        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer}
     end
 
     def converting_rabbit_language(text)
@@ -24,7 +25,7 @@ module SessionRabbitSpeech
 
     def translate_rabbit_language(text)
         base5_representations = text.scan(/\d{1,4}/)
-        base5_representations.map { |base5| p base5.to_i(5).chr }.join
+        base5_representations.map { |base5| base5.to_i(5).chr }.join
     end
 
     private

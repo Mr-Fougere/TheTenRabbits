@@ -15,6 +15,6 @@
             - answers.each do |answer|
                 .speech-answer
                     %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("answer-#{answer}")
-        - elsif !is_larry_enigma
+        - elsif !no_answer
             .speech-answer
                 %button{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("answer-ok")

@@ -130,6 +130,7 @@ Speech.create([
     {id:51,text:"found-timmy", rabbit_id: 1, speech_type: "found"},
     {id:52,text:"found-sergie", rabbit_id: 1, speech_type: "found"},
     {id:53,text:"found-ginny", rabbit_id: 1, speech_type: "found"},
+    {id:54,text:"found-all", rabbit_id: 1, speech_type: "found"}
 ])
 
 SpeechBranch.create([

@@ -9,6 +9,7 @@ class Session < ApplicationRecord
     enum language: {en: 0, fr: 1, rbt: 2}
 
     after_update :end_sparky_introduction, if: ->{saved_change_to_status?(to: "in_progress")}
+    after_update :end_session, if: ->{saved_change_to_status?(to: "finished")}
 
     BASIC_RABBITS = ["Sparky","Scotty"]
 
@@ -17,8 +18,8 @@ class Session < ApplicationRecord
     end
 
     def setup_session
-        self[:uuid] = SecureRandom.hex(16) while self[:uuid].nil? || Session.exists?(uuid: self[:uuid])
-        self[:api_key] = SecureRandom.hex(16) while self[:api_key].nil? || Session.exists?(api_key: self[:api_key])
+        self[:uuid] = SecureRandom.hex(16) while self[:uuid].blank? || Session.exists?(uuid: self[:uuid])
+        self[:api_key] = SecureRandom.hex(16) while self[:api_key].blank?|| Session.exists?(api_key: self[:api_key])
         hide_basic_rabbits
     end
 
@@ -71,5 +72,12 @@ class Session < ApplicationRecord
 
     def next_waiting_rabbit
         session_rabbits.waiting_found_speech.order(updated_at: :asc).last
+    end
+
+    def end_session
+        session_sparky =  session_rabbit_named("Sparky")
+        session_sparky.update(speech_type: "found_speech", current_speech: session_sparky.speeches.found.last)
+        session_rabbits.each(&:display_rabbit)
+        session_sparky.broadcast_current_speech
     end
 end

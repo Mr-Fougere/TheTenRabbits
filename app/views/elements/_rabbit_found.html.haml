@@ -1,6 +1,7 @@
-= turbo_frame_tag "#{session_rabbit.rabbit.underscore_name}-#{session_rabbit.session.uuid}", class: "#{session_rabbit.rabbit.underscore_name} rabbit-found", data:{controller: "rabbit", session_uuid: session_rabbit.session.uuid,rabbit_uuid: session_rabbit.uuid} do
+= turbo_frame_tag "#{session_rabbit.rabbit.underscore_name}-#{session_rabbit.session.uuid}", class: "#{session_rabbit.rabbit.underscore_name} rabbit-found #{session_rabbit.session.status}", data:{controller: "rabbit", session_uuid: session_rabbit.session.uuid,rabbit_uuid: session_rabbit.uuid, target: "end.rabbitFound" } do
     = turbo_frame_tag "#{session_rabbit.uuid}-#{session_rabbit.session.uuid}-speech", class: "rabbit-speech" do
-        = render partial: "elements/speech_status", locals: {session_rabbit: session_rabbit}
+        - if session_rabbit.session.status != "finished"
+            = render partial: "elements/speech_status", locals: {session_rabbit: session_rabbit}
     .rabbit-container
         .rabbit-shadow
         = image_tag "rabbits/#{session_rabbit.rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{session_rabbit.rabbit.underscore_name}"
