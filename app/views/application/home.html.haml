@@ -4,7 +4,7 @@
     = render partial: "elements/title_screen", locals: {session: @session}
     = render partial: "field", locals: {bushes: @bushes}
     - @session.session_rabbits.not_hidden.each do |session_rabbit|
-        = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit}
+        = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit, out: false}
     - if @session.in_progress?
         - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
             = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}

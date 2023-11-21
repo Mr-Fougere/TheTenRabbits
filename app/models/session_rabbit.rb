@@ -79,8 +79,8 @@ class SessionRabbit < ApplicationRecord
         broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
     end
 
-    def display_rabbit
-        broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbit_found", locals: { session_rabbit: self }
+    def display_rabbit(out = false)
+        broadcast_append_to "session-#{session.uuid}", target:"home-#{session.uuid}" , partial: "elements/rabbit_found", locals: { session_rabbit: self, out: out }
     end
 
     private

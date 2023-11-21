@@ -77,7 +77,12 @@ class Session < ApplicationRecord
     def end_session
         session_sparky =  session_rabbit_named("Sparky")
         session_sparky.update(speech_type: "found_speech", current_speech: session_sparky.speeches.found.last)
-        session_rabbits.each(&:display_rabbit)
+        session_rabbits.each { |rabbit| rabbit.display_rabbit(out: true )}
         session_sparky.broadcast_current_speech
+        display_credits
+    end
+
+    def display_credits
+        broadcast_append_to "session-#{uuid}", target:"home-#{uuid}" , partial: "application/credits", locals: { session: self }
     end
 end

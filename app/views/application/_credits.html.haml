@@ -1,0 +1,31 @@
+#credits
+    .title-container
+        .title= t("the_ten_rabbits")
+        .author= t("author")
+    .session-recap
+        .session-tittle= t("your_session")
+        .session-informations
+        - 5.times do |i|
+            .session-information
+                .session-stat
+                    = t("session_information") 
+                .session-value
+                    = i
+    .development-informations
+        .technologies
+            - 5.times do |i|
+                .technology-information
+                    .technology-name
+                        = t("technology_name") 
+                    .technology-logo
+                        = i
+        .assets
+            %p= t("assets_description")
+        .time
+            %p= t("time_description")
+    .github_link
+        %p= t("github_link")
+        = link_to "https://github.com/Mr-Fougere/TheTenRabbits" do
+            = image_tag "github.png", alt: "github", class: "github-icon"
+    .remerciements
+        %p= t("remerciements")

@@ -1,0 +1,16 @@
+#credits{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 100%;
+    z-index: 100;
+    background-color: rgba(211, 211, 211, 0.461);
+    animation: credits-appear 3s ease-in-out forwards 5s;
+}
+
+@keyframes credits-appear {
+    100% {
+      bottom: 0%;
+    }
+  }
+  
