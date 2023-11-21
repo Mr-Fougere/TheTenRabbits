@@ -82,6 +82,14 @@ class Session < ApplicationRecord
         display_credits
     end
 
+    def time_passed
+        "1m23s"
+    end
+
+    def hint_used
+        30
+    end
+
     def display_credits
         broadcast_append_to "session-#{uuid}", target:"home-#{uuid}" , partial: "application/credits", locals: { session: self }
     end

@@ -10,6 +10,10 @@
   animation: fade-out 2s ease-in-out forwards;
 }
 
+#credits{
+  animation: credits-appear 3s ease-in-out forwards 5s;
+}
+
 .hopped {
   .rabbit-image {
     animation: hop 0.8s cubic-bezier(1,0,0,1) infinite;
@@ -71,5 +75,13 @@
   100% {
     opacity: 0.5;
     box-shadow: 0 0 0.5rem 0.5rem black;
+  }
+}
+
+
+
+@keyframes credits-appear {
+  100% {
+    bottom: 0%;
   }
 }

@@ -1,31 +1,40 @@
 #credits
-    .title-container
-        .title= t("the_ten_rabbits")
-        .author= t("author")
-    .session-recap
-        .session-tittle= t("your_session")
-        .session-informations
-        - 5.times do |i|
-            .session-information
-                .session-stat
-                    = t("session_information") 
-                .session-value
-                    = i
-    .development-informations
-        .technologies
-            - 5.times do |i|
+    .title-container.credit-container.span-2
+        .container-content
+            .title= t("the_ten_rabbits")
+            .author= t("author")
+    .remerciements.credit-container.span-2
+        .container-content
+            %p= t("remerciements")
+    .credit-container.span-1.frame
+        .container-title= t("session_recap")
+        .container-content.session-recap
+            .session-informations
+            - ["hint_used","time_passed"].each do |information|
+                .session-information
+                    .session-stat
+                        = t("#{information}") 
+                    .session-value
+                        = session.public_send(information)
+    .credit-container.span-1.frame
+        .container-title= t("technologies")
+        .container-content.technologies
+            - ["rails","sass","haml","heroku"].each do |technology|
                 .technology-information
-                    .technology-name
-                        = t("technology_name") 
-                    .technology-logo
-                        = i
-        .assets
-            %p= t("assets_description")
-        .time
+                    .technology-icon
+                        = svg_tag("technologies/#{technology}")
+                    .technology-name= t("#{technology}") 
+    .credit-container.span-1.frame
+        .container-title= t("time_spend")
+        .container-content.time-spend
             %p= t("time_description")
-    .github_link
-        %p= t("github_link")
-        = link_to "https://github.com/Mr-Fougere/TheTenRabbits" do
-            = image_tag "github.png", alt: "github", class: "github-icon"
-    .remerciements
-        %p= t("remerciements")
+    .credit-container.span-1.frame
+        .container-title= t("github")
+        .container-content.github-link
+            %p= t("github_link")
+            = link_to "https://github.com/Mr-Fougere/TheTenRabbits", target: "_blank" do
+                = image_tag "github.png", alt: "github", class: "github-icon"
+    .credit-container.span-2.frame
+        .container-title= t("assets")
+        .container-content.assets
+            %p= t("assets_description")
