@@ -15,7 +15,6 @@ class SessionRabbit < ApplicationRecord
     before_create :setup_credentials
     before_create :set_larry
     after_update :waiting_found_actions, if: -> {saved_change_to_status?(to: "waiting_found_speech")}
-    after_update :session_begins, if: -> {saved_change_to_status?(to: "found") }
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
 
     RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry","Ginny","Scotty"]
@@ -121,12 +120,10 @@ class SessionRabbit < ApplicationRecord
         remove_rabbit_from_hide!
         unlock_speeches
         display_rabbit
-        return broadcast_found_speech unless rabbit.name.in?(["Sparky","Scotty"])
-    end
-
-    def session_begins
+        broadcast_found_speech unless rabbit.name.in?(["Sparky","Scotty"])
         return unless rabbit.name == "Scotty"
-
+        
+        self.found!
         session.in_progress!
     end
 

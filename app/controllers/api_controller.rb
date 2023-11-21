@@ -58,6 +58,15 @@ class ApiController < ActionController::Base
     end
 
     def api_help
-        render json: I18n.t("api_help")
+        render json: """
+   ._______________.
+   | Appie's House |
+   |  =====> /api  |
+   |_______________|
+          |  |
+          |  |
+          |  |
+        ,_|__|_,,
+          """
     end
 end
