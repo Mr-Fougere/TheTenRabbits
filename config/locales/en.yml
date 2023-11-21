@@ -4,6 +4,7 @@ en:
   answer-no: "No"
   answer-yes: "Yes"
   answer-ok: "Ok"
+  answer-no_thanks: "No one thanks"
   answer-next: "Next"
   answer-ginny: Ginny
   answer-remmy: Remmy
@@ -35,15 +36,15 @@ en:
   sparky_introduction-6: Oh you found scotty thank you. Continue to look at everywhere to find my others siblings 
   sparky_introduction-7: If you need informations on my siblings you can ask me maybe he will help you to find them
   sparky_hint-1: Which one do you want to know more about ?
-  sparky_hint-ginny: Ginny is a little bit shy, she loves to hide in the flowers.
+  sparky_hint-ginny: Ginny is always hungry maybe if you drop a carrot she will comes !
   sparky_hint-steevie: Steevie is the youngest, he run when we shut this name
   sparky_hint-larry: Nobody understand what saying Larry
-  sparky_hint-sergie: This is the elder of the group he love to make safe the youngers
-  sparky_hint-debbie: I'm sur Debbie playing again with this game console somewhere
-  sparky_hint-appie: Appie 
+  sparky_hint-sergie: This is the elder of the group he love to keep the youngers on the right path
+  sparky_hint-debbie: I'm sure Debbie playing again with this game console somewhere
+  sparky_hint-appie: She always lock her in this secret cabin and throw the key, maybe the appie's key is somewhere on the DOMain
   sparky_hint-remmy: Remy doesnt like small spaces 
   sparky_hint-timmy: It's too lighter space for Timmy
-  sparky_hint-no: Ok good luck
+  sparky_hint-no-thanks: Ok good luck
   larry_enigma-1A: hi do you understand me ? 
   larry_enigma-1B: oh you again ? You can understand me rn ? 
   larry_enigma-2-Y: Oh.. really .. i can't believe it finally !  
@@ -52,3 +53,31 @@ en:
   larry_enigma-2A-O: One more person that dont understand me
   larry_enigma-3: We gonna be the best bros !
   api_help: The api is not here 
+  larry_introduction-1: I'm so happy yto find someone that understand me
+  ginny_introduction-1: This carrot is so tasteful thanks you 
+  appie_introduction-1: When i'm not good i look to hide in my secret cabin
+  remmy_introduction-1: What's happened? I was so scared the walls begin to approching me 
+  sergie_introduction-1: I don't want to see you wandering on dangerous paths again
+  timmy_introduction-1: I like to hide me in the shadow nobody can see me
+  debbie_introduction-1: I see you like console too me i like playing Zelda games
+  scotty_introduction-1: I was so peacefull in this bush 
+  steevie_introduction-1: HE HE it's you called me ?!?! I know many games we can play together !
+  larry_random-1: Maybe you can teach my language to my other siblings !
+  ginny_random-1: What do you want ? if you think i will split this carrot its a no !
+  appie_random-1: It's my father that build this secret cabin specially for me !
+  remmy_random-1: I'm clostophobique it's like i can less breath more the space is smaller
+  sergie_random-1: Be careful kiddo some path should never be used 
+  timmy_random-1: THE DARKEST CALLED ME !
+  debbie_random-1: Last time i finish the game Mario Odysesy it's a banger
+  scotty_random-1: I like hsitorical painting like the Sacre de Napoleaon I want to paint a giant fresque once time in my life
+  steevie_random-1:  We can play cards, hide n seek, tag, rock paper scissors , the floor is lava ...
+  sparky_found-steevie: Oh you found Steevie ! This little is a energy pile 
+  sparky_found-larry: You found Larry ! So you be able to speak with him whaou 
+  sparky_found-sergie: Oh you found Sergie ! It's doesnt change alsways so protector
+  sparky_found-debbie: You found Debbie ! Finnaly she's got outside without playing video games
+  sparky_found-timmy: Oh you found Timmy ! I'm suprising you be able to get him up the dark !  
+  sparky_found-appie: You found Appie ! Whre do you find this key ? Tell me ? ... No No lets me found myself
+  sparky_found-remmy: Oh you found Remmy ! Please dont do this again i believe i was be crush 
+  sparky_found-ginny: You found Ginny ! I think i will not have a part of this carrot she never split with nobody 
+  sparky_found-all: Oh you found all my siblings ! Thank you so much !
+  
