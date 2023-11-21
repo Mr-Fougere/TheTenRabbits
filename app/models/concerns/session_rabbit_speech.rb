@@ -11,7 +11,7 @@ module SessionRabbitSpeech
 
     def broadcast_current_speech_bubble()
         text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
-        answers = self.current_speech.speech_branches&.map(&:answer).uniq unless is_larry_enigma?
+        answers = possible_answers unless is_larry_enigma?
         speech_classes = classify_speech_bubble(is_larry?, text.size)
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
@@ -28,6 +28,14 @@ module SessionRabbitSpeech
     end
 
     private
+
+    def possible_answers
+        answers = self.current_speech.speech_branches&.map(&:answer).uniq
+        return answers unless self.rabbit.name == "Sparky"
+        
+        remove_answers = self.session.session_rabbits.found.joins(:rabbit).pluck("rabbits.name")    
+        answers - remove_answers.map(&:underscore)
+    end
 
     def cut_text_into_chunks(text)
         return text.each_slice(DEFAULT_CHUNK_SIZE_RABBIT).to_a if text.is_a?(Array)
