@@ -19,6 +19,10 @@
   }
 }
 
+.finished{
+  animation: go-home 3.5s ease-in-out forwards 5s;
+}
+
 @keyframes screen-out-up {
   100% {
     transform: translateY(-100vh);
@@ -46,6 +50,12 @@
   }
   100% {
     transform: translateY(5px);
+  }
+}
+
+@keyframes go-home {
+  100% {
+    right: 200%;
   }
 }
 
