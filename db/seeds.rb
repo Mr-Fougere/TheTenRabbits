@@ -121,6 +121,30 @@ Speech.create([
     {id:45,text:"random-1", rabbit_id: 10, speech_type: "random"},
 ])
 
+Speech.create([
+    {id:46,text:"found-larry", rabbit_id: 1, speech_type: "found"},
+    {id:47,text:"found-remmy", rabbit_id: 1, speech_type: "found"},
+    {id:48,text:"found-appie", rabbit_id: 1, speech_type: "found"},
+    {id:49,text:"found-debbie", rabbit_id: 1, speech_type: "found"},
+    {id:50,text:"found-steevie", rabbit_id: 1, speech_type: "found"},
+    {id:51,text:"found-timmy", rabbit_id: 1, speech_type: "found"},
+    {id:52,text:"found-sergie", rabbit_id: 1, speech_type: "found"},
+    {id:53,text:"found-ginny", rabbit_id: 1, speech_type: "found"},
+])
+
+SpeechBranch.create([
+    {current_speech_id: 46, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 47, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 48, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 49, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 50, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 51, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 52, follow_speech_id: 11, speech_exited: true},
+    {current_speech_id: 53, follow_speech_id: 11, speech_exited: true},
+])
+
+
+
 #Speech.create([
 #   {id:21,text:"introduction-1A", rabbit_id: 10, speech_type: "introduction"},
 #   {id:22,text:"introduction-1B", rabbit_id: 10, speech_type: "introduction"},

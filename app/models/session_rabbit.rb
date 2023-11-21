@@ -5,18 +5,20 @@ class SessionRabbit < ApplicationRecord
     belongs_to :session
     belongs_to :rabbit
     belongs_to :current_speech, class_name: "Speech", optional: true
+    has_many :speeches, through: :rabbit
 
-    enum status: { hidden: 0, hinted: 1, waiting_found_animation: 2,found: 3 }
+    enum status: { hidden: 0, waiting_found_speech: 1, found: 2 }
+
     enum speech_status: { no_speech: 0, waiting_answer: 1, talked: 2 }
-    enum speech_type: { introduction: 0, random: 1, hint: 2, enigma: 3, father: 4}
+    enum speech_type: { introduction: 0, random: 1, hint: 2, enigma: 3, found_speech: 4}
 
     before_create :setup_credentials
     before_create :set_larry
-    after_update :found_key_gen, if: -> {saved_change_to_status?(to: "waiting_found_animation")}
-    after_update :found_actions, if: -> {saved_change_to_status?(to: "found")}
+    after_update :waiting_found_actions, if: -> {saved_change_to_status?(to: "waiting_found_speech")}
+    after_update :session_begins, if: -> {saved_change_to_status?(to: "found") }
     after_update :speeches_after_intro, if: -> {saved_change_to_speech_status?(to: "talked")}
 
-    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry","Ginny"]
+    RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry","Ginny","Scotty"]
 
     scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
 
@@ -29,11 +31,29 @@ class SessionRabbit < ApplicationRecord
     def broadcast_next_speech(answer)
         exited = current_speech.exit_speech?
         answer = translate_rabbit_language(answer) if is_larry_enigma?
-    
+
+        if current_speech.speech_type == "found" && rabbit.name == "Sparky"
+
+            current_waiting_rabbit = session.next_waiting_rabbit
+            current_waiting_rabbit.found! 
+            next_waiting_rabbit = session.next_waiting_rabbit
+            return next_waiting_rabbit.broadcast_found_speech if next_waiting_rabbit && next_waiting_rabbit != self
+        end
+
         next_speech(answer.underscore)
         return broadcast_speech_status if speech_status == "talked" || exited
         
         broadcast_current_speech_bubble 
+    end
+
+    def broadcast_found_speech
+        session_sparky = session.session_rabbit_named("Sparky")
+        return unless session_sparky.present? && session_sparky != self
+        return update(status: "found") if session_sparky.speech_status == "introduction" 
+
+        found_speech = session_sparky.rabbit.speeches.found.find_by(text: "found-#{self.rabbit.underscore_name}")
+        session_sparky.update(speech_status: "waiting_answer",speech_type: "found_speech", current_speech: found_speech)
+        session_sparky.broadcast_current_speech
     end
 
     def hide!
@@ -52,23 +72,11 @@ class SessionRabbit < ApplicationRecord
     end
 
     def remove_rabbit_from_hide!
-        return unless status == "hidden"
+        return if status == "hidden"
+        return unless rabbit.name.in?(RABBIT_WITH_HIDE)
         
-        case rabbit.name
-        when "Timmy"
-        when "Remmy"
-        when "Steevie"
-        when "Debbie"
-        when "Larry"
-        when "Ginny"
-            return broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
-        when "Appie"
-        when "Scotty"
-        when "Sergie"
-            return
-        end
+        broadcast_remove_to "session-#{session.uuid}", target:"#{rabbit.underscore_name}-#{session.uuid}"
     end
-
 
     private
 
@@ -83,7 +91,7 @@ class SessionRabbit < ApplicationRecord
     def unlock_scotty
         random_bush = (0..6).to_a.sample
         scotty =  session.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Scotty"))
-        broadcast_update_to "session-#{session.uuid}", target:"bush-#{random_bush}-#{session.uuid}" , partial: 'elements/scotty_hide', locals: {scotty: scotty}
+        broadcast_update_to "session-#{session.uuid}", target:"bush-#{random_bush}-#{session.uuid}" , partial: 'elements/scotty_hide', locals: {session_rabbit: scotty}
     end
 
     def larry_friend
@@ -109,15 +117,14 @@ class SessionRabbit < ApplicationRecord
         self.key = SecureRandom.hex(16)
     end
 
-
-    def found_key_gen
-        update(key: SecureRandom.hex(16))
-    end
-
-    def found_actions
+    def waiting_found_actions
         remove_rabbit_from_hide!
         unlock_speeches
         display_rabbit
+        return broadcast_found_speech unless rabbit.name.in?(["Sparky","Scotty"])
+    end
+
+    def session_begins
         return unless rabbit.name == "Scotty"
 
         session.in_progress!
@@ -151,4 +158,5 @@ class SessionRabbit < ApplicationRecord
         new_speech = branch_followed.follow_speech
         update(current_speech: new_speech)
     end
+
 end

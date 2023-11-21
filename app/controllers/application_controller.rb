@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
         return unless @session.present?
 
         check_security_visit
-
-        setup_rabbit_credentials
         @bushes = bush_generator(7)
     end
 

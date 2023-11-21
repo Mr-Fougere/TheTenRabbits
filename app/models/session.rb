@@ -28,28 +28,14 @@ class Session < ApplicationRecord
 
         session_rabbit = self.session_rabbits.hidden.find_by(rabbit: rabbit)
         return unless session_rabbit
-
-        session_rabbit.waiting_found_animation!
+        
+        session_rabbit.waiting_found_speech!
     end
 
     def hide_basic_rabbits
         BASIC_RABBITS.each do |rabbit|
             self.session_rabbits.new(rabbit: Rabbit.find_by(name: rabbit))
         end
-    end
-
-    def rabbits_credentials(names)
-        rabbits = Rabbit.where(name: names)
-        credentials = {}
-        rabbits.each do |rabbit|
-            session_rabbit = self.session_rabbits.find_by(rabbit: rabbit)
-            credentials[rabbit.name.downcase.to_sym] = {key: nil, uuid: nil}
-            next unless session_rabbit
-            
-            credentials[rabbit.name.downcase.to_sym][:key] = session_rabbit.key
-            credentials[rabbit.name.downcase.to_sym][:uuid] = session_rabbit.uuid
-        end
-        credentials
     end
 
     def scotty_introduction?
@@ -75,12 +61,15 @@ class Session < ApplicationRecord
         end
     end
 
-
     def end_sparky_introduction
-        sparky = Rabbit.find_by(name: "Sparky")
-        session_sparky =  session_rabbits.find_by(rabbit: sparky )
-        session_sparky.update(speech_status: "waiting_answer", current_speech: sparky.speeches.find(session_sparky.current_speech.id + 1))
+        session_sparky =  session_rabbit_named("Sparky")
+        next_introduction_speech_id = session_sparky.current_speech.id + 1
+        session_sparky.update(speech_status: "waiting_answer", current_speech: session_sparky.speeches.find(next_introduction_speech_id))
         session_sparky.broadcast_current_speech
         hide_remaining_rabbits
+    end
+
+    def next_waiting_rabbit
+        session_rabbits.waiting_found_speech.order(updated_at: :asc).last
     end
 end

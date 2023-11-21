@@ -1,2 +1,3 @@
-= image_tag "rabbit.png", class: "behind-bush hide", data: { target: "bush.behindBush", action: "click->bush#toggleBehindBush", uuid: scotty.uuid, key: scotty.key }
-= image_tag "bush.png", class: "bush", data: { target: "bush.bush", action: "mousedown->bush#toggleBush"}
+= turbo_frame_tag "scotty-#{session_rabbit.session.uuid}",data: { action: "click->bush#toggleBehindBush", uuid: session_rabbit.uuid, key: session_rabbit.key }, class: "behind-bush hide" do
+    = image_tag "rabbits/scotty.png"
+= image_tag "bush.png", class: "bush", data: { action: "mousedown->bush#toggleBush"}

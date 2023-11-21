@@ -3,8 +3,8 @@
     = render partial: "elements/language_select", locals: {session: @session}
     = render partial: "elements/title_screen", locals: {session: @session}
     = render partial: "field", locals: {bushes: @bushes}
-    = render partial: "elements/rabbit_modal", locals: {session: @session, session_rabbit: nil}
-    - @session.session_rabbits.found.each do |session_rabbit|
+    - @session.session_rabbits.not_hidden.each do |session_rabbit|
         = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit}
-    - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
-        = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}
+    - if @session.in_progress?
+        - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
+            = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}
