@@ -46,6 +46,8 @@ fr:
     colored_hint:
       colored: Indice
       hints: Colorisé
+    title_screen:
+      continue: "Continuer"
     
   sparky_introduction-1: "Oh ! Tu m'as fait peur."
   sparky_introduction-2: "Je cherche mes frères et sœurs ; ils sont partis pendant ma sieste."

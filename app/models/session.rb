@@ -70,6 +70,14 @@ class Session < ApplicationRecord
         hide_remaining_rabbits
     end
 
+    def update_switch_colored_hint
+        broadcast_replace_to "session-#{uuid}", target:"colored-hint-container" , partial: "elements/colored_hint", locals: { session: self }
+    end
+
+    def update_title_screen
+        broadcast_replace_to "session-#{uuid}", target:"title-screen" , partial: "elements/title_screen", locals: { session: self }
+    end
+
     def next_waiting_rabbit
         session_rabbits.waiting_found_speech.order(updated_at: :asc).last
     end
