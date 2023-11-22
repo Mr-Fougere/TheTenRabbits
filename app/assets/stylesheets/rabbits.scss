@@ -5,6 +5,31 @@
   z-index: 25;
   justify-content: center;
   align-items: end;
+  .rabbit-name {
+    display: none;
+    position: absolute;
+    color: white;
+    bottom: -15%;
+    width: 100%;
+    justify-content: center;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    background: rgb(104, 106, 106);
+    background: linear-gradient(
+      90deg,
+      rgba(104, 106, 106, 0.3267507686668417) 0%,
+      rgba(117, 119, 119, 0.8869748583026961) 19%,
+      rgba(135, 135, 135, 1) 51%,
+      rgba(120, 121, 121, 0.8085434857536764) 81%,
+      rgba(104, 106, 106, 0.3267507686668417) 100%
+    );
+  }
+  &:hover .rabbit-name {
+    display: flex;
+  }
+  &:has(.speech-bubble) .rabbit-name {
+    display: flex;
+  }
 }
 
 .rabbit-shadow {
@@ -29,65 +54,63 @@
     object-fit: contain;
     opacity: 0;
     cursor: pointer;
-    &.talked{
+    &.talked {
       opacity: 0.5;
     }
-    &.waiting_answer{
+    &.waiting_answer {
       opacity: 1;
     }
   }
 }
-.sparky{
+.sparky {
   right: 50%;
   bottom: 50%;
 }
 
-.scotty{
+.scotty {
   bottom: 20%;
   right: 30%;
 }
 
-.debbie{
+.debbie {
   bottom: 20%;
   right: 80%;
 }
 
-.timmy{
+.timmy {
   bottom: 50%;
   right: 80%;
 }
 
-.remmy{
+.remmy {
   bottom: 20%;
   right: 60%;
 }
 
-.steevie{
+.steevie {
   bottom: 20%;
   right: 50%;
 }
 
-.appie{
+.appie {
   bottom: 70%;
   right: 70%;
 }
 
-.sergie{
+.sergie {
   bottom: 30%;
   right: 20%;
 }
 
-.ginny{
+.ginny {
   bottom: 70%;
   right: 40%;
 }
 
-
-
-.larry-container{
+.larry-container {
   display: flex;
   flex-direction: row;
 }
-.rabbit-container{
+.rabbit-container {
   position: relative;
 }
