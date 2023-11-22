@@ -39,12 +39,12 @@ SpeechBranch.create([
 Speech.create([
     {id:11,text:"hint-1", rabbit_id: 1, speech_type: "hint"},
     {id:12,text:"hint-ginny", rabbit_id: 1, speech_type: "hint", colored_words: ["drop","a","carrot"]},
-    {id:13,text:"hint-remmy", rabbit_id: 1, speech_type: "hint", colored_words: ["doesn't","small","spaces"]},
+    {id:13,text:"hint-remmy", rabbit_id: 1, speech_type: "hint", colored_words: ["doesn't","like","small","spaces"]},
     {id:14,text:"hint-debbie", rabbit_id: 1, speech_type: "hint", colored_words: ["console"]},
-    {id:15,text:"hint-larry", rabbit_id: 1, speech_type: "hint", colored_words: ["understand","five"]},
+    {id:15,text:"hint-larry", rabbit_id: 1, speech_type: "hint", colored_words: ["understands","fives"]},
     {id:16,text:"hint-steevie", rabbit_id: 1, speech_type: "hint", colored_words: ["shout","this","name"]},
-    {id:17,text:"hint-sergie", rabbit_id: 1, speech_type: "hint", colored_words: ["right","path"]},
-    {id:18,text:"hint-appie", rabbit_id: 1, speech_type: "hint",colored_words: ["appie's","key","DOMain"]},
+    {id:17,text:"hint-sergie", rabbit_id: 1, speech_type: "hint", colored_words: ["keep","right","path"]},
+    {id:18,text:"hint-appie", rabbit_id: 1, speech_type: "hint",colored_words: ["Appie's","key","DOMain"]},
     {id:19,text:"hint-timmy", rabbit_id: 1, speech_type: "hint", colored_words: ["too","lighter"]},
     {id:20, text:"hint-no-thanks", rabbit_id: 1, speech_type: "hint"},
 ])

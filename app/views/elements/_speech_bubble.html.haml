@@ -3,7 +3,12 @@
         - chunks.each_with_index do |chunk,index|
             .speech-chunk
                 - if chunk.is_a?(String)
-                    %span= chunk
+                    .text-block
+                        - chunk.split(/\s+/).each do |word|
+                            - if colored_words.include?(word)
+                                %span.colored-word=word
+                            - else 
+                                %span= word
                 - elsif chunk.is_a?(Array)
                     - chunk.each do |paws|
                         .paws

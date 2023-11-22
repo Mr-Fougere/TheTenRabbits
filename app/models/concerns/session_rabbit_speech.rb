@@ -18,7 +18,8 @@ module SessionRabbitSpeech
         speech_classes = classify_speech_bubble(is_larry?, text.size)
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
-        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer}
+        colored_words = self.current_speech.colored_words
+        broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer, colored_words: colored_words}
     end
 
     def remove_last_speech_bubble
