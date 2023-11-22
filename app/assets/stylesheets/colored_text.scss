@@ -1,0 +1,11 @@
+
+body:has(#colored_hint:checked) .colored-word{
+    color: red
+}
+
+.text-block{
+    display: inline-block;
+    span:not(:first-child){
+        margin-left: 3px;
+    }
+}

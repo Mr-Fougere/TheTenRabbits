@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
     end
 
     def wrong_path
-        render "wrong_path", locals: {session_rabbit: @session.session_rabbit_named("Sergie")}
+        @sergie = @session.session_rabbit_named("Sergie")
+        render "wrong_path"
     end
 
     def check_security_visit

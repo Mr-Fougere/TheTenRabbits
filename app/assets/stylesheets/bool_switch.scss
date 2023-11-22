@@ -1,0 +1,49 @@
+.bool-switch__label {
+  cursor: pointer;
+  height: 2rem;
+  width: 4.5rem;
+  background-color: grey;
+  border-radius: 1.1rem;
+  display: block;
+  position: relative;
+  transition: 300ms;
+  color: transparent;
+  user-select: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 0.25rem;
+    left: 0.31rem;
+    border-radius: 1.1rem;
+    background-color: white;
+    transition: 300ms;
+  }
+
+  &:active::after {
+    width: 2rem;
+  }
+
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.bool-switch__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bool-switch__checkbox {
+  display: none;
+
+  &:checked + label {
+    background-color: black;
+
+    &::after {
+      left: calc(100% - 0.31rem);
+      transform: translateX(-100%);
+    }
+  }
+}

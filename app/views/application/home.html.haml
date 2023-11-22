@@ -1,8 +1,9 @@
 = render partial: "turbo_stream", locals: {session: @session}
-= turbo_frame_tag "home-#{@session.uuid}", class:"home", data: {controller: "end"} do
+= turbo_frame_tag "home-#{@session.uuid}", class:"home" do
     = render partial: "elements/language_select", locals: {session: @session}
     = render partial: "elements/title_screen", locals: {session: @session}
     = render partial: "field", locals: {bushes: @bushes}
+    = render partial: "elements/colored_hint", locals: {session: @session}
     - @session.session_rabbits.not_hidden.each do |session_rabbit|
         = render partial: "elements/rabbit_found", locals: {session_rabbit: session_rabbit, out: false}
     - if @session.in_progress?

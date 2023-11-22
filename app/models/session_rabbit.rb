@@ -24,6 +24,7 @@ class SessionRabbit < ApplicationRecord
     def broadcast_current_speech
         return unless current_speech.present? && speech_status != "no_speech"
         
+        remove_last_speech_bubble unless same_rabbit_speech?
         broadcast_current_speech_bubble
     end
 
@@ -84,6 +85,12 @@ class SessionRabbit < ApplicationRecord
     end
 
     private
+
+    def same_rabbit_speech?
+        return true if session.last_rabbit_talked.nil?
+
+        session.last_rabbit_talked == self.rabbit
+    end
 
     def is_larry?
        self.rabbit.name == 'Larry'

@@ -6,10 +6,12 @@ module SessionRabbitSpeech
     DEFAULT_CHUNK_SIZE_RABBIT = 4
 
     def broadcast_speech_status
+        session.update(last_rabbit_talked: nil)
         broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_status', locals: {session_rabbit: self}
     end
 
     def broadcast_current_speech_bubble()
+        session.update(last_rabbit_talked: self.rabbit)
         text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
         no_answer = is_larry_enigma? || session.finished?
         answers = possible_answers unless no_answer 
@@ -17,6 +19,14 @@ module SessionRabbitSpeech
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
         broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer}
+    end
+
+    def remove_last_speech_bubble
+        last_rabbit = session.last_rabbit_talked
+        last_session_rabbit = session.session_rabbit_named(last_rabbit.name)
+        return unless last_session_rabbit.present?
+
+        last_session_rabbit.broadcast_speech_status
     end
 
     def converting_rabbit_language(text)
@@ -40,6 +50,7 @@ module SessionRabbitSpeech
 
     def cut_text_into_chunks(text)
         return text.each_slice(DEFAULT_CHUNK_SIZE_RABBIT).to_a if text.is_a?(Array)
+        
         text.scan(/.{1,#{DEFAULT_CHUNK_SIZE_NORMAL}}\b/)
     end
 

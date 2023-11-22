@@ -40,14 +40,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_175109) do
   create_table "sessions", force: :cascade do |t|
     t.string "uuid", null: false
     t.integer "status", default: 0
-    t.boolean "with_colored_hint", default: false
-    t.bigint "hinted_rabbit_id"
+    t.boolean "colored_hint", default: false
+    t.integer "hint_count", default: 0
+    t.bigint "last_rabbit_talked_id"
+    t.datetime "finished_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "language", default: 0
     t.boolean "is_connected", default: false
-    t.string "api_key", default: "", null: false
-    t.index ["hinted_rabbit_id"], name: "index_sessions_on_hinted_rabbit_id"
+    t.string "api_key", null: false
+    t.index ["last_rabbit_talked_id"], name: "index_sessions_on_last_rabbit_talked_id"
   end
 
   create_table "speech_branches", force: :cascade do |t|
@@ -74,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_175109) do
   add_foreign_key "session_rabbits", "rabbits"
   add_foreign_key "session_rabbits", "sessions"
   add_foreign_key "session_rabbits", "speeches", column: "current_speech_id"
-  add_foreign_key "sessions", "rabbits", column: "hinted_rabbit_id"
+  add_foreign_key "sessions", "rabbits", column: "last_rabbit_talked_id"
   add_foreign_key "speech_branches", "speeches", column: "current_speech_id"
   add_foreign_key "speech_branches", "speeches", column: "follow_speech_id"
   add_foreign_key "speeches", "rabbits"

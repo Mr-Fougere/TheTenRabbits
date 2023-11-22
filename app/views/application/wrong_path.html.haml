@@ -1,1 +1,7 @@
-= render partial: "elements/rabbits/sergie", locals: {session_rabbit: session_rabbit}
+#security-modal{data: {controller: "security"}}
+    - if @sergie&.hidden?
+        = image_tag "rabbits/sergie.png"
+        %p= t('.wrong_path_warning')
+    - else
+        = image_tag "panel.png"
+        %p= t('.panel_warning')

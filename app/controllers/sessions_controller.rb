@@ -1,6 +1,5 @@
     class SessionsController < ActionController::Base
         include ActionCable::Channel::Broadcasting
-        include RabbitGenerator
 
         before_action :set_session
         skip_before_action :verify_authenticity_token
@@ -30,6 +29,12 @@
             return unless @session.present? && params[:language].present?
 
             update_session_ui if @session.update(language: params[:language])
+        end
+
+        def switch_colored_hint
+            return unless @session.present?
+
+            @session.update(colored_hint: !@session.colored_hint)
         end
 
         private

@@ -2,7 +2,8 @@ class Session < ApplicationRecord
 
     before_create :setup_session 
 
-    belongs_to :hinted_rabbit, class_name: "Rabbit", optional: true
+    belongs_to :last_rabbit_talked, class_name: "Rabbit", optional: true
+
     has_many :session_rabbits
 
     enum status: { initialized:0, in_progress: 1 ,finished: 2}
@@ -42,16 +43,15 @@ class Session < ApplicationRecord
     def scotty_introduction?
         return false unless self.initialized?
 
-        scotty = self.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Scotty"))
+        scotty = self.session_rabbit_named("Scotty")
         return false unless scotty.present?
         return false unless scotty.hidden?
 
-        sparky = self.session_rabbits.find_by(rabbit: Rabbit.find_by(name: "Sparky"))
+        sparky = self.session_rabbit_named("Sparky")
         return false unless sparky.present?
         return false if sparky.no_speech?
-        return false unless sparky.current_speech.text == "introduction-5"
 
-        true
+        sparky.current_speech.text == "introduction-5"
     end
 
     def hide_remaining_rabbits
@@ -75,6 +75,7 @@ class Session < ApplicationRecord
     end
 
     def end_session
+        update(finished_at: Time.now)
         session_sparky =  session_rabbit_named("Sparky")
         session_sparky.update(speech_type: "found_speech", current_speech: session_sparky.speeches.found.last)
         session_rabbits.each { |rabbit| rabbit.display_rabbit(out: true )}
@@ -82,12 +83,17 @@ class Session < ApplicationRecord
         display_credits
     end
 
+
     def time_passed
-        "1m23s"
+        difference = created_at.to_i - finished_at.to_i
     end
 
     def hint_used
-        30
+        hint_count
+    end
+
+    def use_hint!
+        increment!(:hint_count)
     end
 
     def display_credits
