@@ -93,11 +93,11 @@ class Session < ApplicationRecord
 
 
     def time_passed
-        difference = created_at.to_i - finished_at.to_i
+        difference = finished_at.to_i - created_at.to_i
     end
 
     def hint_used
-        hint_count
+        session_rabbits.hinted.size
     end
 
     def use_hint!

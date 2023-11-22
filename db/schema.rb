@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_16_175109) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_125943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_175109) do
     t.bigint "current_speech_id"
     t.integer "speech_status", default: 0
     t.integer "speech_type", default: 0
+    t.boolean "hinted", default: false
     t.index ["current_speech_id"], name: "index_session_rabbits_on_current_speech_id"
     t.index ["rabbit_id"], name: "index_session_rabbits_on_rabbit_id"
     t.index ["session_id"], name: "index_session_rabbits_on_session_id"
@@ -41,7 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_16_175109) do
     t.string "uuid", null: false
     t.integer "status", default: 0
     t.boolean "colored_hint", default: false
-    t.integer "hint_count", default: 0
     t.bigint "last_rabbit_talked_id"
     t.datetime "finished_at"
     t.datetime "created_at", null: false

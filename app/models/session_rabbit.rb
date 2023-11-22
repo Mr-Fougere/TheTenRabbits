@@ -20,10 +20,10 @@ class SessionRabbit < ApplicationRecord
     RABBIT_WITH_HIDE = ["Timmy", "Remmy", "Steevie", "Debbie","Larry","Ginny","Scotty"]
 
     scope :graphic_hidden, -> { joins(:rabbit).where(status: "hidden", rabbit: {name: RABBIT_WITH_HIDE}) }
-
+    scope :hinted, -> { where(hinted: true) }
+    
     def broadcast_current_speech
         return unless current_speech.present? && speech_status != "no_speech"
-        
         remove_last_speech_bubble unless same_rabbit_speech?
         broadcast_current_speech_bubble
     end
@@ -40,6 +40,8 @@ class SessionRabbit < ApplicationRecord
             rabbits_found = session.session_rabbits.found
             return session.finished! if rabbits_found.count == 10
             return next_waiting_rabbit.broadcast_found_speech if next_waiting_rabbit && next_waiting_rabbit != self
+
+            self.update(speech_type: "hint")
         end
 
         next_speech(answer.underscore)
@@ -85,6 +87,25 @@ class SessionRabbit < ApplicationRecord
     end
 
     private
+
+    def sparky_rabbit_hint? 
+        p rabbit.name == "Sparky"
+        p speech_type == "hint"
+        return unless rabbit.name == "Sparky"
+        return unless speech_type == "hint"
+        p ["hint-no-thanks","hint-1"].include?(current_speech.text)
+        return if ["hint-no-thanks","hint-1"].include?(current_speech.text)
+
+        true
+    end
+
+    def rabbit_hinted
+        rabbit_name = current_speech.text.match(/[^-]+$/)[0]
+        p rabbit_name
+        return unless rabbit_name
+
+        session.session_rabbit_named(rabbit_name.capitalize).update(hinted: true)
+    end
 
     def same_rabbit_speech?
         return true if session.last_rabbit_talked.nil?

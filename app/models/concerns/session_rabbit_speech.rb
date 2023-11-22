@@ -11,6 +11,7 @@ module SessionRabbitSpeech
     end
 
     def broadcast_current_speech_bubble()
+        rabbit_hinted if sparky_rabbit_hint?
         session.update(last_rabbit_talked: self.rabbit)
         text = I18n.t(".#{self.rabbit.underscore_name}_#{self.current_speech.text}")
         no_answer = is_larry_enigma? || session.finished?
@@ -19,7 +20,6 @@ module SessionRabbitSpeech
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
         colored_words = translated_colored_words
-        p colored_words
         broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer, colored_words: colored_words}
     end
 
