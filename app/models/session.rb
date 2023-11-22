@@ -1,5 +1,7 @@
 class Session < ApplicationRecord
 
+    include TimeConverter
+
     before_create :setup_session 
 
     belongs_to :last_rabbit_talked, class_name: "Rabbit", optional: true
@@ -94,6 +96,7 @@ class Session < ApplicationRecord
 
     def time_passed
         difference = finished_at.to_i - created_at.to_i
+        convert_secondes_in_full_duration(difference)
     end
 
     def hint_used
