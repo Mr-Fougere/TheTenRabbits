@@ -16,15 +16,37 @@ fr:
   answer-larry: "Larry"
   answer-debbie: "Debbie"
   answer-timmy: "Timmy"
+  shout: crier
+  this:
+  name: 
+  drop: "tomber"
+  a: "une"
+  carrot: "carotte"
+  doesn't: "n'aime"
+  like: "pas"
+  small: "petits"
+  spaces: "espaces"
+  console: "console"
+  understands: "comprend"
+  fives: "fives"
+  keep: "garder"
+  right: "bon"
+  path: "chemin"
+  Appie's: "d'Appie"
+  key: "clé"
+  DOMain: DOMaine
+  too: trop
+  lighter: lumineux
   application:
     home: 
       continue: "Continuer"
   elements:
     sergie:
       wrong_path_warning: "Qu'est-ce que tu fais ici ? Ce n'est pas sûr ! Retourne sur le bon chemin, je reste avec toi pour te surveiller."
-      sorry: "Désolé, Sergie."
-    rabbit_modal:
-      found_rabbit: "Tu as trouvé"
+    colored_hint:
+      colored: Indice
+      hints: Colorisé
+    
   sparky_introduction-1: "Oh ! Tu m'as fait peur."
   sparky_introduction-2: "Je cherche mes frères et sœurs ; ils sont partis pendant ma sieste."
   sparky_introduction-3A: "Peux-tu m'aider à les retrouver ?"

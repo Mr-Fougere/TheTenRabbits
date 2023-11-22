@@ -18,7 +18,8 @@ module SessionRabbitSpeech
         speech_classes = classify_speech_bubble(is_larry?, text.size)
         text = converting_rabbit_language(text) if is_larry?
         chunks = cut_text_into_chunks(text)
-        colored_words = self.current_speech.colored_words
+        colored_words = translated_colored_words
+        p colored_words
         broadcast_update_to "session-#{session.uuid}", target:"#{uuid}-#{session.uuid}-speech" , partial: 'elements/speech_bubble', locals: {chunks: chunks, classes: speech_classes, answers: answers, no_answer: no_answer, colored_words: colored_words}
     end
 
@@ -40,6 +41,14 @@ module SessionRabbitSpeech
     end
 
     private
+
+    def translated_colored_words
+        return current_speech.colored_words if I18n.locale == :en
+            
+        current_speech.colored_words.map do |colored_word|
+           I18n.t(colored_word)
+        end
+    end
 
     def possible_answers
         answers = self.current_speech.speech_branches&.map(&:answer).uniq

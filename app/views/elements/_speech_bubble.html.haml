@@ -4,11 +4,14 @@
             .speech-chunk
                 - if chunk.is_a?(String)
                     .text-block
-                        - chunk.split(/\s+/).each do |word|
-                            - if colored_words.include?(word)
-                                %span.colored-word=word
-                            - else 
-                                %span= word
+                        -if colored_words.any?
+                            - chunk.split(/\s+/).each do |word|
+                                - if colored_words.include?(word)
+                                    %span.colored-word=word
+                                - else 
+                                    %span= word
+                        - else
+                            %span= chunk
                 - elsif chunk.is_a?(Array)
                     - chunk.each do |paws|
                         .paws
@@ -18,7 +21,7 @@
     .speech-answers
         - if answers.present?
             - answers.each do |answer|
-                .speech-answer
+                .speech-answer{class: "#{answer == "no_thanks" ? "no-thanks" : ""}"}
                     %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("answer-#{answer}")
         - elsif !no_answer
             .speech-answer

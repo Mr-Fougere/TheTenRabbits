@@ -52,8 +52,11 @@
 
   .speech-answers{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, max-content);
     grid-gap: 0.5rem;
+    .speech-answer.no-thanks{
+      grid-column: span 3;
+    }
   }
 
   &.rabbit-language {
