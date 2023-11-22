@@ -18,7 +18,7 @@ Speech.create([
     {id:5,text:"introduction-4A-N", rabbit_id: 1},
     {id:6,text:"introduction-4-Y", rabbit_id: 1},
     {id:7,text:"introduction-4B-N", rabbit_id: 1},
-    {id:8,text:"introduction-5", rabbit_id: 1},
+    {id:8,text:"introduction-5", rabbit_id: 1, colored_words: ["search","bushes","hide"]},
     {id:9,text:"introduction-6", rabbit_id: 1},
     {id:10,text:"introduction-7", rabbit_id: 1},
 ])

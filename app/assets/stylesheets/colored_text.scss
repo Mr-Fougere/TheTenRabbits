@@ -9,3 +9,15 @@ body:has(#colored_hint:checked) .colored-word{
         margin-left: 2px;
     }
 }
+
+#colored-hint-container{
+    position: absolute;
+    top: 0%;
+    right: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: black;
+}

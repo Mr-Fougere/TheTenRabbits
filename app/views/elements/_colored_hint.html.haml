@@ -1,6 +1,7 @@
-.bool-switch__block
-    .text-block
-        %span= t(".colored")
-        %span.colored-text= t(".hint")
-    %input{type: "checkbox", name: "colored_hint", class: "bool-switch__checkbox", id: "colored_hint", checked: @session.colored_hint}
-    %label{for: "colored_hint", class: "bool-switch__label"}
+#colored-hint-container
+    .bool-switch__block{data:{controller: "colored-hint", session_uuid: session.uuid}}
+        .text-block
+            %span= t(".colored")
+            %span.colored-word= t(".hint")
+        %input{type: "checkbox", name: "colored_hint", class: "bool-switch__checkbox", id: "colored_hint", checked: session.colored_hint, data: {action: "change->colored-hint#switchColoredHint"}}
+        %label{for: "colored_hint", class: "bool-switch__label"}
