@@ -135,9 +135,10 @@ class SessionRabbit < ApplicationRecord
         unlock_scotty if current_speech&.text == "introduction-5" && rabbit.name == "Sparky"
         larry_friend if current_speech&.text == "enigma-3" && rabbit.name == "Larry"
         return unless speech_type == "introduction" && last_introduction_speech?
-
-        new_type = rabbit.name == "Sparky" ? "hint" : "random"
-        new_speech = rabbit.speeches.where(speech_type: new_type).sample 
+        is_sparky =rabbit.name == "Sparky"
+        new_type = is_sparky ? "hint" : "random"
+        speech_filter = is_sparky ? "first" : "sample"
+        new_speech = rabbit.speeches.where(speech_type: new_type).public_send(speech_filter)
         update(speech_type: new_type, current_speech: new_speech , speech_status: "waiting_answer")
     end
 
