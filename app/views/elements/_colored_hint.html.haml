@@ -1,7 +1,7 @@
 = turbo_frame_tag "colored-hint-container" do
+    .text-block.colored-hint__text
+        %span= t(".colored")
+        %span.colored-word= t(".hints")
     .bool-switch__block{data:{controller: "colored-hint", session_uuid: session.uuid}}
-        .text-block
-            %span= t(".colored")
-            %span.colored-word= t(".hints")
         %input{type: "checkbox", name: "colored_hint", class: "bool-switch__checkbox", id: "colored_hint", checked: session.colored_hint, data: {action: "change->colored-hint#switchColoredHint"}}
         %label{for: "colored_hint", class: "bool-switch__label"}

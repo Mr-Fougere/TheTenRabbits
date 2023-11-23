@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.scss, which will include all the files
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require_self
+ *= require import
  */
 
 *{
@@ -40,21 +41,3 @@ img{
     align-items: center;
     justify-content: center;
 }
-
-@import "variables/index.scss";
-@import "fonts/index.scss";
-@import "language/index.scss";
-@import "speech/index.scss";
-@import "button/index.scss";
-@import "bool-switch/index.scss";
-@import "carrot-recognizer/index.scss";
-@import "rabbit/index.scss";
-@import "converter/index.scss";
-@import "credits/index.scss";
-@import "security/index.scss";
-@import "title-screen/index.scss";
-@import "turbo-stream/index.scss";
-@import "responsive/index.scss";
-@import "field/index.scss";
-@import "credits/index.scss";
-@import "information/index.scss";

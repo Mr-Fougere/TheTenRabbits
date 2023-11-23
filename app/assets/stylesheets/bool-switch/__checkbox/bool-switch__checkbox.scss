@@ -1,0 +1,22 @@
+.bool-switch__checkbox {
+  display: none;
+
+  &:checked + label {
+    background-color: $secondary-light;
+
+    &::after {
+      left: calc(100% - 0.2rem);
+      transform: translateX(-100%);
+
+      background-color: $border-light;
+      border-color: $border-light;
+    }
+    @media (prefers-color-scheme: dark) {
+      background-color: $secondary-dark;
+      &::after {
+        background-color: $border-dark;
+        border-color: $border-dark;
+      }
+    }
+  }
+}

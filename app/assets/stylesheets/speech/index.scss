@@ -86,18 +86,6 @@ body:has(#colored_hint:checked) .colored-word{
   }
 }
 
-#colored-hint-container{
-  position: absolute;
-  top: 0%;
-  right: 20%;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  color: black;
-}
-
 .speech-bubble {
   @media (prefers-color-scheme: dark) {
     @include speech-buble-dark-mode;
