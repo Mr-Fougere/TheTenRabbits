@@ -11,4 +11,4 @@
             - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
                 = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}
     - else
-        = render partial: "elements/credits/show", locals: {session: @session}
+        = render partial: "elements/credits/show", locals: {session: @session, animated: false}

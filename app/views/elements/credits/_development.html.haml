@@ -3,7 +3,5 @@
     .information__content.credit
         .credit-container.horizontal
             - ["rails","sass","haml","heroku"].each do |technology|
-                .technology-information
-                    .technology-icon
-                        = svg_tag("technologies/#{technology}")
-                    .technology-name= t("#{technology}")
+                .information__item
+                    = svg_tag("technologies/#{technology}")

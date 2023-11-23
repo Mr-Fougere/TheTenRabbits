@@ -1,8 +1,10 @@
-#credits
+#credits{class: "#{ animated ? "animated" : "" }"}
     .title-container.credit-container.span-2
-        .container-content
-            .title= t("the_ten_rabbits")
-            .author= t("author")
+        .title-screen__container.credit-title
+            .title-screen__title-container
+                .title-screen__title= t("the_ten_rabbits")
+            .title-screen__author-container    
+                .title-screen__author= t("author")
     .remerciements.credit-container.span-2
         .container-content
             %p= t("remerciements")

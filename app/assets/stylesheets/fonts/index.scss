@@ -49,3 +49,15 @@
 @mixin speech-font {
   font-family: "JosefinSans", sans-serif;
 }
+
+.josefin-sans{
+  @include speech-font;
+}
+
+.permanent-marker{
+  @include sub-font;
+}
+
+.bebas-neue{
+  @include main-font;
+}

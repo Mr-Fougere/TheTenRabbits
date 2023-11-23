@@ -2,13 +2,14 @@
   width: 70%;
   height: 100%;
   position: absolute;
-  bottom: 100%;
+  bottom: 0%;
   z-index: 100;
   background-color: rgba(211, 211, 211, 0.461);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5,20vh);
   padding: 1rem;
+  grid-gap: 0.5rem;
 
   .span-1 {
     grid-column: span 1;
@@ -37,22 +38,47 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+
   &.vertical {
     flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
   }
   &.horizontal {
     flex-direction: row;
+    justify-content: space-evenly;
   }
 }
 
-#credits {
+.credit-assets-container{
+  width: 100%;
+}
+
+.credit-title{
+  top: auto;
+}
+
+.credit-policy{
+  font-size: 12px;
+}
+
+#credits.animated {
   animation: credits-appear 3s ease-in-out forwards 5s;
 }
 
 @keyframes credits-appear {
+  0% {
+    bottom: 100%;
+  }
   100% {
     bottom: 0%;
   }
+}
+#credits img{
+  height: 50px;
+  width: 50px
 }
 
 @import "__session-information/credit__session-information.scss";

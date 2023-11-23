@@ -110,14 +110,14 @@ class Session < ApplicationRecord
 
   def display_credits
     broadcast_append_to "session-#{uuid}", target: "home-#{uuid}", partial: 'elements/credits/show',
-                                           locals: { session: self }
+                                           locals: { session: self, animated: true }
   end
 
   def secret_rabbit
-    "#{false ? 'Found' : 'No'} secret rabbit"
+    "#{false ? 'Found' : 'Not found'}"
   end
 
   def colored_hint_use
-    "#{colored_hint ? 'C' : 'No c'}olored hint used"
+    "#{colored_hint ? 'Enabled' : 'Disabled'}"
   end
 end

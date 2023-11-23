@@ -1,15 +1,16 @@
 .information-container
-    .information__title= t("ui_ux")
+    .information__title= t(".ui_ux")
     .information__content.credit
         .credit-policies-container
-            .credit-container__sub-title= t('.policies')
-            .credit-container--vertical
+            .credit-container.vertical
                 .credit-policy.josefin-sans JosefinSans
                 .credit-policy.permanent-marker PermanentMarker
                 .credit-policy.bebas-neue BebasNeue
         .credit-assets-container
-            .credit-container__sub-title= t('.assets')
-            .credit-container--horizontal
-                = image_tag "ui/figma.png",class:"credit-asset"
-                = image_tag "ui/icons8.png",class:"credit-asset"
-                = image_tag "ui/pinterest.png",class:"credit-asset"
+            .credit-container.horizontal
+                .information__item
+                    = image_tag "ui/figma.png",class:"credit-asset"
+                .information__item
+                    = image_tag "ui/icons8.png",class:"credit-asset"
+                .information__item
+                    = image_tag "ui/pinterest.png",class:"credit-asset"
