@@ -1,15 +1,24 @@
-.information__exclamation{
-    position: absolute;
-    bottom: 0;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+.information__exclamation {
+  position: absolute;
+  bottom: 0;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  stroke: $border-light;
+  fill: $border-light;
 
-    &.left{
-        left: 0;
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    svg *{
+      stroke: $border-dark;
+      fill: $border-dark;
     }
-    &.right{
-        right: 0;
-    }
+  }
 }

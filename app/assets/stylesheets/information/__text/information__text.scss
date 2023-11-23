@@ -11,4 +11,10 @@
   margin-top: 1rem;
   text-align: center;
   color: $text-light;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $secondary-dark;
+    border: 2px solid $border-dark;
+    color: $text-dark;
+  }
 }

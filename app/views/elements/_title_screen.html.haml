@@ -5,13 +5,15 @@
         .title-screen__author-container    
             .title-screen__author= t("author")
     - if session.initialized?
-        = button_to t('.begin'), introduction_path(session_uuid: session.uuid), class:"button--big", data: {target: "title-screen.titleButton",action: "click->title-screen#launchIntroduction"}
+        = button_to t('.begin'), introduction_path(session_uuid: session.uuid), class:"button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#launchIntroduction"}
     - else
-        = button_to t('.continue'), continue_path(session_uuid: session.uuid), class: "button--big", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
-    .title-screen__warning-container
+        = button_to t('.continue'), continue_path(session_uuid: session.uuid), class: "button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
+    .title-screen__warning-container{data: {target: "title-screen.titleWarning"}}
         .information-container
             .information__title= t("warning")
             .information__text
-                =image_tag "exclamation.png", class: "information__exclamation left"
+                .information__exclamation.left
+                    =svg_tag("exclamation")
                 = t(".warning_text")
-                =image_tag "exclamation.png", class: "information__exclamation right"
+                .information__exclamation.right
+                    =svg_tag("exclamation")
