@@ -76,7 +76,7 @@
 
 
 body:has(#colored_hint:checked) .colored-word{
-  color: red
+  color: $hint-color;
 }
 
 .text-block{
