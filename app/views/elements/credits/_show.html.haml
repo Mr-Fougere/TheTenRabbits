@@ -1,0 +1,18 @@
+#credits
+    .title-container.credit-container.span-2
+        .container-content
+            .title= t("the_ten_rabbits")
+            .author= t("author")
+    .remerciements.credit-container.span-2
+        .container-content
+            %p= t("remerciements")
+    .credit-container.span-1.frame
+        = render partial: "elements/credits/session", locals: {session: session}
+    .credit-container.span-1.frame
+        = render partial: "elements/credits/development"
+    .credit-container.span-1.frame
+        = render partial: "elements/credits/ui"
+    .credit-container.span-1.frame
+        = render partial: "elements/credits/network"
+    .credit-container.span-2.frame
+        = render partial: "elements/credits/survey", locals: {session: session}

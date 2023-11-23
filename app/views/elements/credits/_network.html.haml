@@ -1,0 +1,9 @@
+.information-container
+    .information__title= t("network")
+    .information__content.credit
+        .credit-container.horizontal
+            .container-title= t("github")
+            .container-content.github-link
+                %p= t("github_link")
+                = link_to "https://github.com/Mr-Fougere/TheTenRabbits", target: "_blank" do
+                    = image_tag "network/github.png", alt: "github", class: "github-icon"

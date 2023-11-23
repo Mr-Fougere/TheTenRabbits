@@ -1,0 +1,18 @@
+.information-container
+    .information__title= t(".session")
+    .information__content.credit
+        .credit-container.vertical
+            - ["hint_used","time_passed"].each do |information|
+                .credit__session-information
+                    .session-stat
+                        = t("#{information}") 
+                    .session-value
+                        = session.public_send(information)
+        .credit-container.vertical
+            - ["secret_rabbit","colored_hint_use"].each do |information|
+                .credit__session-information
+                    .session-stat
+                        = t("#{information}") 
+                    .session-value
+                        = session.public_send(information)
+
