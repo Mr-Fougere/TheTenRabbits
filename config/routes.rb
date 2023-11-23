@@ -18,5 +18,4 @@ Rails.application.routes.draw do
     mount ActionCable.server => '/cable'
 
     get '*path', to: 'application#wrong_path', via: :all
-
 end

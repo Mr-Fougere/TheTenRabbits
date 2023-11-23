@@ -1,0 +1,35 @@
+$primary-color-light: #2c3e50;
+$background-color-light: #ffffff;
+
+$primary-color-dark: #ffffff;
+$background-color-dark: #2c3e50;
+$background-dark-speech: #5b6671;
+
+
+
+@mixin light-mode {
+    background-color: $background-color-light;
+    color: $primary-color-light;
+  }
+  
+  @mixin dark-mode {
+    background-color: $background-color-dark !important;
+    color: $primary-color-dark !important;
+  }
+  
+  @mixin speech-buble-dark-mode {
+    border: 2px solid $primary-color-dark !important;
+    color: $primary-color-dark !important;
+    background-color: $background-dark-speech !important;
+  }
+  
+  @mixin chunk-hidder-dark-mode {
+    background-color: $background-dark-speech !important;
+  }
+  
+  body {
+    @media (prefers-color-scheme: dark) {
+      @include dark-mode;
+    }
+  }
+  

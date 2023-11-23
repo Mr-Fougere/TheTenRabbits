@@ -63,5 +63,16 @@
 }
 
 
+#credits{
+  animation: credits-appear 3s ease-in-out forwards 5s;
+}
+
+
+@keyframes credits-appear {
+  100% {
+    bottom: 0%;
+  }
+}
+
 
 

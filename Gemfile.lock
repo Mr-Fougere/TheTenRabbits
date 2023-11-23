@@ -340,6 +340,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  sassc-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails

@@ -120,3 +120,60 @@
   bottom: 0;
   right: 0;
 }
+
+@media (prefers-color-scheme: light) {
+  .dark-only  {
+    display: none;
+  }
+}
+
+
+
+
+.hopped {
+  .rabbit-image {
+    animation: hop 0.8s cubic-bezier(1,0,0,1) infinite;
+  }
+  .rabbit-shadow {
+    animation: shadow-out 0.8s cubic-bezier(1,0,0,1) infinite;
+  }
+}
+
+.go-home{
+  animation: go-home 3.5s ease-in-out forwards 5s;
+}
+
+
+@keyframes hop {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes go-home {
+  100% {
+    right: 200%;
+  }
+}
+
+@keyframes shadow-out {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 0.5rem 0.5rem black;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 0.5rem 0.3rem black;
+  }
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 0.5rem 0.5rem black;
+  }
+}
+

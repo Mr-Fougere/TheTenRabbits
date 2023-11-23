@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "BebasNeue";
+  src: font-url("bebas_neue/BebasNeue-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PermanentMarker";
+  src: font-url("permanent_marker/PermanentMarker-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: font-url("josefin_sans/JosefinSans-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: font-url("josefin_sans/JosefinSans-BoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: font-url("josefin_sans/JosefinSans-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@mixin main-font {
+  font-family: "BebasNeue", sans-serif;
+}
+
+@mixin sub-font {
+  font-family: "PermanentMarker", sans-serif;
+}
+
+@mixin speech-font {
+  font-family: "JosefinSans", sans-serif;
+}
