@@ -38,6 +38,12 @@ class SessionsController < ActionController::Base
     @session.update(colored_hint: !@session.colored_hint)
   end
 
+  def vote_rabbit
+    return unless @session.present? && params[:rabbit_name].present?
+
+    @session.vote_for(params[:rabbit_name])
+  end
+
   private
 
   def update_session_ui

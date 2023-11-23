@@ -7,6 +7,7 @@
   background-color: white;
 
   &.link {
+    cursor: pointer;
     &:not(:hover) {
       background-color: $disabled-background
     }
@@ -14,6 +15,11 @@
       font-size: 0;
     }
   }
+
+  &.selected{
+    background-color: white !important;
+  }
+  
   svg {
     width: 50px;
     height: 50px;

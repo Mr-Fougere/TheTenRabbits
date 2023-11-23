@@ -31,6 +31,8 @@ en:
         network: My networks
       thanks:
         credit-thanks: THANKS YOU FOR PLAYING
+      survey:
+        most-difficult-rabbit: How has been the most difficult to find ?
     title_screen:
       warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game.
     sergie:

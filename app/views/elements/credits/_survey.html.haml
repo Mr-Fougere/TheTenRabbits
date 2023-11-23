@@ -1,0 +1,7 @@
+.information-container
+    .information__title= t(".most-difficult-rabbit")
+    .information__content.credit
+        .credit-container.horizontal{data: {controller: "survey", session_uuid: session.uuid, voted: "#{session.voted?}"}}
+            - Rabbit.first(10).each do |rabbit|
+                .information__item.link{class: "#{session.voted_rabbit === rabbit ? "selected" : ""}",data: {action: "click->survey#voteRabbit", rabbit_name: "#{rabbit.underscore_name}"}}
+                    = image_tag "rabbits/#{rabbit.underscore_name}"

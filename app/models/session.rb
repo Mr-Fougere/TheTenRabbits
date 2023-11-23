@@ -4,6 +4,7 @@ class Session < ApplicationRecord
   before_create :setup_session
 
   belongs_to :last_rabbit_talked, class_name: 'Rabbit', optional: true
+  belongs_to :voted_rabbit, class_name: 'Rabbit', optional: true
 
   has_many :session_rabbits
 
@@ -119,5 +120,15 @@ class Session < ApplicationRecord
 
   def colored_hint_use
     "#{colored_hint ? 'Enabled' : 'Disabled'}"
+  end
+
+  def voted?
+    !voted_rabbit.nil?
+  end
+
+  def vote_for(rabbit_name)
+    return if voted?
+
+    update(voted_rabbit: Rabbit.find_by(name: rabbit_name.capitalize))
   end
 end

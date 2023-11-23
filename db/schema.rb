@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_125943) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_23_225254) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,7 +49,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_125943) do
     t.integer "language", default: 0
     t.boolean "is_connected", default: false
     t.string "api_key", null: false
+    t.bigint "voted_rabbit_id"
     t.index ["last_rabbit_talked_id"], name: "index_sessions_on_last_rabbit_talked_id"
+    t.index ["voted_rabbit_id"], name: "index_sessions_on_voted_rabbit_id"
   end
 
   create_table "speech_branches", force: :cascade do |t|
@@ -77,6 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_125943) do
   add_foreign_key "session_rabbits", "sessions"
   add_foreign_key "session_rabbits", "speeches", column: "current_speech_id"
   add_foreign_key "sessions", "rabbits", column: "last_rabbit_talked_id"
+  add_foreign_key "sessions", "rabbits", column: "voted_rabbit_id"
   add_foreign_key "speech_branches", "speeches", column: "current_speech_id"
   add_foreign_key "speech_branches", "speeches", column: "follow_speech_id"
   add_foreign_key "speeches", "rabbits"
