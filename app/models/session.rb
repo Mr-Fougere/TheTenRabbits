@@ -78,6 +78,11 @@ class Session < ApplicationRecord
                                             locals: { session: self }
   end
 
+  def update_credits
+    broadcast_replace_to "session-#{uuid}", target: 'credits', partial: 'elements/credits/show',
+                                            locals: { session: self, animated: false}
+  end
+
   def update_title_screen
     broadcast_replace_to "session-#{uuid}", target: 'title-screen', partial: 'elements/title_screen',
                                             locals: { session: self }
