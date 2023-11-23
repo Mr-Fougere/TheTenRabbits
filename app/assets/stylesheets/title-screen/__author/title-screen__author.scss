@@ -1,0 +1,13 @@
+.title-screen__author {
+  @include sub-font;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding-right: 0.5rem;
+  line-height: 1.5rem;
+  border-radius: 4px;
+}

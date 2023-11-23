@@ -1,0 +1,29 @@
+.screen-out-up {
+  animation: screen-out-up 3s ease-in-out forwards;
+}
+
+.screen-out-down {
+  animation: screen-out-down 3s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fade-out 2s ease-in-out forwards;
+}
+
+@keyframes screen-out-up {
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes screen-out-down {
+  100% {
+    transform: translateY(200vh);
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    background-color: rgba(211, 211, 211, 0);
+  }
+}

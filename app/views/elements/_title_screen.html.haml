@@ -1,8 +1,14 @@
 =turbo_frame_tag "title-screen", data:{controller: "title-screen", target: "title-screen.titleScreen"} do
-    #title-container{data:{target: "title-screen.titleContainer"}}
-        .title.main-text= t("the_ten_rabbits")
-        .author.sub-text= t("author")
+    .title-screen__container{data:{target: "title-screen.titleContainer"}}
+        .title-screen__title-container
+            .title-screen__title= t("the_ten_rabbits")
+        .title-screen__author-container    
+            .title-screen__author= t("author")
     - if session.initialized?
         = button_to t('.begin'), introduction_path(session_uuid: session.uuid), class:"button--big", data: {target: "title-screen.titleButton",action: "click->title-screen#launchIntroduction"}
     - else
         = button_to t('.continue'), continue_path(session_uuid: session.uuid), class: "button--big", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
+    .title-screen__warning-container
+        .informations-container
+            .informations-container__title= t("warning")
+            .informations-container__text= t(".warning_text")

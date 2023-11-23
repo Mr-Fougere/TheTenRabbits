@@ -7,68 +7,11 @@
   flex-direction: column;
   align-items: center;
   background-color: rgba(211, 211, 211, 0.319);
-
-  #title-container {
-    position: absolute;
-    top: 40%;
-    width: 50vh;
-    font-size: x-large;
-    background-color: black;
-    border-radius: 5px;
-    text-align: center;
-    color: black;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .title {
-    border-radius: 4px 0 5px 0;
-    background-color: white;
-    margin-right: 1.5rem;
-    line-height: 50px;
-  }
-
-  .author {
-    text-align: end;
-    font-size: 1rem;
-    height: 1.5rem;
-    color: white;
-    line-height: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  form {
-    display: flex;
-    justify-content: center;
-  }
 }
 
-.screen-out-up {
-  animation: screen-out-up 3s ease-in-out forwards;
-}
+@import "__author/*";
+@import "__title/*";
+@import "__container/*";
+@import "animations/*";
+@import "form/*";
 
-.screen-out-down {
-  animation: screen-out-down 3s ease-in-out forwards;
-}
-
-.fade-out {
-  animation: fade-out 2s ease-in-out forwards;
-}
-
-@keyframes screen-out-up {
-  100% {
-    transform: translateY(-100vh);
-  }
-}
-
-@keyframes screen-out-down {
-  100% {
-    transform: translateY(200vh);
-  }
-}
-
-@keyframes fade-out {
-  100% {
-    background-color: rgba(211, 211, 211, 0);
-  }
-}
