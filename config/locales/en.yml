@@ -20,6 +20,17 @@ en:
     home: 
       continue: "Continue"
   elements:
+    credits:
+      session: 
+        session: Your session
+      ui:
+        ui_ux: About UI/UX
+      development:
+        development: About development
+      network:
+        network: My networks
+      thanks:
+        credit-thanks: THANKS YOU FOR PLAYING
     title_screen:
       warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game.
     sergie:

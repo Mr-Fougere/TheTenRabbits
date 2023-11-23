@@ -6,8 +6,7 @@
             .title-screen__author-container    
                 .title-screen__author= t("author")
     .remerciements.credit-container.span-2
-        .container-content
-            %p= t("remerciements")
+        = render partial: "elements/credits/thanks"
     .credit-container.span-1.frame
         = render partial: "elements/credits/session", locals: {session: session}
     .credit-container.span-1.frame

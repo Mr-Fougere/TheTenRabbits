@@ -12,7 +12,7 @@
             - ["secret_rabbit","colored_hint_use"].each do |information|
                 .credit__session-information
                     .session-stat
-                        = t("#{information}") 
+                        = t(".#{information}") 
                     .session-value
                         = session.public_send(information)
 
