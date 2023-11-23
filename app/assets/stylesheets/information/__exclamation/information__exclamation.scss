@@ -1,0 +1,15 @@
+.information__exclamation{
+    position: absolute;
+    bottom: 0;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+
+    &.left{
+        left: 0;
+    }
+    &.right{
+        right: 0;
+    }
+}

@@ -20,6 +20,8 @@ en:
     home: 
       continue: "Continue"
   elements:
+    title_screen:
+      warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game.
     sergie:
       wrong_path_warning: "What are you doing here? It's not safe! Go back to the right way, I stay with you to watch you."
   sparky_introduction-1: "Oh! You scared me."

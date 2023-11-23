@@ -9,6 +9,9 @@
     - else
         = button_to t('.continue'), continue_path(session_uuid: session.uuid), class: "button--big", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
     .title-screen__warning-container
-        .informations-container
-            .informations-container__title= t("warning")
-            .informations-container__text= t(".warning_text")
+        .information-container
+            .information__title= t("warning")
+            .information__text
+                =image_tag "exclamation.png", class: "information__exclamation left"
+                = t(".warning_text")
+                =image_tag "exclamation.png", class: "information__exclamation right"

@@ -1,0 +1,14 @@
+.information__text {
+  @include sub-font;
+
+  width: 80vh;
+  height: max-content;
+  padding: 1.5rem 3rem 1.5rem 3rem; 
+  word-break: keep-all;
+  background-color: $secondary-light;
+  border: 4px solid $border-light;
+  border-radius: 4px;
+  margin-top: 1rem;
+  text-align: center;
+  color: $text-light;
+}
