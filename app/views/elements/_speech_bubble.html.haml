@@ -21,8 +21,6 @@
     .speech-answers
         - if answers.present?
             - answers.each do |answer|
-                .speech-answer{class: "#{answer == "no_thanks" ? "no-thanks" : ""}"}
-                    %button{data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("answer-#{answer}")
+                .button--little{class: "#{answer == "no_thanks" ? "no-thanks" : ""}",data:{action: "click->rabbit#answerSpeech", answer: answer}}= I18n.t("answer-#{answer}")
         - elsif !no_answer
-            .speech-answer
-                %button{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("answer-ok")
+            .button--little{data:{action: "click->rabbit#answerSpeech", answer: "ok"}}= I18n.t("answer-ok")

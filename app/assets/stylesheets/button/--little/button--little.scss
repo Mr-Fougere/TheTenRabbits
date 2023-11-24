@@ -1,0 +1,37 @@
+.button--little {
+    @include main-font;
+  
+    padding-inline: 1rem;
+    height: 20px;
+    background-color: $disabled-background;
+    border: 2px solid $border-light;
+    color: $text-light;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    word-wrap: break-word;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  
+    &:hover {
+      background-color: $secondary-light;
+      transform: scale(0.95);
+      color: $border-light;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      border-color: $border-dark;
+      color: $primary-dark;
+  
+      &:hover {
+        background-color: $secondary-dark;
+        color: $border-dark;
+      }
+    }
+  }
+  

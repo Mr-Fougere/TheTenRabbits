@@ -4,7 +4,7 @@
   position: absolute;
   padding-inline: 5rem;
   height: 50px;
-  background-color: $primary-light;
+  background-color: $disabled-background;
   border: 2px solid $border-light;
   color: $text-light;
   border-radius: 5px;
@@ -22,16 +22,15 @@
   &:hover {
     background-color: $secondary-light;
     transform: scale(0.95);
-    border-width: 4px;
   }
 
   @media (prefers-color-scheme: dark) {
-    background-color: $primary-dark;
-    border: 2px solid $border-dark;
-    color: $text-dark;
+    border-color: $border-dark;
+    color: $primary-dark;
 
     &:hover {
       background-color: $secondary-dark;
+      color: $border-dark;
     }
   }
 }
