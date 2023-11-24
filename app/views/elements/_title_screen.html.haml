@@ -1,3 +1,4 @@
+= turbo_stream_from("session-#{session.uuid}")
 =turbo_frame_tag "title-screen", data:{controller: "title-screen", target: "title-screen.titleScreen"} do
     .title-screen__container{data:{target: "title-screen.titleContainer"}}
         .title-screen__title-container
@@ -5,9 +6,9 @@
         .title-screen__author-container    
             .title-screen__author= t("author")
     - if session.initialized?
-        = button_to t('.begin'), introduction_path(session_uuid: session.uuid), class:"button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#launchIntroduction"}
+        = button_to t('.begin'), introduction_path(session_uuid: session.uuid),disabled:true, class:"button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#launchIntroduction"} 
     - else
-        = button_to t('.continue'), continue_path(session_uuid: session.uuid), class: "button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
+        = button_to t('.continue'), continue_path(session_uuid: session.uuid),disabled:true, class: "button--big title-screen__button", data: {target: "title-screen.titleButton",action: "click->title-screen#continueSession"}
     .title-screen__warning-container{data: {target: "title-screen.titleWarning"}}
         .information-container
             .information__title= t("warning")

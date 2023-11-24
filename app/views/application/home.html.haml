@@ -1,4 +1,3 @@
-= render partial: "turbo_stream", locals: {session: @session}
 = turbo_frame_tag "home-#{@session.uuid}", class:"home" do
     = render partial: "elements/colored_hint", locals: {session: @session}
     = render partial: "elements/language_select", locals: {session: @session}
