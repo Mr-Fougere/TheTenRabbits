@@ -1,2 +1,2 @@
 - unless session_rabbit.speech_status == "no_speech"
-    =image_tag "talk.png", class: "speech-status #{session_rabbit.speech_status}", alt: "talking", data:{action: "click->rabbit#requestCurrentSpeech"}
+    .speech-status{class:"#{session_rabbit.speech_status}", data:{action: "click->rabbit#requestCurrentSpeech"}}

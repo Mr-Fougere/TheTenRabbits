@@ -16,3 +16,12 @@
 @import "credits/index.scss";
 @import "information/index.scss";
 @import "colored-hint/index.scss";
+
+body {
+  background-image: asset-url("backgrounds/light_bg.png");
+  background-size: cover;
+
+  @media (prefers-color-scheme: dark) {
+    background-image: asset-url("backgrounds/dark_bg.png");
+  }
+}

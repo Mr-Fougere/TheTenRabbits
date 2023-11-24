@@ -51,9 +51,15 @@
   .speech-status {
     width: 50px;
     height: 50px;
-    object-fit: contain;
+    background-image: asset-url("speech/light_speech_bubble.png");
+    background-size: contain;
     opacity: 0;
     cursor: pointer;
+
+    @media (prefers-color-scheme: dark) {
+      background-image: asset-url("speech/dark_speech_bubble.png");
+    }
+
     &.talked {
       opacity: 0.5;
     }
@@ -115,34 +121,30 @@
   position: relative;
 }
 
-.dark-only{
+.dark-only {
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
 @media (prefers-color-scheme: light) {
-  .dark-only  {
+  .dark-only {
     display: none;
   }
 }
 
-
-
-
 .hopped {
   .rabbit-image {
-    animation: hop 0.8s cubic-bezier(1,0,0,1) infinite;
+    animation: hop 0.8s cubic-bezier(1, 0, 0, 1) infinite;
   }
   .rabbit-shadow {
-    animation: shadow-out 0.8s cubic-bezier(1,0,0,1) infinite;
+    animation: shadow-out 0.8s cubic-bezier(1, 0, 0, 1) infinite;
   }
 }
 
-.go-home{
+.go-home {
   animation: go-home 3.5s ease-in-out forwards 5s;
 }
-
 
 @keyframes hop {
   0% {
@@ -176,4 +178,3 @@
     box-shadow: 0 0 0.5rem 0.5rem black;
   }
 }
-
