@@ -2,9 +2,6 @@
 
 #colored-hint-container {
   
-  position: absolute;
-  top: 0%;
-  right: 10%;
   background-color: $primary-light;
   color: $text-light;
   border: solid $border-light;
@@ -16,6 +13,7 @@
   padding: 0 10px 10px 10px;
   border-radius: 0 0 8px 8px;
   z-index: 60;
+  height: fit-content;
 
   @media (prefers-color-scheme: dark) {
     background-color: $primary-dark;

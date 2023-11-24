@@ -1,12 +1,12 @@
 #language-select {
-  position: absolute;
-  top: 0;
   display: flex;
+  margin-left: 1rem;
   flex-direction: column;
-  right: 10px;
-  z-index: 60;
-  background-color: lightgray;
-  border-radius: 0 0 5px 5px;
+  background-color: $disabled-background;
+  border: solid $border-light;
+  border-radius: 0 0 8px 8px;
+  border-width: 0 2px 2px 2px;
+  height: max-content;
 
   &:hover :not(.selected) {
     display: block;
@@ -16,25 +16,32 @@
     cursor: pointer;
     order: 1;
     display: none;
+    padding: 0.3rem;
 
     &.selected {
-      background-color: lightblue;
-      border-radius: 5px;
+      background-color: $secondary-light;
+      border-radius: 0 0 6px 6px;
       order: 0;
       display: flex;
-      &:hover {
-        background-color: rgb(124, 183, 202);
-      }
     }
 
     &:not(.selected):hover {
-      background-color: grey;
+      background-color: white;
       border-radius: 5px;
     }
 
     img {
       width: 70px;
       height: 60px;
+    }
+  }
+
+  
+  @media (prefers-color-scheme: dark) {
+    border-color: $border-dark;
+
+    .language-option.selected {
+      background-color: $secondary-dark;
     }
   }
 }
