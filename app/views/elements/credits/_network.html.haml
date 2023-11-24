@@ -5,4 +5,4 @@
             - ["linkedin","github","cv"].each do |network|
                 .information__item.link
                     = link_to ENV["#{network.upcase}_LINK"], target: "_blank" do
-                        = image_tag "networks/#{network}", alt: "#{network}"
+                        = image_tag "networks/#{network}.png", alt: "#{network}"
