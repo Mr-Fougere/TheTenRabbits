@@ -42,7 +42,7 @@
   height: 100px;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 40;
+  z-index: 20;
   background-image: asset-url("panels/light_carrot.png");
 
   @media (prefers-color-scheme: dark) {
