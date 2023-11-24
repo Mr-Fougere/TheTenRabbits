@@ -1,5 +1,4 @@
 = turbo_frame_tag "ginny-#{session_rabbit.session.uuid}",data: {controller: "carrot-recognizer", session_uuid: session[:uuid] }, class: "carrot-recognizer"  do
   .file-drop
-    %p= t(".drop_carrot")
     .file-preview{ data: {target: "carrot-recognizer.filePreview",action: "dragover->carrot-recognizer#handleDragOver drop->carrot-recognizer#handleDrop" }}
       %img{ data: {target: "carrot-recognizer.previewImage" }}

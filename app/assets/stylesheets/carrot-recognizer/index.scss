@@ -1,9 +1,9 @@
 .carrot-recognizer {
-  position: absolute;
+  position: fixed;
   left: 10%;
   bottom: 10%;
 
-  .file-drop{
+  .file-drop {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,17 +14,38 @@
   }
 
   .file-preview {
-    border: 5px dashed black;
+    transform: rotateX(30deg);
+    border: 5px dashed #56390E;
     border-radius: 5px;
     text-align: center;
     width: 100px;
-    height: 100px;  
-    img{
+    height: 100px;
+
+    @media (prefers-color-scheme: dark) {
+      border-color: $border-dark;
+    }
+    img {
       pointer-events: none;
     }
   }
 
   input[type="file"] {
     display: none;
+  }
+}
+
+.carrot-sign {
+  position: fixed;
+  left: 12%;
+  bottom: 22%;
+  width: 75px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 40;
+  background-image: asset-url("panels/light_carrot.png");
+
+  @media (prefers-color-scheme: dark) {
+    background-image: asset-url("panels/dark_carrot.png");
   }
 }
