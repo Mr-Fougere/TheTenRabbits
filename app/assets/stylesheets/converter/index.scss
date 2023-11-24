@@ -6,6 +6,9 @@
   &:has(.speech-bubble.rabbit_language) #rabbit-transcriptor{
     display: flex;
   }
+  &:has(.button--little) #rabbit-transcriptor{
+    display: none;
+  }
 }
 
 #rabbit-transcriptor {
