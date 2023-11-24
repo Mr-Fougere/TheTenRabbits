@@ -3,6 +3,5 @@
         - if session_rabbit.session.status != "finished"
             = render partial: "elements/speech_status", locals: {session_rabbit: session_rabbit}
     .rabbit-container
-        .rabbit-shadow
         %span.rabbit-name= session_rabbit.rabbit.name
         = image_tag "rabbits/#{session_rabbit.rabbit.underscore_name}.png", class: "rabbit-image", alt: "#{session_rabbit.rabbit.underscore_name}"
