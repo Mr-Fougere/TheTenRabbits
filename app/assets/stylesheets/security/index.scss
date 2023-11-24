@@ -1,8 +1,44 @@
 #security-modal {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: white;
-  border: #000000 3px solid;
+  top: 35%;
+  left: 40%;
   z-index: 60;
+  &.sergie-found{
+    transform: scale(0.5);
+    top: 25%;
+    left: 25%;
+  }
+}
+
+.warning-panel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-panel__image {
+  height: 401px;
+  width: 621px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: asset-url("panels/light_warning.png");
+  @media (prefers-color-scheme: dark) {
+    background-image: asset-url("panels/dark_warning.png");
+  }
+}
+
+.warning-panel__text {
+  font-size: 40px;
+  @include main-font;
+  position: absolute;
+  color: $text-light;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 30px 90px 30px;
+
+    @media (prefers-color-scheme: dark) {
+    color: $text-dark;
+  }
 }

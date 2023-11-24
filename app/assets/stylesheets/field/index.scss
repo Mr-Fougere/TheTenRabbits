@@ -20,12 +20,17 @@
 
 .behind-bush {
   z-index: 1;
+  width: 30px;
+  height: 30px;
 }
 
 .bush-container {
   position: absolute;
-  width: max-content;
-  height: max-content;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: var(--top-position);
   left: var(--left-position);
 

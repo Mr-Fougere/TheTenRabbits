@@ -1,6 +1,6 @@
 = turbo_frame_tag "bush-#{index}-#{session.uuid}",class:"bush-container", style:"--top-position:#{bush[:top]}%;--left-position:#{bush[:left]}%" do
     - unless bush[:scotty]
-        = image_tag "unknown.png", class: "behind-bush"
+        = image_tag "behind_bush/#{rand(1..6)}.png", class: "behind-bush"
         = image_tag "bush.png", class: "bush", data: { action: "mousedown->bush#toggleBush"}
     - else 
         = render partial: "elements/scotty_hide", locals: {session_rabbit: bush[:scotty]}

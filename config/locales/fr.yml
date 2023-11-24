@@ -41,6 +41,9 @@ fr:
   application:
     home: 
       continue: "Continuer"
+    wrong_path:
+      sergie-1: Qu'est ce que tu fais ici ? 
+      sergie-2: Je te ramène sur le bon chemin
   elements:
     credits:
       session: 

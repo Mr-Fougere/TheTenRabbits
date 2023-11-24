@@ -19,6 +19,10 @@ en:
   application:
     home: 
       continue: "Continue"
+    wrong_path:
+      sergie-1: What are you doing here ? 
+      sergie-2: I bring you back to the right way
+      panel_warning: IF YOU SEE THIS SIGN THAT SEEM TO BE YOU ARE ON THE WRONG PATH MAKE WAY BACK 
   elements:
     credits:
       session: 

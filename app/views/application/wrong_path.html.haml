@@ -1,7 +1,8 @@
-#security-modal{data: {controller: "security"}}
+#security-modal{data: {controller: "security"},class: "#{@sergie&.hidden? ? "":  "sergie-found"}"}
     - if @sergie&.hidden?
+        = render partial: "elements/speech_bubble",locals: { chunks: [t(".sergie-1"),t('.sergie-2')], classes: "normal", answers: [], no_answer: true, colored_words: []}
         = image_tag "rabbits/sergie.png"
-        %p= t('.wrong_path_warning')
     - else
-        = image_tag "panel.png"
-        %p= t('.panel_warning')
+        .warning-panel-container
+            .warning-panel__image
+            .warning-panel__text= t('.panel_warning')
