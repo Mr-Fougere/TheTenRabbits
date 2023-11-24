@@ -25,3 +25,25 @@ body {
     background-image: asset-url("backgrounds/dark_bg.png");
   }
 }
+
+#configuration {
+  position: absolute;
+  top: 0;
+  right: 1%;
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+}
+
+#configuration.animated {
+  animation: configuration-disappear ease-in-out forwards 2s;
+}
+
+@keyframes configuration-disappear {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: -100%;
+  }
+}

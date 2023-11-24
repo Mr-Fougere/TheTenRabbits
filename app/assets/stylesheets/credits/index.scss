@@ -2,7 +2,7 @@
   width: 70%;
   height: 100%;
   position: absolute;
-  bottom: 0%;
+  bottom: 100%;
   z-index: 100;
   background-color: rgba(211, 211, 211, 0.461);
   display: grid;
@@ -10,6 +10,10 @@
   grid-template-rows: repeat(5,20vh);
   padding: 1rem;
   grid-column-gap: 1rem;
+
+  &:not(.animated){
+    bottom: 0%;
+  }
   
   .span-1 {
     grid-column: span 1;

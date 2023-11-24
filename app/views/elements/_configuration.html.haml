@@ -1,0 +1,3 @@
+= turbo_frame_tag "configuration", class:"#{session.finished? ? "animated" : ""}" do
+    = render partial: "elements/colored_hint", locals: {session: session}
+    = render partial: "elements/language_select", locals: {session: session}

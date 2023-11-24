@@ -1,8 +1,6 @@
 = turbo_frame_tag "home-#{@session.uuid}", class:"home" do
     - unless @session.finished?
-        .configuration
-            = render partial: "elements/colored_hint", locals: {session: @session}
-            = render partial: "elements/language_select", locals: {session: @session}
+        = render partial: "elements/configuration", locals: {session: @session}
         = render partial: "elements/title_screen", locals: {session: @session}
         = render partial: "field", locals: {bushes: @bushes}
         = render partial: "elements/carrot_sign"
@@ -12,4 +10,5 @@
             - @session.session_rabbits.graphic_hidden.each do |session_rabbit|
                 = render partial: "elements/rabbits/#{session_rabbit.rabbit.underscore_name}", locals: {session_rabbit: session_rabbit}
     - else
+        -p "ici"
         = render partial: "elements/credits/show", locals: {session: @session, animated: false}

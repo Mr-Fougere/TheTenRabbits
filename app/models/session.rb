@@ -99,6 +99,7 @@ class Session < ApplicationRecord
     session_rabbits.each { |rabbit| rabbit.display_rabbit(out: true) }
     session_sparky.broadcast_current_speech
     display_credits
+    undisplay_configuration
   end
 
   def time_passed
@@ -117,6 +118,10 @@ class Session < ApplicationRecord
   def display_credits
     broadcast_append_to "session-#{uuid}", target: "home-#{uuid}", partial: 'elements/credits/show',
                                            locals: { session: self, animated: true }
+  end
+
+  def undisplay_configuration
+    broadcast_replace_to "session-#{uuid}", target: "configuration", partial: 'elements/configuration',locals: { session: self }
   end
 
   def secret_rabbit
