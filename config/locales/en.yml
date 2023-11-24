@@ -23,6 +23,12 @@ en:
     credits:
       session: 
         session: Your session
+        hint_used: Hints used
+        secret_rabbit: Secret Rabbit
+        colored_hint_use: Colored Hint
+        time_passed: Time Passed
+        not_found: Not Found
+        disabled: Disabled
       ui:
         ui_ux: About UI/UX
       development:
@@ -34,7 +40,7 @@ en:
       survey:
         most-difficult-rabbit: How has been the most difficult to find ?
     title_screen:
-      warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game.
+      warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game. It's recommanded to play on desktop
     sergie:
       wrong_path_warning: "What are you doing here? It's not safe! Go back to the right way, I stay with you to watch you."
   sparky_introduction-1: "Oh! You scared me."

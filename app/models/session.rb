@@ -120,11 +120,11 @@ class Session < ApplicationRecord
   end
 
   def secret_rabbit
-    "#{false ? 'Found' : 'Not found'}"
+    "#{false ? 'found' : 'not_found'}"
   end
 
   def colored_hint_use
-    "#{colored_hint ? 'Enabled' : 'Disabled'}"
+    "#{colored_hint ? 'enabled' : 'disabled'}"
   end
 
   def voted?

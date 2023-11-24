@@ -37,10 +37,30 @@ fr:
   DOMain: DOMaine
   too: trop
   lighter: lumineux
+  warning: "Avertissement"
   application:
     home: 
       continue: "Continuer"
   elements:
+    credits:
+      session: 
+        session: Votre session
+        hint_used: Indices utilisé
+        secret_rabbit: Lapin Secret
+        colored_hint_use: Indice colorisé
+        time_passed: Temps passé
+        not_found: Pas trouvé
+        disabled: Désactive
+      ui:
+        ui_ux: A propos de l'UI/UX
+      development:
+        development: A propos du développement 
+      network:
+        network: Mes réseaux
+      thanks:
+        credit-thanks: Merci d'avoir joué !
+      survey:
+        most-difficult-rabbit: Quel a été le plus difficile à trouver ?
     sergie:
       wrong_path_warning: "Qu'est-ce que tu fais ici ? Ce n'est pas sûr ! Retourne sur le bon chemin, je reste avec toi pour te surveiller."
     colored_hint:
@@ -48,7 +68,9 @@ fr:
       hints: Colorisé
     title_screen:
       continue: "Continuer"
-    
+      begin: "Commencer"
+      warning_text: Ce jeu est conçu pour les développeurs car il requiert d'utiliser des outils externes ou des connaissances web pour le compléter. Il est recommandé de jouer sur un ordinateur de bureau
+
   sparky_introduction-1: "Oh ! Tu m'as fait peur."
   sparky_introduction-2: "Je cherche mes frères et sœurs ; ils sont partis pendant ma sieste."
   sparky_introduction-3A: "Peux-tu m'aider à les retrouver ?"

@@ -5,14 +5,14 @@
             - ["hint_used","time_passed"].each do |information|
                 .credit__session-information
                     .session-stat
-                        = t("#{information}") 
+                        = t(".#{information}") 
                     .session-value
-                        = session.public_send(information)
+                        = t(".#{session.public_send(information)}")
         .credit-container.vertical
             - ["secret_rabbit","colored_hint_use"].each do |information|
                 .credit__session-information
                     .session-stat
                         = t(".#{information}") 
                     .session-value
-                        = session.public_send(information)
+                        = t(".#{session.public_send(information)}")
 
