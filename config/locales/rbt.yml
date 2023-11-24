@@ -19,7 +19,32 @@ rbt:
   application:
     home: 
       continue: "Continue"
+    wrong_path:
+      sergie-1: What are you doing here ? 
+      sergie-2: I bring you back to the right way
+      panel_warning: IF YOU SEE THIS SIGN THAT SEEM TO BE YOU ARE ON THE WRONG PATH MAKE WAY BACK 
   elements:
+    credits:
+      session: 
+        session: Your session
+        hint_used: Hints used
+        secret_rabbit: Secret Rabbit
+        colored_hint_use: Colored Hint
+        time_passed: Time Passed
+        not_found: Not Found
+        disabled: Disabled
+      ui:
+        ui_ux: About UI/UX
+      development:
+        development: About development
+      network:
+        network: My networks
+      thanks:
+        credit-thanks: THANKS YOU FOR PLAYING
+      survey:
+        most-difficult-rabbit: How has been the most difficult to find ?
+    title_screen:
+      warning_text: This game is designed for developers as it may require external tools or web knowledge to complete the game. It's recommanded to play on desktop
     sergie:
       wrong_path_warning: "What are you doing here? It's not safe! Go back to the right way, I stay with you to watch you."
   sparky_introduction-1: "Oh! You scared me."
@@ -33,14 +58,14 @@ rbt:
   sparky_introduction-6: "Oh, you found Scotty. Thank you. Continue to look everywhere to find my other siblings."
   sparky_introduction-7: "If you need information on my siblings, you can ask me. Maybe he will help you to find them."
   sparky_hint-1: "Which one do you want to know more about?"
-  sparky_hint-ginny: "Ginny is always hungry. Maybe if you drop a carrot, she will come!"
+  sparky_hint-ginny: "Ginny is always hungry. Maybe if you drop a carrot , she will come!"
   sparky_hint-steevie: "Steevie is the youngest; he runs when we shout this name."
   sparky_hint-larry: "Nobody understands what Larry is saying, but he loves to do high fives."
   sparky_hint-sergie: "This is the elder of the group. He loves to keep the young ones on the right path."
   sparky_hint-debbie: "I'm sure Debbie is playing again with this game console somewhere."
   sparky_hint-appie: "She always locks herself in this secret cabin and throws the key. Maybe Appie's key is somewhere in the DOMain."
   sparky_hint-remmy: "Remmy doesn't like small spaces."
-  sparky_hint-timmy: "It's too light a space for Timmy."
+  sparky_hint-timmy: "This space is too lighter for Timmy."
   sparky_hint-no-thanks: "Ok, good luck."
   larry_enigma-1A: "Hi, do you understand me?"
   larry_enigma-1B: "Oh, you again? Can you understand me right now?"
@@ -53,14 +78,14 @@ rbt:
   larry_introduction-1: "I'm so happy to find someone who understands me."
   ginny_introduction-1: "This carrot is so tasteful. Thank you!"
   appie_introduction-1: "When I'm not good, I like to hide in my secret cabin."
-  remmy_introduction-1: "What happened? I was so scared; the walls began to approach me."
+  remmy_introduction-1: "What happened? I was so scared, the walls began to approach me."
   sergie_introduction-1: "I don't want to see you wandering on dangerous paths again."
-  timmy_introduction-1: "I like to hide in the shadow; nobody can see me."
+  timmy_introduction-1: "I like to hide in the shadow, nobody can see me."
   debbie_introduction-1: "I see you like consoles too. Me? I like playing Zelda games."
   scotty_introduction-1: "I was so peaceful in this bush."
   steevie_introduction-1: "HE HE, it's you who called me?!?! I know many games we can play together!"
   larry_random-1: "Maybe you can teach my language to my other siblings!"
-  ginny_random-1: "What do you want? If you think I will share this carrot, it's a no!"
+  ginny_random-1: "What do you want? If you think I will share this carrot , it's a no!"
   appie_random-1: "It's my father who built this secret cabin especially for me!"
   remmy_random-1: "I'm claustrophobic; it's like I can breathe less the smaller the space is."
   sergie_random-1: "Be careful, kiddo. Some paths should never be used."

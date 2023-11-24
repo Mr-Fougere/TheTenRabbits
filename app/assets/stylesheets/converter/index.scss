@@ -1,13 +1,13 @@
 .larry {
   position: absolute;
   right: 5%;
-  bottom: 20%;
+  bottom: 5%;
 
   &:has(.speech-bubble.rabbit_language) #rabbit-transcriptor{
     display: flex;
   }
   &:has(.button--little) #rabbit-transcriptor{
-    display: none;
+    display: none !important;
   }
 }
 

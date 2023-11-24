@@ -11,6 +11,8 @@ module SessionRabbitSpeech
   end
 
   def broadcast_current_speech_bubble
+    I18n.locale = session.language
+    p I18n.locale
     rabbit_hinted if sparky_rabbit_hint?
     session.update(last_rabbit_talked: rabbit)
     text = I18n.t(".#{rabbit.underscore_name}_#{current_speech.text}")

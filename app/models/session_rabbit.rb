@@ -89,11 +89,8 @@ class SessionRabbit < ApplicationRecord
     private
 
     def sparky_rabbit_hint? 
-        p rabbit.name == "Sparky"
-        p speech_type == "hint"
         return unless rabbit.name == "Sparky"
         return unless speech_type == "hint"
-        p ["hint-no-thanks","hint-1"].include?(current_speech.text)
         return if ["hint-no-thanks","hint-1"].include?(current_speech.text)
 
         true

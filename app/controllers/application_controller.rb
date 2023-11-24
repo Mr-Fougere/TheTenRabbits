@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     render 'wrong_path'
   end
 
+  def display_cv
+    send_file(
+      "#{Rails.root}/public/cv.pdf",
+      filename: 'cv.pdf',
+      type: 'application/pdf',
+      disposition: 'inline'
+    )
+  end
+
   def check_security_visit
     return unless request.referer.present?
     return unless URI.parse(request.referer).path

@@ -79,8 +79,8 @@
 }
 
 .debbie {
-  bottom: 20%;
-  right: 80%;
+  bottom: 50%;
+  right: 30%;
 }
 
 .timmy {
@@ -160,7 +160,7 @@
 
 @keyframes go-home {
   100% {
-    right: 200%;
+    opacity: 0;
   }
 }
 

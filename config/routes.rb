@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post '/carrot_recognizer', to: 'application#carrot_recognizer', as: 'carrot_recognizer'
 
   mount ActionCable.server => '/cable'
-
+  get '/cv', to: 'application#display_cv', as: 'display_cv'
   get '*path', to: 'application#wrong_path', via: :all
+
 end

@@ -48,10 +48,11 @@ class SessionsController < ActionController::Base
 
   def update_session_ui
     I18n.locale = @session.language
+    return @session.update_credits if  @session.finished?
+
     current_rabbit = @session.last_rabbit_talked
     @session.session_rabbit_named(current_rabbit.name).broadcast_current_speech if current_rabbit
     @session.update_switch_colored_hint
-    @session.update_credits
     @session.update_title_screen
     larry = @session.session_rabbit_named('Larry')
     return unless larry
