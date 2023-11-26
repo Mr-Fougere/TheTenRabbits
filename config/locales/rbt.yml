@@ -24,6 +24,8 @@ rbt:
       sergie-2: I bring you back to the right way
       panel_warning: IF YOU SEE THIS SIGN THAT SEEM TO BE YOU ARE ON THE WRONG PATH MAKE WAY BACK 
   elements:
+    mobile_cache: 
+      mobile_warning: This website is not yet adapated for mobile uses.
     credits:
       session: 
         session: Your session

@@ -45,6 +45,8 @@ fr:
       sergie-1: Qu'est ce que tu fais ici ? 
       sergie-2: Je te ramène sur le bon chemin
   elements:
+    mobile_cache: 
+      mobile_warning: Ce site web n'est pas adapté pour une utilisation sur mobile pour l'instant
     credits:
       session: 
         session: Votre session
